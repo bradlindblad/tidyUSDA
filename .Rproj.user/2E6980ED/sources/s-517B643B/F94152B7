@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566755352756.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "12|31|30|0|\n32|30|50|0|\n52|29|70|0|\n72|33|90|0|\n92|32|110|0|\n112|32|130|0|\n132|30|150|0|\n152|33|170|0|\n",
+    "hash" : "0",
+    "id" : "F94152B7",
+    "lastKnownWriteTime" : 1566756400,
+    "last_content_update" : 1566756400543,
+    "path" : "~/Documents/repo/R/tidyUSDA/R/getParams.R",
+    "project_path" : "R/getParams.R",
+    "properties" : {
+        "cursorPosition" : "170,1",
+        "scrollLine" : "2",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
