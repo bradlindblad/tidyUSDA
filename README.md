@@ -1,7 +1,7 @@
 # tidyUSDA
 **tidyUSDA**, an interface to USDA Quick Stats data with mapping capabilities.
 
-![img](https://github.com/bradlindblad/tidyUSDA/blob/master/images/logosmaller.png)
+![img](https://github.com/bradlindblad/tidyUSDA/blob/master/images/tidyusda.png)
 
 
 ## End state/results/deliverable
