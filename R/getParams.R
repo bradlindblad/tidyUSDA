@@ -4,10 +4,7 @@ library(jsonlite)
 
 
 
-# program, sector, group, commodity,
-# category, data_item, domain, geographic_level,
-# region, ag_district, state, county, year
-# 
+
 # key <- '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
 
 getAllProgram <- function(key){
@@ -17,10 +14,10 @@ getAllProgram <- function(key){
   #' @param key: your USDA api key
   #' 
   #' @examples
-  #' x <- tidyUSDA::getAllProgram(mykey)
+  #'x <- tidyUSDA::getAllProgram(mykey)
   #' 
-  #'  # View the vector in RSTudio in order to search for terms 
-  #'  View(x)
+  #'# View the vector in RStudio in order to search for terms 
+  #'View(x)
   
   param = "source_desc"
   
@@ -47,10 +44,10 @@ getAllSector <- function(key){
   #' @param key: your USDA api key
   #' 
   #' @examples
-  #' x <- tidyUSDA::getAllSector(mykey)
+  #'x <- tidyUSDA::getAllSector(mykey)
   #' 
-  #'  # View the vector in RSTudio in order to search for terms 
-  #'  View(x)
+  #'# View the vector in RStudio in order to search for terms 
+  #'View(x)
   #'  
   param = "sector_desc"
   
@@ -77,10 +74,10 @@ getAllGroup <- function(key){
   #' @param key: your USDA api key
   #' 
   #' @examples
-  #' x <- tidyUSDA::getAllGroup(mykey)
+  #'x <- tidyUSDA::getAllGroup(mykey)
   #' 
-  #'  # View the vector in RSTudio in order to search for terms 
-  #'  View(x)
+  #'# View the vector in RSTudio in order to search for terms 
+  #'View(x)
   
   
   param = "group_desc"
@@ -108,10 +105,10 @@ getAllCommodity <- function(key){
   #' @param key: your USDA api key
   #' 
   #' @examples
-  #' x <- tidyUSDA::getAllCommodity(mykey)
+  #'x <- tidyUSDA::getAllCommodity(mykey)
   #' 
-  #'  # View the vector in RSTudio in order to search for terms 
-  #'  View(x)
+  #'# View the vector in RSTudio in order to search for terms 
+  #'View(x)
   
   param = "commodity_desc"
   
@@ -138,10 +135,10 @@ getAllCategory <- function(key){
   #' @param key: your USDA api key
   #' 
   #' @examples
-  #' x <- tidyUSDA::getAllCategory(mykey)
+  #'x <- tidyUSDA::getAllCategory(mykey)
   #' 
-  #'  # View the vector in RSTudio in order to search for terms 
-  #'  View(x)
+  #'# View the vector in RSTudio in order to search for terms 
+  #'View(x)
   
   param = "statisticcat_desc"
   
@@ -168,10 +165,10 @@ getAllDataItem <- function(key){
   #' @param key: your USDA api key
   #' 
   #' @examples
-  #' x <- tidyUSDA::getAllDataItem(mykey)
+  #'x <- tidyUSDA::getAllDataItem(mykey)
   #' 
-  #'  # View the vector in RSTudio in order to search for terms 
-  #'  View(x)
+  #'# View the vector in RSTudio in order to search for terms 
+  #'View(x)
   
   param = "short_desc"
   
@@ -198,10 +195,10 @@ getAllDomain <- function(key){
   #' @param key: your USDA api key
   #' 
   #' @examples
-  #' x <- tidyUSDA::getAllDomain(mykey)
+  #'x <- tidyUSDA::getAllDomain(mykey)
   #' 
-  #'  # View the vector in RSTudio in order to search for terms 
-  #'  View(x)
+  #'# View the vector in RSTudio in order to search for terms 
+  #'View(x)
   
   param = "domain"
   
@@ -228,10 +225,10 @@ getAllGeogLevel <- function(key){
   #' @param key: your USDA api key
   #' 
   #' @examples
-  #' x <- tidyUSDA::getAllGeogLevel(mykey)
+  #'x <- tidyUSDA::getAllGeogLevel(mykey)
   #' 
-  #'  # View the vector in RSTudio in order to search for terms 
-  #'  View(x)
+  #'# View the vector in RSTudio in order to search for terms 
+  #'View(x)
   
   param = "agg_level_desc"
   
@@ -258,10 +255,10 @@ getAllState <- function(key){
   #' @param key: your USDA api key
   #' 
   #' @examples
-  #' x <- tidyUSDA::getAllState(mykey)
+  #'x <- tidyUSDA::getAllState(mykey)
   #' 
-  #'  # View the vector in RSTudio in order to search for terms 
-  #'  View(x)
+  #'# View the vector in RSTudio in order to search for terms 
+  #'View(x)
   
   param = "state_name"
   
@@ -288,10 +285,10 @@ getAllCounty <- function(key){
   #' @param key: your USDA api key
   #' 
   #' @examples
-  #' x <- tidyUSDA::getAllCounty(mykey)
+  #'x <- tidyUSDA::getAllCounty(mykey)
   #' 
-  #'  # View the vector in RSTudio in order to search for terms 
-  #'  View(x)
+  #'# View the vector in RSTudio in order to search for terms 
+  #'View(x)
   
   param = "county_name"
   
