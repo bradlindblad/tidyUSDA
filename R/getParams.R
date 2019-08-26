@@ -19,21 +19,34 @@ getAllProgram <- function(key){
   #'# View the vector in RStudio in order to search for terms 
   #'View(x)
   
-  param = "source_desc"
+  out <- tryCatch(
+    {
+      param = "source_desc"
+      
+      key <- key
+      
+      key <- paste0(key,'&param=')
+      
+      base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
+      
+      url <- paste0(base, key , param)
+      
+      vec <- jsonlite::fromJSON(url)
+      
+      vec <- unlist(vec)
+      
+      return(vec) 
+    }, 
+    
+    error=function(cond) {
+      message("Error: The API Key you provided appears to be invalid.")
+      message("Visit 'https://quickstats.nass.usda.gov/api' to obtain a valid API Key.")
+      # Return an NA in case of an error
+      return(NA)
+    }
+  )
   
-  key <- key
-  
-  key <- paste0(key,'&param=')
-  
-  base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
-  
-  url <- paste0(base, key , param)
-  
-  vec <- jsonlite::fromJSON(url)
-  
-  vec <- unlist(vec)
-  
-  return(vec)
+  return(out)
   
 }
 
@@ -49,21 +62,35 @@ getAllSector <- function(key){
   #'# View the vector in RStudio in order to search for terms 
   #'View(x)
   #'  
-  param = "sector_desc"
   
-  key <- key
+  out<- tryCatch(
+    {
+      param = "sector_desc"
+      
+      key <- key
+      
+      key <- paste0(key,'&param=')
+      
+      base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
+      
+      url <- paste0(base, key , param)
+      
+      vec <- jsonlite::fromJSON(url)
+      
+      vec <- unlist(vec)
+      
+      return(vec)
+    }, 
+    
+    error=function(cond) {
+      message("Error: The API Key you provided appears to be invalid.")
+      message("Visit 'https://quickstats.nass.usda.gov/api' to obtain a valid API Key.")
+      # Return an NA in case of an error
+      return(NA)
+    }
+  )
   
-  key <- paste0(key,'&param=')
-  
-  base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
-  
-  url <- paste0(base, key , param)
-  
-  vec <- jsonlite::fromJSON(url)
-  
-  vec <- unlist(vec)
-  
-  return(vec)
+  return(out)
   
 }
 
@@ -79,24 +106,36 @@ getAllGroup <- function(key){
   #'# View the vector in RSTudio in order to search for terms 
   #'View(x)
   
+  out <- tryCatch(
+    {
+      param = "group_desc"
+      
+      key <- key
+      
+      key <- paste0(key,'&param=')
+      
+      base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
+      
+      url <- paste0(base, key , param)
+      
+      vec <- jsonlite::fromJSON(url)
+      
+      vec <- unlist(vec)
+      
+      return(vec)
+    }, 
+    
+    error=function(cond) {
+      message("Error: The API Key you provided appears to be invalid.")
+      message("Visit 'https://quickstats.nass.usda.gov/api' to obtain a valid API Key.")
+      # Return an NA in case of an error
+      return(NA)
+    }
+  )
   
-  param = "group_desc"
+  return(out)
   
-  key <- key
-  
-  key <- paste0(key,'&param=')
-  
-  base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
-  
-  url <- paste0(base, key , param)
-  
-  vec <- jsonlite::fromJSON(url)
-  
-  vec <- unlist(vec)
-  
-  return(vec)
-  
-}
+}    
 
 getAllCommodity <- function(key){
   
@@ -110,24 +149,37 @@ getAllCommodity <- function(key){
   #'# View the vector in RSTudio in order to search for terms 
   #'View(x)
   
-  param = "commodity_desc"
+  out <- tryCatch(
+    {
+      param = "commodity_desc"
+      
+      key <- key
+      
+      key <- paste0(key,'&param=')
+      
+      base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
+      
+      url <- paste0(base, key , param)
+      
+      vec <- jsonlite::fromJSON(url)
+      
+      vec <- unlist(vec)
+      
+      return(vec)
+    }, 
+    
+    error=function(cond) {
+      message("Error: The API Key you provided appears to be invalid.")
+      message("Visit 'https://quickstats.nass.usda.gov/api' to obtain a valid API Key.")
+      # Return an NA in case of an error
+      return(NA)
+    }
+  )
   
-  key <- key
+  return(out)
   
-  key <- paste0(key,'&param=')
-  
-  base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
-  
-  url <- paste0(base, key , param)
-  
-  vec <- jsonlite::fromJSON(url)
-  
-  vec <- unlist(vec)
-  
-  return(vec)
-  
-}
-
+}       
+    
 getAllCategory <- function(key){
   
   #' Get all possible values from CATEGORY field
@@ -140,23 +192,36 @@ getAllCategory <- function(key){
   #'# View the vector in RSTudio in order to search for terms 
   #'View(x)
   
-  param = "statisticcat_desc"
+  out <- tryCatch(
+    {
+      param = "statisticcat_desc"
+      
+      key <- key
+      
+      key <- paste0(key,'&param=')
+      
+      base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
+      
+      url <- paste0(base, key , param)
+      
+      vec <- jsonlite::fromJSON(url)
+      
+      vec <- unlist(vec)
+      
+      return(vec)
+    }, 
+    
+    error=function(cond) {
+      message("Error: The API Key you provided appears to be invalid.")
+      message("Visit 'https://quickstats.nass.usda.gov/api' to obtain a valid API Key.")
+      # Return an NA in case of an error
+      return(NA)
+    }
+  )
   
-  key <- key
+  return(out)
   
-  key <- paste0(key,'&param=')
-  
-  base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
-  
-  url <- paste0(base, key , param)
-  
-  vec <- jsonlite::fromJSON(url)
-  
-  vec <- unlist(vec)
-  
-  return(vec)
-  
-}
+}  
 
 getAllDataItem <- function(key){
   
@@ -170,24 +235,37 @@ getAllDataItem <- function(key){
   #'# View the vector in RSTudio in order to search for terms 
   #'View(x)
   
-  param = "short_desc"
+  out <- tryCatch(
+    {
+      param = "short_desc"
+      
+      key <- key
+      
+      key <- paste0(key,'&param=')
+      
+      base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
+      
+      url <- paste0(base, key , param)
+      
+      vec <- jsonlite::fromJSON(url)
+      
+      vec <- unlist(vec)
+      
+      return(vec)
+    }, 
+    
+    error=function(cond) {
+      message("Error: The API Key you provided appears to be invalid.")
+      message("Visit 'https://quickstats.nass.usda.gov/api' to obtain a valid API Key.")
+      # Return an NA in case of an error
+      return(NA)
+    }
+  )
   
-  key <- key
-  
-  key <- paste0(key,'&param=')
-  
-  base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
-  
-  url <- paste0(base, key , param)
-  
-  vec <- jsonlite::fromJSON(url)
-  
-  vec <- unlist(vec)
-  
-  return(vec)
+  return(out)
   
 }
-
+  
 getAllDomain <- function(key){
   
   #' Get all possible values from DOMAIN field
@@ -200,21 +278,34 @@ getAllDomain <- function(key){
   #'# View the vector in RSTudio in order to search for terms 
   #'View(x)
   
-  param = "domain"
+  out <- tryCatch(
+    {
+      param = "domain_desc"
+      
+      key <- key
+      
+      key <- paste0(key,'&param=')
+      
+      base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
+      
+      url <- paste0(base, key , param)
+      
+      vec <- jsonlite::fromJSON(url)
+      
+      vec <- unlist(vec)
+      
+      return(vec)
+    }, 
+    
+    error=function(cond) {
+      message("Error: The API Key you provided appears to be invalid.")
+      message("Visit 'https://quickstats.nass.usda.gov/api' to obtain a valid API Key.")
+      # Return an NA in case of an error
+      return(NA)
+    }
+  )
   
-  key <- key
-  
-  key <- paste0(key,'&param=')
-  
-  base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
-  
-  url <- paste0(base, key , param)
-  
-  vec <- jsonlite::fromJSON(url)
-  
-  vec <- unlist(vec)
-  
-  return(vec)
+  return(out)
   
 }
 
@@ -230,21 +321,34 @@ getAllGeogLevel <- function(key){
   #'# View the vector in RSTudio in order to search for terms 
   #'View(x)
   
-  param = "agg_level_desc"
+  out <- tryCatch(
+    {
+      param = "agg_level_desc"
+      
+      key <- key
+      
+      key <- paste0(key,'&param=')
+      
+      base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
+      
+      url <- paste0(base, key , param)
+      
+      vec <- jsonlite::fromJSON(url)
+      
+      vec <- unlist(vec)
+      
+      return(vec)
+    }, 
+    
+    error=function(cond) {
+      message("Error: The API Key you provided appears to be invalid.")
+      message("Visit 'https://quickstats.nass.usda.gov/api' to obtain a valid API Key.")
+      # Return an NA in case of an error
+      return(NA)
+    }
+  )
   
-  key <- key
-  
-  key <- paste0(key,'&param=')
-  
-  base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
-  
-  url <- paste0(base, key , param)
-  
-  vec <- jsonlite::fromJSON(url)
-  
-  vec <- unlist(vec)
-  
-  return(vec)
+  return(out)
   
 }
 
@@ -260,21 +364,34 @@ getAllState <- function(key){
   #'# View the vector in RSTudio in order to search for terms 
   #'View(x)
   
-  param = "state_name"
+  out <- tryCatch(
+    {
+      param = "state_name"
+      
+      key <- key
+      
+      key <- paste0(key,'&param=')
+      
+      base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
+      
+      url <- paste0(base, key , param)
+      
+      vec <- jsonlite::fromJSON(url)
+      
+      vec <- unlist(vec)
+      
+      return(vec)
+    }, 
+    
+    error=function(cond) {
+      message("Error: The API Key you provided appears to be invalid.")
+      message("Visit 'https://quickstats.nass.usda.gov/api' to obtain a valid API Key.")
+      # Return an NA in case of an error
+      return(NA)
+    }
+  )
   
-  key <- key
-  
-  key <- paste0(key,'&param=')
-  
-  base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
-  
-  url <- paste0(base, key , param)
-  
-  vec <- jsonlite::fromJSON(url)
-  
-  vec <- unlist(vec)
-  
-  return(vec)
+  return(out)
   
 }
 
@@ -290,21 +407,34 @@ getAllCounty <- function(key){
   #'# View the vector in RSTudio in order to search for terms 
   #'View(x)
   
-  param = "county_name"
+  out <- tryCatch(
+    {
+      param = "county_name"
+      
+      key <- key
+      
+      key <- paste0(key,'&param=')
+      
+      base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
+      
+      url <- paste0(base, key , param)
+      
+      vec <- jsonlite::fromJSON(url)
+      
+      vec <- unlist(vec)
+      
+      return(vec)
+    }, 
+    
+    error=function(cond) {
+      message("Error: The API Key you provided appears to be invalid.")
+      message("Visit 'https://quickstats.nass.usda.gov/api' to obtain a valid API Key.")
+      # Return an NA in case of an error
+      return(NA)
+    }
+  )
   
-  key <- key
-  
-  key <- paste0(key,'&param=')
-  
-  base <- 'http://quickstats.nass.usda.gov/api/get_param_values/?key='
-  
-  url <- paste0(base, key , param)
-  
-  vec <- jsonlite::fromJSON(url)
-  
-  vec <- unlist(vec)
-  
-  return(vec)
+  return(out)
   
 }
 
