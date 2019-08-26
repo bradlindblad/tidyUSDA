@@ -278,6 +278,7 @@ getAllDomain <- function(key){
   #'# View the vector in RSTudio in order to search for terms 
   #'View(x)
   
+
   out <- tryCatch(
     {
       param = "domain_desc"
@@ -306,6 +307,9 @@ getAllDomain <- function(key){
   )
   
   return(out)
+=======
+ 
+
   
 }
 
