@@ -200,7 +200,7 @@ getAllDomain <- function(key){
   #'# View the vector in RSTudio in order to search for terms 
   #'View(x)
   
-  param = "domain"
+  param = "domain_desc"
   
   key <- key
   
