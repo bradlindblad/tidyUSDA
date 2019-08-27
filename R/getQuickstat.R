@@ -7,56 +7,83 @@ library(tigris)
 library(sf)
 
 
-getQuickstat <- function(key=NULL,program=NULL, sector=NULL, group=NULL, commodity=NULL,
-                         category=NULL, data_item=NULL, domain=NULL, geographic_level=NULL,
-                         region=NULL, state=NULL, county=NULL, year=NULL, geometry = FALSE) {
+
+getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
+                         category=NULL, domain=NULL, geographic_level=NULL,
+                         state=NULL, county=NULL, year=NULL, geometry = FALSE) {
   
-  # Gets operator count by state
-  #
-  # Args:
-  #   state = string of state ex: 'ND'
-  #   
-  # Returns:
-  #   data frame with state, year, county and count of operators
-  #    Note: there will be multiple years' data
-  #
-  # api.key = 7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71
-  #
-  # quickstats URL: https://quickstats.nass.usda.gov
-  #
+  #' @description 
+  #' Get values from Quickstats in a dataframe or data frame
+  #'     with sf:: geometry field
+  #'     
+  #'     
+  #' @param key: your USDA api key. Get one at https://quickstats.nass.usda.gov/api
+  #' @param program: program field
+  #' @param data_item: data_item field
+  #' @param sector: sector field
+  #' @param group: group field
+  #' @param commodity: commodity field
+  #' @param category: category field
+  #' @param domain: domain field
+  #' @param geographic_level: geographic_level field
+  #' @param state: state field
+  #' @param county: county field
+  #' @param year: year field
+  #' @param geometry: geometry field (TRUE or FALSE), set to TRUE if you would like a simple features (SF) geometry field included. 
+  #'     Only works when geographic_level is set to 'COUNTY' or 'STATE'
+  #' @param sector: sector field
+  #' 
+  #' 
+  #' @note  
+  #'Go to the webpage https://quickstats.nass.usda.gov/. As a best practice, select the items in these fields and test that that data item 
+  #'    exists in the browser before using those parameters in this function. When you have a dataset that works, enter those values in the 
+  #'    function as parameters. Ideally, only enter values for your key obviously, then PROGRAM, DATA_ITEM, GEOGRAPHIC_LEVEL and then if
+  #'    necessary, DOMAIN, STATE, COUNTY or YEAR. 
+  #' 
+  #' @example 
+  #' 
+  #' # Get chicken inventory
+  #' test <- getQuickstat(key = myAPIkey,
+  #' program = 'CENSUS',
+  #' data_item = 'CHICKENS - INVENTORY',
+  #' geometry = F)
   
-  # states <- data.frame(fips = c('27', '38', '55'), state = c('MN', 'ND', 'WI'))
-  # fips <- filter(states, state == input)[,1] %>%
-  #   as.character()
-  
-  beginning <- "http://quickstats.nass.usda.gov/api/api_GET/?key=7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71"
-  
-  param1 <- '&source_desc=CENSUS'
-  param2 <- '&sector_desc=CROPS'
-  param3 <- '&group_desc=CROP TOTALS'
-  param4 <- '&commodity_desc=CROP TOTALS'
-  param6 <- '&statisticcat_desc=PRODUCTION'
-  param7 <- '&short_desc=CROP TOTALS, PRODUCTION CONTRACT - OPERATIONS WITH PRODUCTION'
-  param8 <- '&domain_desc=TOTAL'
-  param9 <- '&agg_level_desc=COUNTY'
-  param10 <- '&state_name=MINNESOTA'
-  param11 <- '&county_name=BROWN'
+  beginning <- "http://quickstats.nass.usda.gov/api/api_GET/?key="
   
   
-  params <- c(beginning, param1, param2, param3, param4, param6, param7, param8, param9, param10, param11)
+  
+  if(exists("program") & !is.null(program)){param1 <- paste0('&source_desc=', program)}else{param1 <- NULL}
+  if(exists("sector") & !is.null(sector)){param2 <- paste0('&sector_desc=', sector)}else{param2 <- NULL}
+  if(exists("group") & !is.null(group)){param3 <- paste0('&group_desc=', group)}else{param3 <- NULL}
+  if(exists("commodity") & !is.null(commodity)){param4 <- paste0('&commodity_desc=', commodity)}else{param4 <- NULL}
+  if(exists("category") & !is.null(category)){param6 <- paste0('&statisticcat_desc=', category)}else{param6 <- NULL}
+  if(exists("data_item") & !is.null(data_item)){param7 <- paste0('&short_desc=', data_item)}else{param7 <- NULL}
+  if(exists("domain") & !is.null(domain)){param8 <- paste0('&domain_desc=', domain)}else{param8 <- NULL}
+  if(exists("geographic_level") & !is.null(geographic_level)){param9 <- paste0('&agg_level_desc=', geographic_level)}else{param9 <- NULL}
+  if(exists("state") & !is.null(state)){param10 <- paste0('&state_name=', state)}else{param10 <- NULL}
+  if(exists("county") & !is.null(county)){param11 <- paste0('&county_name=', county)}else{param11 <- NULL}
+  if(exists("year") & !is.null(year)){param12 <- paste0('&year=', year)}else{param12 <- NULL}
+  
+  
+  params <- c(beginning, key, param1, param2, param3, param4, param6, param7, param8, param9, param10, param11, param12)
   
   
   
   
   url <- paste0(params, collapse = ",")
   url <- gsub(",&", "&", url)
+  url <- gsub("=,", "=", url)
   url <- gsub(" ", "%20", url)
   
   raw <- jsonlite::fromJSON(url)
   raw <- raw$data
+  mydata <- raw
   
-
-  if(geometry){
+  can.plot <- T
+  
+  if(geometry & exists("param10") | exists("param11")){print("Error in 'geometry=TRUE', no state or county-level specified. Enter a state or county.") ; can.plot <- F}
+  
+  if(geometry & can.plot){
     # STATE ------------------------------------------------------------------
     if(stringr::str_detect(param9, "STATE")){   # if state is not null and county is null, then do this
     geoms <- tigris::states()
@@ -94,9 +121,13 @@ getQuickstat <- function(key=NULL,program=NULL, sector=NULL, group=NULL, commodi
     #   scale_fill_viridis_d() +
     #   theme(legend.position = 'NONE')
     
-    plot(mydata)
+   # plot(mydata)
   }
   return(mydata)
   
 }
   
+test <- getQuickstat(key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
+                     program = 'CENSUS',
+                     data_item = 'CHICKENS - INVENTORY',
+                     geometry = T)
