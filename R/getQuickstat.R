@@ -50,6 +50,7 @@ getQuickstat <- function(key=NULL,program=NULL, sector=NULL, group=NULL, commodi
   
   url <- paste0(params, collapse = ",")
   url <- gsub(",&", "&", url)
+  url <- gsub(" ", "%20", url)
   
   raw <- jsonlite::fromJSON(url)
   raw <- raw$data
