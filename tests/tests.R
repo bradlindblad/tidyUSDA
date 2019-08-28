@@ -178,8 +178,16 @@ error=function(cond) {
 
 # Plotting.R --------------------------------------------------------------
 
+testdf <- getQuickstat(key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
+                       program = 'SURVEY',
+                       data_item = 'CROP TOTALS, (EXCL HORTICULTURE) - PRODUCTION, MEASURED IN $',
+                       geographic_level = 'STATE',
+                       state = 'NORTH DAKOTA',
+                       year = '2017',
+                       geometry = T)
+
 out <- tryCatch({
-  plotUSDA(df = test2, title = "This is working nicely")
+  plotUSDA(df = testdf, title = "This is working nicely")
   message("Success")
 },
 error=function(cond) {

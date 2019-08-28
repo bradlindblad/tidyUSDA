@@ -1,3 +1,4 @@
+
 # IN PROGRESS
 
 library(jsonlite)
@@ -6,37 +7,37 @@ library(rgeos)
 library(tigris)
 library(sf)
 
-key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
-program = 'CENSUS'
-data_item = 'CATTLE, (EXCL COWS) - INVENTORY'
-geographic_level = 'STATE'
-state = NULL
-year = '2017'
-geometry = T
-sector=NULL
-group=NULL
-commodity=NULL
-category=NULL
-domain='TOTAL'
-county=NULL
+# key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
+# program = 'CENSUS'
+# data_item = 'CATTLE, (EXCL COWS) - INVENTORY'
+# geographic_level = 'STATE'
+# state = NULL
+# year = '2017'
+# geometry = T
+# sector=NULL
+# group=NULL
+# commodity=NULL
+# category=NULL
+# domain='TOTAL'
+# county=NULL
 
 
 
 
-
-key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
-program = 'CENSUS'
-data_item = 'CHICKENS - INVENTORY'
-geographic_level = NULL
-state = NULL
-year = NULL
-geometry = T
-sector=NULL
-group=NULL
-commodity=NULL
-category=NULL
-domain=NULL
-county=NULL
+# 
+# key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
+# program = 'CENSUS'
+# data_item = 'CHICKENS - INVENTORY'
+# geographic_level = NULL
+# state = NULL
+# year = NULL
+# geometry = T
+# sector=NULL
+# group=NULL
+# commodity=NULL
+# category=NULL
+# domain=NULL
+# county=NULL
 
 
 getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
@@ -95,19 +96,6 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   if(exists("county") & !is.null(county)){param11 <- paste0('&county_name=', county)}else{param11 <- NULL} %>% toupper()
   if(exists("year") & !is.null(year)){param12 <- paste0('&year=', year)}else{param12 <- NULL} %>% toupper()
   
-  if(exists("program") & !is.null(program)){param1 <- paste0('&source_desc=', program)}else{param1 <- NULL}
-  if(exists("sector") & !is.null(sector)){param2 <- paste0('&sector_desc=', sector)}else{param2 <- NULL}
-  if(exists("group") & !is.null(group)){param3 <- paste0('&group_desc=', group)}else{param3 <- NULL}
-  if(exists("commodity") & !is.null(commodity)){param4 <- paste0('&commodity_desc=', commodity)}else{param4 <- NULL}
-  if(exists("category") & !is.null(category)){param6 <- paste0('&statisticcat_desc=', category)}else{param6 <- NULL}
-  if(exists("data_item") & !is.null(data_item)){param7 <- paste0('&short_desc=', data_item)}else{param7 <- NULL}
-  if(exists("domain") & !is.null(domain)){param8 <- paste0('&domain_desc=', domain)}else{param8 <- NULL}
-  if(exists("geographic_level") & !is.null(geographic_level)){param9 <- paste0('&agg_level_desc=', geographic_level)}else{param9 <- NULL}
-  if(exists("state") & !is.null(state)){param10 <- paste0('&state_name=', state)}else{param10 <- NULL}
-  if(exists("county") & !is.null(county)){param11 <- paste0('&county_name=', county)}else{param11 <- NULL}
-  if(exists("year") & !is.null(year)){param12 <- paste0('&year=', year)}else{param12 <- NULL}
-  
-  params <- c(beginning, key, param1, param2, param3, param4, param6, param7, param8, param9, param10, param11, param12)
   
   params <- c(beginning, key, param1, param2, param3, param4, param6, param7, param8, param9, param10, param11, param12)
   
@@ -251,7 +239,4 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
 #                       lower48 = T)
 
 
-ggplot(test2) +
-  geom_sf(aes(fill = test2$Value)) +
-  scale_fill_viridis_d() +
-  theme(legend.position = "None")
+
