@@ -10,9 +10,7 @@ plotUSDA <- function(df, title="USDA Plot"){
   #'     
   #' @param df: a dataframe with a simple feature column
   #' @param title: title for the plot
-  #' 
-  #' @note  
-  #' 
+  #'
   #' @example 
   #' 
   #' # Get chicken inventory
@@ -37,4 +35,3 @@ plotUSDA <- function(df, title="USDA Plot"){
 }
 
 
-plotUSDA(df = test2, title = "This is working nicely")
