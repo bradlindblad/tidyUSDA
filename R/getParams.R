@@ -307,7 +307,7 @@ getAllDomain <- function(key){
   )
   
   return(out)
-=======
+
  
 
   
