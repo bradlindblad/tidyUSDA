@@ -1,6 +1,6 @@
 # tidyUSDA
  <!-- badges: start -->
-  [![Travis build status](https://travis-ci.org/bradlindblad/tidyusda.svg?branch=master)](https://travis-ci.org/bradlindblad/tidyusda)
+  [![Travis build status](https://travis-ci.com/bradlindblad/tidyusda.svg?branch=master)](https://travis-ci.com/bradlindblad/tidyusda)
   <!-- badges: end -->
 **tidyUSDA**, an interface to USDA Quick Stats data with mapping capabilities.
 
