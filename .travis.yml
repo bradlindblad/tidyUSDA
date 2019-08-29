@@ -3,8 +3,7 @@
 language: R
 cache: packages
 sudo: false
-
-latexL false
+latex: false
 
 r_github_packages:
   - r-dbi/DBI
