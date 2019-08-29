@@ -1,18 +1,20 @@
 Package: tidyUSDA
 Type: Package
-Title: An Interface to the USDA Quick Stats Data With Geometries
-Version: 0.1.0
-Author: Brad Lindblad
-Maintainer: Brad Lindblad <bradley.lindblad@gmail.com>
+Title: What The Package Does (one line, title case required)
+Version: 0.1
+Authors@R: person("Brad", "Lindblad", email = "bradley.lindblad@gmail.com", role = c("aut", "cre"))
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 Imports: 
     dplyr,
+    ggplot2,
     jsonlite, 
+    magrittr,
+    nlme,
     rgeos,
     sf,
     tigris
-License: MIT
+License: file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1

@@ -7,14 +7,14 @@
 getAllDataItem(key)
 }
 \arguments{
-\item{key:}{your USDA api key}
+\item{key}{your USDA api key}
+}
+\value{
+All possible values of PROGRAM
 }
 \description{
 Get all possible values from DATA ITEM field
 }
 \examples{
-x <- tidyUSDA::getAllDataItem(mykey)
-
- # View the vector in RSTudio in order to search for terms 
- View(x)
+\dontrun{getAllProgram(key)}
 }

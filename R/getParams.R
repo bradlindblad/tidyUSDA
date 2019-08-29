@@ -11,13 +11,11 @@ getAllProgram <- function(key){
   
   #' Get all possible values from PROGRAM field
   #' 
-  #' @param key: your USDA api key
-  #' 
-  #' @examples
-  #'x <- tidyUSDA::getAllProgram(mykey)
-  #' 
-  #'# View the vector in RStudio in order to search for terms 
-  #'View(x)
+  #' @param key your USDA api key
+  #' @return All possible values of PROGRAM
+  #' @examples \dontrun{getAllProgram(key)}
+  #' @export
+
   
   out <- tryCatch(
     {
@@ -54,14 +52,11 @@ getAllSector <- function(key){
   
   #' Get all possible values from SECTOR field
   #' 
-  #' @param key: your USDA api key
-  #' 
-  #' @examples
-  #'x <- tidyUSDA::getAllSector(mykey)
-  #' 
-  #'# View the vector in RStudio in order to search for terms 
-  #'View(x)
-  #'  
+  #' @param key your USDA api key
+  #' @return All possible values of PROGRAM
+  #' @examples \dontrun{getAllProgram(key)}
+  #' @export
+
   
   out<- tryCatch(
     {
@@ -98,13 +93,11 @@ getAllGroup <- function(key){
   
   #' Get all possible values from GROUP field
   #' 
-  #' @param key: your USDA api key
-  #' 
-  #' @examples
-  #'x <- tidyUSDA::getAllGroup(mykey)
-  #' 
-  #'# View the vector in RSTudio in order to search for terms 
-  #'View(x)
+  #' @param key your USDA api key
+  #' @return All possible values of PROGRAM
+  #' @examples \dontrun{getAllProgram(key)}
+  #' @export
+
   
   out <- tryCatch(
     {
@@ -141,13 +134,11 @@ getAllCommodity <- function(key){
   
   #' Get all possible values from COMMODITY field
   #' 
-  #' @param key: your USDA api key
-  #' 
-  #' @examples
-  #'x <- tidyUSDA::getAllCommodity(mykey)
-  #' 
-  #'# View the vector in RSTudio in order to search for terms 
-  #'View(x)
+  #' @param key your USDA api key
+  #' @return All possible values of PROGRAM
+  #' @examples \dontrun{getAllProgram(key)}
+  #' @export
+
   
   out <- tryCatch(
     {
@@ -184,13 +175,11 @@ getAllCategory <- function(key){
   
   #' Get all possible values from CATEGORY field
   #' 
-  #' @param key: your USDA api key
-  #' 
-  #' @examples
-  #'x <- tidyUSDA::getAllCategory(mykey)
-  #' 
-  #'# View the vector in RSTudio in order to search for terms 
-  #'View(x)
+  #' @param key your USDA api key
+  #' @return All possible values of PROGRAM
+  #' @examples \dontrun{getAllProgram(key)}
+  #' @export
+
   
   out <- tryCatch(
     {
@@ -227,13 +216,11 @@ getAllDataItem <- function(key){
   
   #' Get all possible values from DATA ITEM field
   #' 
-  #' @param key: your USDA api key
-  #' 
-  #' @examples
-  #'x <- tidyUSDA::getAllDataItem(mykey)
-  #' 
-  #'# View the vector in RSTudio in order to search for terms 
-  #'View(x)
+  #' @param key your USDA api key
+  #' @return All possible values of PROGRAM
+  #' @examples \dontrun{getAllProgram(key)}
+  #' @export
+
   
   out <- tryCatch(
     {
@@ -270,13 +257,11 @@ getAllDomain <- function(key){
   
   #' Get all possible values from DOMAIN field
   #' 
-  #' @param key: your USDA api key
-  #' 
-  #' @examples
-  #'x <- tidyUSDA::getAllDomain(mykey)
-  #' 
-  #'# View the vector in RSTudio in order to search for terms 
-  #'View(x)
+  #' @param key your USDA api key
+  #' @return All possible values of PROGRAM
+  #' @examples \dontrun{getAllProgram(key)}
+  #' @export
+
   
 
   out <- tryCatch(
@@ -317,13 +302,11 @@ getAllGeogLevel <- function(key){
   
   #' Get all possible values from GEOGRAPHIC LEVEL field
   #' 
-  #' @param key: your USDA api key
-  #' 
-  #' @examples
-  #'x <- tidyUSDA::getAllGeogLevel(mykey)
-  #' 
-  #'# View the vector in RSTudio in order to search for terms 
-  #'View(x)
+  #' @param key your USDA api key
+  #' @return All possible values of PROGRAM
+  #' @examples \dontrun{getAllProgram(key)}
+  #' @export
+
   
   out <- tryCatch(
     {
@@ -360,14 +343,11 @@ getAllState <- function(key){
   
   #' Get all possible values from STATE field
   #' 
-  #' @param key: your USDA api key
-  #' 
-  #' @examples
-  #'x <- tidyUSDA::getAllState(mykey)
-  #' 
-  #'# View the vector in RSTudio in order to search for terms 
-  #'View(x)
-  
+  #' @param key your USDA api key
+  #' @return All possible values of PROGRAM
+  #' @examples \dontrun{getAllProgram(key)}
+  #' @export
+
   out <- tryCatch(
     {
       param = "state_name"
@@ -403,13 +383,11 @@ getAllCounty <- function(key){
   
   #' Get all possible values from COUNTY field
   #' 
-  #' @param key: your USDA api key
-  #' 
-  #' @examples
-  #'x <- tidyUSDA::getAllCounty(mykey)
-  #' 
-  #'# View the vector in RSTudio in order to search for terms 
-  #'View(x)
+  #' @param key your USDA api key
+  #' @return All possible values of PROGRAM
+  #' @examples \dontrun{getAllProgram(key)}
+  #' @export
+
   
   out <- tryCatch(
     {

@@ -7,14 +7,14 @@
 getAllGeogLevel(key)
 }
 \arguments{
-\item{key:}{your USDA api key}
+\item{key}{your USDA api key}
+}
+\value{
+All possible values of PROGRAM
 }
 \description{
 Get all possible values from GEOGRAPHIC LEVEL field
 }
 \examples{
-x <- tidyUSDA::getAllGeogLevel(mykey)
-
- # View the vector in RSTudio in order to search for terms 
- View(x)
+\dontrun{getAllProgram(key)}
 }
