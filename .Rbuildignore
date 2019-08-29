@@ -3,3 +3,4 @@
 ^images$
 ^tests$
 ^\.travis\.yml$
+^_config\.yml$
