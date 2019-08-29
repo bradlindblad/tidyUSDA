@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 ^images$
 ^tests$
+^\.travis\.yml$
