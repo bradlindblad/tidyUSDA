@@ -2,3 +2,9 @@
 
 language: R
 cache: packages
+sudo: false
+
+addons:
+  apt:
+    packages:
+      - libudunits2-dev
