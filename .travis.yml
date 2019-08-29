@@ -4,7 +4,23 @@ language: R
 cache: packages
 sudo: false
 
+latexL false
+
+r_github_packages:
+  - r-dbi/DBI
+  - r-dbi/RPostgres
+  - r-lib/covr
+  - r-spatial/lwgeom
+  - r-spatial/stars
+
 addons:
   apt:
+    sources: 
+      - sourceline: 'ppa:opencpu/jq'
+      - sourceline: 'ppa:ubuntugis/ubuntugis-unstable'
+      - sourceline: 'deb http://apt.postgressql.org/pub/repos/apt/ trusty-pgdg main'
     packages:
       - libudunits2-dev
+      - libgdal-dev
+      - libgeos-dev
+      - libproj.dev
