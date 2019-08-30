@@ -12,6 +12,7 @@
 **tidyUSDA** provides the R user with a consistent API to pull USDA census and survey data from [QuickStats](https://quickstats.nass.usda.gov/). You can:    
 * ```getQuickstat()``` lets you pass values to the fields you see on the QuickStats website, as well as include a simple features (SF) geometry field for the county or state level. 
 * ```getAll{paramname}``` lets you query QuickStats to find all available values for a given field (which you would input into getQuickstats())
+* ```plotUSDA()``` provides a quick way to plot your data if you set geometry = TRUE
 
 ## Installation
 ```
@@ -37,7 +38,7 @@ View(all.program)
 
 
 # Get crop totals for all states for 2017
-all.crop <- getQuickstat(key = key,
+all.crop <- tidyUSDA::getQuickstat(key = key,
                          program = 'SURVEY',
                          data_item = 'CROP TOTALS, (EXCL HORTICULTURE) - PRODUCTION, MEASURED IN $',
                          geographic_level = 'STATE',
