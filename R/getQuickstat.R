@@ -133,10 +133,8 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
 #                       program = 'SURVEY',
 #                       data_item = 'CROP TOTALS, (EXCL HORTICULTURE) - PRODUCTION, MEASURED IN $',
 #                       geographic_level = 'STATE',
-#                       # state = 'NORTH DAKOTA',
 #                       year = '2017',
 #                       geometry = T,
 #                       lower48 = T)
-
-
-
+# 
+# 
