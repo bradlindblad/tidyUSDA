@@ -5,3 +5,4 @@
 ^\.travis\.yml$
 ^_config\.yml$
 ^cran-comments\.md$
+^NEWS\.md$
