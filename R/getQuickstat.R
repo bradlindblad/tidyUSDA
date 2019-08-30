@@ -1,39 +1,5 @@
-
-# IN PROGRESS
-
-
-# key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
-# program = 'CENSUS'
-# data_item = 'CATTLE, (EXCL COWS) - INVENTORY'
-# geographic_level = 'STATE'
-# state = NULL
-# year = '2017'
-# geometry = T
-# sector=NULL
-# group=NULL
-# commodity=NULL
-# category=NULL
-# domain='TOTAL'
-# county=NULL
-
-
-
-
-# 
-# key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
-# program = 'CENSUS'
-# data_item = 'CHICKENS - INVENTORY'
-# geographic_level = NULL
-# state = NULL
-# year = NULL
-# geometry = T
-# sector=NULL
-# group=NULL
-# commodity=NULL
-# category=NULL
-# domain=NULL
-# county=NULL
-
+#!/usr/bin/R
+# getQuickstat.R
 
 getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
                          category=NULL, domain=NULL, geographic_level=NULL,
@@ -114,22 +80,6 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   if(is.null(year)){year <- 'NON'} 
   
   
-  
-  
-  # Test to see if geom has been assigned a value or not
-  # has.geographic.level <- ifelse(!is.null(geographic_level),T, F)
-
-  # Set can.plot to default true
-  # can.plot <- T
-  # geographic_level <- 'STATE'
-  # geographic_level <- NULL
-  # geographic_level
-  # geographic_levelstringr::str_detect(geographic_level, "STATE")
-  # Test if they want geometry and if state or county is NOT specified (as that's an error)
-  #if(geometry  & is.null(state) & is.null(county)){print("Error in 'geometry=TRUE', no state or county-level specified. Enter a state or county."); can.plot <- F}
-  #if(geometry & is.null("param10") & !exists("geographic.level")){print("Error in 'geometry=TRUE', if you specify a state in 'STATE=', you need to set GEOGRAPHIC_LEVEL='STATE'")}
-  #if(geometry & is.null("param11") & !exists("geographic.level")){print("Error in 'geometry=TRUE', if you specify a state in 'STATE=', you need to set GEOGRAPHIC_LEVEL='STATE'")}
-  # lower48 <- T
   # STATE
   if(geometry & geographic_level == 'STATE' & county == 'NON'){
     geoms <- tigris::states()
@@ -170,48 +120,6 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   }
   
   
-  
-  # 
-  # if(geometry & can.plot){
-  #   # STATE ------------------------------------------------------------------
-  #   if(stringr::str_detect(param9, "STATE")){   # if state is not null and county is null, then do this
-  #   geoms <- tigris::states()
-  #   
-  #   combined <- tigris::geo_join(spatial_data = geoms,
-  #                                data_frame = raw,
-  #                                by_sp = 'STATEFP',
-  #                                by_df = 'state_fips_code',
-  #                                how = 'inner')
-  #   
-  #   mydata <- sf::st_as_sf(combined)
-  #   }
-  # 
-  # 
-  # # COUNTY ------------------------------------------------------------------
-  #   if(stringr::str_detect(param9, "COUNTY")){  # if county is not null, then do this
-  #     geoms <- tigris::counties()
-  #     geoms@data$COUNTYKEY <- paste0(geoms@data$STATEFP, geoms@data$COUNTYFP)
-  #     
-  #     
-  #     raw$COUNTYKEY <- paste0(raw$state_ansi, raw$county_code)
-  #     
-  #     combined <- tigris::geo_join(spatial_data = geoms,
-  #                                  data_frame = raw,
-  #                                  by_sp = 'COUNTYKEY',
-  #                                  by_df = 'COUNTYKEY',
-  #                                  how = 'inner')
-  #     
-  #     mydata <- sf::st_as_sf(combined)
-  #   }
-  #   
-  #   # ggplot(mydat) +
-  #   #   geom_sf(aes(fill = mydat$Value)) +
-  #   #   theme_minimal() +
-  #   #   scale_fill_viridis_d() +
-  #   #   theme(legend.position = 'NONE')
-  #   
-  #  # plot(mydata)
-  # }
   return(mydata)
   
 }

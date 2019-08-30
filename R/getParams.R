@@ -1,3 +1,5 @@
+#!/usr/bin/R
+# getParams.R
 
 
 # key <- '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
