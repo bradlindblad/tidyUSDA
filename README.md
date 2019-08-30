@@ -1,10 +1,12 @@
-# tidyUSDA
+
+# tidyUSDA <a href='https://github.com/bradlindblad/tidyusda'><img src='/images/tidyusda.png' align="right" height="180" /></a>
+
  <!-- badges: start -->
   [![Travis build status](https://travis-ci.com/bradlindblad/tidyusda.svg?branch=master)](https://travis-ci.com/bradlindblad/tidyusda)
   <!-- badges: end -->
 **tidyUSDA**, an interface to USDA Quick Stats data with mapping capabilities.
 
-![img](https://github.com/bradlindblad/tidyUSDA/blob/master/images/tidyusda.png)
+
 
 
 ## End state/results/deliverable
