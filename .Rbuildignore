@@ -4,3 +4,4 @@
 ^tests$
 ^\.travis\.yml$
 ^_config\.yml$
+^cran-comments\.md$
