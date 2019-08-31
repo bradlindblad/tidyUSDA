@@ -124,17 +124,4 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   
 }
   
-# test <- getQuickstat(key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
-#                      program = 'CENSUS',
-#                      data_item = 'CHICKENS - INVENTORY',
-#                      geometry = T)
-# 
-# test2 <- getQuickstat(key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
-#                       program = 'SURVEY',
-#                       data_item = 'CROP TOTALS, (EXCL HORTICULTURE) - PRODUCTION, MEASURED IN $',
-#                       geographic_level = 'STATE',
-#                       year = '2017',
-#                       geometry = T,
-#                       lower48 = T)
-# 
-# 
+

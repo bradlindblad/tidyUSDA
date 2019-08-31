@@ -1,10 +1,9 @@
 Package: tidyUSDA
 Type: Package
-Title: What The Package Does (one line, title case required)
+Title:  Interface To USDA Quick Stats Data With Mapping Capabilities
 Version: 0.1
 Authors@R: person("Brad", "Lindblad", email = "bradley.lindblad@gmail.com", role = c("aut", "cre"))
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: tidyUSDA provides the R user with a consistent API to pull USDA census and survey data from QuickStats.
 Imports: 
     dplyr,
     ggplot2,
