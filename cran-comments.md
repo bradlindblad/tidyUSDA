@@ -1,8 +1,8 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
-* Fixed dumb errors in DESCRIPTION (I had default text)
-* Removed commented-out private tokens in my R code
+* Fixed the title case errors in previous DESCRIPTION file.
+* Removed the package name from the first word of the description in the DESCRIPTION file.
 
 ## Test environments
 * local Linux Mint 19.2, R 3.6.1
