@@ -4,7 +4,7 @@
 \alias{plotUSDA}
 \title{plotUSDA}
 \usage{
-plotUSDA(df, title = "USDA Plot")
+plotUSDA(df)
 }
 \arguments{
 \item{df}{a dataframe with a simple feature column}

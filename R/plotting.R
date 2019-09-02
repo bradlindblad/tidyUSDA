@@ -2,7 +2,7 @@
 # plotting.R
 
 
-plotUSDA <- function(df, title="USDA Plot"){
+plotUSDA <- function(df){
   
   #' plotUSDA
   #' @description 
@@ -14,10 +14,10 @@ plotUSDA <- function(df, title="USDA Plot"){
 
   z <- ggplot2::ggplot(df) +
     ggplot2::geom_sf(ggplot2::aes(fill = df$Value)) +
+    ggplot2::coord_sf(datum=NA) +
     ggplot2::scale_fill_viridis_d() +
     ggplot2::theme_minimal() +
-    ggplot2::theme(legend.position = "None") +
-    ggplot2::ggtitle(title)
+    ggplot2::theme(legend.position = "None") 
   
   return(z)
   
