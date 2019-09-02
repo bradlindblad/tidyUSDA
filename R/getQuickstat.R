@@ -288,7 +288,7 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   # if(is.null(category)){category <- 'NON'}
   # if(is.null(data_item)){data_item <- 'NON'}
   # if(is.null(domain)){domain <- 'NON'}
-  # if(is.null(geographic_level)){geographic_level <- 'NON'}
+  if(is.null(geographic_level)){geographic_level <- 'NON'}
   # if(is.null(state)){state <- 'NON'}
   # if(is.null(county)){county <- 'NON'}
   # if(is.null(year)){year <- 'NON'} 
@@ -335,7 +335,7 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   
   
   return(mydata)
-  
+  print("Success")
 }
   
 
