@@ -9,7 +9,6 @@ plotUSDA <- function(df){
   #' Quickly plot a dataframe produced by the getQuickstat() function. 
   #'     
   #' @param df a dataframe with a simple feature column
-  #' @param title title for the plot
   #' @export
 
   z <- ggplot2::ggplot(df) +
