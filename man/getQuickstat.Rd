@@ -10,34 +10,34 @@ getQuickstat(key = NULL, program = NULL, data_item = NULL,
   county = NULL, year = NULL, geometry = FALSE, lower48 = FALSE)
 }
 \arguments{
-\item{key}{your USDA api key. Get one at https://quickstats.nass.usda.gov/api}
+\item{key}{your USDA api key. Get one at https://quickstats.nass.usda.gov/api - string}
 
-\item{program}{program field}
+\item{program}{program field - string}
 
-\item{data_item}{data_item field}
+\item{data_item}{data_item field - string}
 
-\item{sector}{sector field}
+\item{sector}{sector field - string}
 
-\item{group}{group field}
+\item{group}{group field - string}
 
-\item{commodity}{commodity field}
+\item{commodity}{commodity field - string}
 
-\item{category}{category field}
+\item{category}{category field - string}
 
-\item{domain}{domain field}
+\item{domain}{domain field - string}
 
-\item{geographic_level}{geographic_level field}
+\item{geographic_level}{geographic_level field - string}
 
-\item{state}{state field}
+\item{state}{state field - either a string or character vector with multiple states}
 
-\item{county}{county field}
+\item{county}{county field - either a string or character vector with multiple states}
 
-\item{year}{year field}
+\item{year}{year field - string}
 
 \item{geometry}{geometry field (TRUE or FALSE), set to TRUE if you would like a simple features (SF) geometry field included. 
 Only works when geographic_level is set to 'COUNTY' or 'STATE'}
 
-\item{lower48}{limit data to the lower 48 states?}
+\item{lower48}{limit data to the lower 48 states? - TRUE or FALSE}
 }
 \description{
 Get values from Quickstats in a dataframe or data frame
