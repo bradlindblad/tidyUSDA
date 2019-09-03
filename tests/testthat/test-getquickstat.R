@@ -1,9 +1,9 @@
-library(sf)
-library(tigris)
-library(testthat)
+# library(sf)
+# library(tigris)
+# library(testthat)
 library(keyring)
 
-keyring::key_set("tidyusda")
+# keyring::key_set("tidyusda")
 
 test_that("getQuickstat1", {
 

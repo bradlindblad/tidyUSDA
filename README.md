@@ -1,5 +1,5 @@
 
-# tidyUSDA <a href='https://github.com/bradlindblad/tidyusda'><img src='/images/tidyusda.png' align="right" height="180" /></a>
+# tidyUSDA <a href='https://github.com/bradlindblad/tidyusda'><img src='/images/tidyusda.png' align="right" height="200" /></a>
 *Note that this is a pre-release, development package currently*
  <!-- badges: start -->
   [![Travis build status](https://travis-ci.com/bradlindblad/tidyusda.svg?branch=master)](https://travis-ci.com/bradlindblad/tidyusda)
@@ -11,7 +11,7 @@
 ## Overview
 **tidyUSDA** provides the R user with a consistent API to pull USDA census and survey data from [QuickStats](https://quickstats.nass.usda.gov/). You can:    
 * ```getQuickstat()``` lets you pass values to the fields you see on the QuickStats website, as well as include a simple features (SF) geometry field for the county or state level. 
-* ```getAll{paramname}``` lets you query QuickStats to find all available values for a given field (which you would input into getQuickstats())
+* ```View({parameter name})``` lets you view QuickStats all available values for a given field (which you would input into getQuickstats(), preferably with copy paste)
 * ```plotUSDA()``` provides a quick way to plot your data if you set geometry = TRUE
 
 ## Installation
@@ -31,9 +31,8 @@ key <- '1234-abcd'
 
 
 
-# Get all parameter names for the 'program' field
-all.program <- tidyUSDA::getAllProgram(key)
-View(all.program)
+# View all parameter names for the 'program' field
+View(allProgram)
 
 
 
