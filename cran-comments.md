@@ -1,6 +1,7 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
+* Fixed issue where NAMESPACE wasn't working
 * Omitted the redundant "the R user with" text from the description
 * Explained all acronyms in the description text
 * Added link to webservice mentioned in the description text in angle brackets
