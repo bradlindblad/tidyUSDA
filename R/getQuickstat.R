@@ -33,6 +33,20 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   #'    function as parameters. Ideally, only enter values for your key obviously, then PROGRAM, DATA_ITEM, GEOGRAPHIC_LEVEL and then if
   #'    necessary, DOMAIN, STATE, COUNTY or YEAR. 
   #' 
+  #' @examples 
+  #' \dontrun{
+  #' getQuickstat(
+  #'
+  #' key = 'your_key',
+  #' program = 'CENSUS',
+  #' data_item = 'CROP TOTALS - OPERATIONS WITH SALES',
+  #' geographic_level = 'COUNTY',
+  #' year = '2017',
+  #' state = NULL,
+  #' geometry = T,
+  #' lower48 = T)
+  #' 
+  #' }
 
   # beginning <- "http://quickstats.nass.usda.gov/api/api_GET/?key="
   

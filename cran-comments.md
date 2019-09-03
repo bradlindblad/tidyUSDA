@@ -1,6 +1,7 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
+* Added @examples for the 2 functions in the package
 * Fixed issue where NAMESPACE wasn't working
 * Omitted the redundant "the R user with" text from the description
 * Explained all acronyms in the description text

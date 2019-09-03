@@ -12,3 +12,10 @@ plotUSDA(df)
 \description{
 Quickly plot a dataframe produced by the getQuickstat() function.
 }
+\examples{
+\dontrun{
+# Use output from getQuickstat()
+plotUSDA(df = df_from_getQuickstat)
+}
+
+}
