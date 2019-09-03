@@ -1,9 +1,9 @@
 Package: tidyUSDA
 Type: Package
-Title:  Interface to USDA Quick Stats Data with Mapping Capabilities
+Title: Interface to United States Department of Agriculture (USDA) QuickStats Data with Mapping Capabilities
 Version: 0.1.0
 Authors@R: person("Brad", "Lindblad", email = "bradley.lindblad@gmail.com", role = c("aut", "cre"))
-Description: Provides the R user with a consistent API to pull USDA census and survey data from QuickStats.
+Description: Provides a consistent API to pull United States Department of Agriculture census and survey data from the National Agricultural Statistics Service (NASS) QuickStats service <https://quickstats.nass.usda.gov>.
 Imports: 
     dplyr,
     ggplot2,
@@ -14,9 +14,10 @@ Imports:
     rgeos,
     sf,
     tigris
-License: file LICENSE
+License: MIT + file LICENSE
+Depends: R (>= 2.10)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
 Suggests: 
-    testthat
+    testthat (>= 2.1.0)

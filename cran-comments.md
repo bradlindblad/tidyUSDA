@@ -1,8 +1,10 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
-* Fixed the title case errors in previous DESCRIPTION file.
-* Removed the package name from the first word of the description in the DESCRIPTION file.
+* Omitted the redundant "the R user with" text from the description
+* Explained all acronyms in the description text
+* Added link to webservice mentioned in the description text in angle brackets
+* Updated declaration of license to "License: MIT + file LICENSE", and reduced the license file to YEAR and COPYRIGHT HOLDER.
 
 ## Test environments
 * local Linux Mint 19.2, R 3.6.1

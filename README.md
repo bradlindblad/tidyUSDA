@@ -1,5 +1,5 @@
 
-# tidyUSDA <a href='https://github.com/bradlindblad/tidyusda'><img src='/images/tidyusda.png' align="right" height="180" /></a>
+# tidyUSDA <a href='https://github.com/bradlindblad/tidyusda'><img src='/images/tidyusda.png' align="right" height="200" /></a>
 *Note that this is a pre-release, development package currently*
  <!-- badges: start -->
   [![Travis build status](https://travis-ci.com/bradlindblad/tidyusda.svg?branch=master)](https://travis-ci.com/bradlindblad/tidyusda)
@@ -11,7 +11,7 @@
 ## Overview
 **tidyUSDA** provides the R user with a consistent API to pull USDA census and survey data from [QuickStats](https://quickstats.nass.usda.gov/). You can:    
 * ```getQuickstat()``` lets you pass values to the fields you see on the QuickStats website, as well as include a simple features (SF) geometry field for the county or state level. 
-* ```getAll{paramname}``` lets you query QuickStats to find all available values for a given field (which you would input into getQuickstats())
+* ```View({parameter name})``` lets you view QuickStats all available values for a given field (which you would input into getQuickstats(), preferably with copy paste)
 * ```plotUSDA()``` provides a quick way to plot your data if you set geometry = TRUE
 
 ## Installation
@@ -31,26 +31,32 @@ key <- '1234-abcd'
 
 
 
-# Get all parameter names for the 'program' field
-all.program <- tidyUSDA::getAllProgram(key)
-View(all.program)
+# View all parameter names for the 'program' field
+View(tidyUSDA::allProgram)
 
 
 
-# Get crop totals for all states for 2017
-all.crop <- tidyUSDA::getQuickstat(key = key,
-                         program = 'SURVEY',
-                         data_item = 'CROP TOTALS, (EXCL HORTICULTURE) - PRODUCTION, MEASURED IN $',
-                         geographic_level = 'STATE',
-                         year = '2017',
-                         geometry = T,  # we want a simple features column
-                         lower48 = T)  # we want data for the lower 48 states only
-View(all.crop)
+# Get count of operations with sales in 2017
+ops.with.sales <- tidyUSDA::getQuickstat(
+  sector=NULL,
+  group=NULL,
+  commodity=NULL,
+  category=NULL,
+  domain=NULL,
+  county=NULL,
+  key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
+  program = 'CENSUS',
+  data_item = 'CROP TOTALS - OPERATIONS WITH SALES',
+  geographic_level = 'COUNTY',
+  year = '2017',
+  state = NULL,
+  geometry = T,
+  lower48 = T)
 
 
 
 # Plot this data for each state
-tidyUSDA::plotUSDA(df = all.crop, title = "This is a sweet viridis graph")
+tidyUSDA::plotUSDA(df = ops.with.sales)
 ```
 The last function returns this ggplot choropleth:    
 <a href='https://github.com/bradlindblad/tidyusda'><img src='/images/choropleth.png' align="center"  />
