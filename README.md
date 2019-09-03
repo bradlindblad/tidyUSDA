@@ -32,12 +32,12 @@ key <- '1234-abcd'
 
 
 # View all parameter names for the 'program' field
-View(allProgram)
+View(tidyUSDA::allProgram)
 
 
 
 # Get count of operations with sales in 2017
-ops.with.sales <- getQuickstat(
+ops.with.sales <- tidyUSDA::getQuickstat(
   sector=NULL,
   group=NULL,
   commodity=NULL,
