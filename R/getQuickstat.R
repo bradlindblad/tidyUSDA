@@ -1,7 +1,233 @@
 #!/usr/bin/R
 # getQuickstat.R
 
-getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
+
+# Functions to handle vectors vs. single values ---------------------------
+# Function to call API from input params
+defaultCallAPI <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
+                           category=NULL, domain=NULL, geographic_level=NULL,
+                           state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE){
+  
+  
+  beginning <- "http://quickstats.nass.usda.gov/api/api_GET/?key="
+  
+  
+  
+  if(exists("program") & !is.null(program)){param1 <- paste0('&source_desc=', toupper(program))}else{param1 <- NULL}
+  if(exists("sector") & !is.null(sector)){param2 <- paste0('&sector_desc=', toupper(sector))}else{param2 <- NULL}
+  if(exists("group") & !is.null(group)){param3 <- paste0('&group_desc=', toupper(group))}else{param3 <- NULL}
+  if(exists("commodity") & !is.null(commodity)){param4 <- paste0('&commodity_desc=', toupper(commodity))}else{param4 <- NULL}
+  if(exists("category") & !is.null(category)){param6 <- paste0('&statisticcat_desc=', toupper(category))}else{param6 <- NULL}
+  if(exists("data_item") & !is.null(data_item)){param7 <- paste0('&short_desc=', toupper(data_item))}else{param7 <- NULL}
+  if(exists("domain") & !is.null(domain)){param8 <- paste0('&domain_desc=', toupper(domain))}else{param8 <- NULL}
+  if(exists("geographic_level") & !is.null(geographic_level)){param9 <- paste0('&agg_level_desc=', toupper(geographic_level))}else{param9 <- NULL}
+  if(exists("state") & !is.null(state)){param10 <- paste0('&state_name=', toupper(state))}else{param10 <- NULL}
+  if(exists("county") & !is.null(county)){param11 <- paste0('&county_name=', toupper(county))}else{param11 <- NULL}
+  if(exists("year") & !is.null(year)){param12 <- paste0('&year=', toupper(year))}else{param12 <- NULL}
+  
+  
+  params <- c(beginning, key, param1, param2, param3, param4, param6, param7, param8, param9, param10, param11, param12)
+  
+  
+  
+  
+  url <- paste0(params, collapse = ",")
+  url <- gsub(",&", "&", url)
+  url <- gsub("=,", "=", url)
+  url <- gsub(" ", "%20", url)
+  
+  raw <- jsonlite::fromJSON(url)
+  raw <- raw$data
+  mydata <- raw
+  return(mydata)
+  
+}
+
+# Function to call API from input params with multiple states
+multStates <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
+                       category=NULL, domain=NULL, geographic_level=NULL,
+                       state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE){
+  
+  beginning <- "http://quickstats.nass.usda.gov/api/api_GET/?key="
+  
+  # Handle multiple states
+  # anon fn to work with next items
+  anon.states <- function(x){paste0("&state_name=", x)}
+  
+  if(length(state) > 1){
+    
+    state.concat <- lapply(state, anon.states)
+    
+    
+  }
+  
+  # Handle multiple states
+  
+  
+  if(exists("program") & !is.null(program)){param1 <- paste0('&source_desc=', toupper(program))}else{param1 <- NULL}
+  if(exists("sector") & !is.null(sector)){param2 <- paste0('&sector_desc=', toupper(sector))}else{param2 <- NULL}
+  if(exists("group") & !is.null(group)){param3 <- paste0('&group_desc=', toupper(group))}else{param3 <- NULL}
+  if(exists("commodity") & !is.null(commodity)){param4 <- paste0('&commodity_desc=', toupper(commodity))}else{param4 <- NULL}
+  if(exists("category") & !is.null(category)){param6 <- paste0('&statisticcat_desc=', toupper(category))}else{param6 <- NULL}
+  if(exists("data_item") & !is.null(data_item)){param7 <- paste0('&short_desc=', toupper(data_item))}else{param7 <- NULL}
+  if(exists("domain") & !is.null(domain)){param8 <- paste0('&domain_desc=', toupper(domain))}else{param8 <- NULL}
+  if(exists("geographic_level") & !is.null(geographic_level)){param9 <- paste0('&agg_level_desc=', toupper(geographic_level))}else{param9 <- NULL}
+  # if(exists("state") & !is.null(state)){param10 <- paste0('&state_name=', toupper(state))}else{param10 <- NULL}
+  if(exists("county") & !is.null(county)){param11 <- paste0('&county_name=', toupper(county))}else{param11 <- NULL}
+  if(exists("year") & !is.null(year)){param12 <- paste0('&year=', toupper(year))}else{param12 <- NULL}
+  
+  
+  params <- c(beginning, key, param1, param2, param3, param4, param6, param7, param8, param9, state.concat, param11, param12)
+  
+  params <- unlist(params)
+  
+  
+  url <- paste0(params, collapse = " ")
+  url <- gsub("= ", "=", url)
+  url <- gsub(" &", "&", url)
+  url <- gsub("=,", "=", url)
+  url <- gsub(" ", "%20", url)
+  
+  raw <- jsonlite::fromJSON(url)
+  raw <- raw$data
+  mydata <- raw
+  return(mydata)
+  
+}
+
+# Function to call API from input params with multiple counties
+multCounties <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
+                         category=NULL, domain=NULL, geographic_level=NULL,
+                         state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE){
+  
+  beginning <- "http://quickstats.nass.usda.gov/api/api_GET/?key="
+  
+  # Handle multiple counties
+  # anon fn to work with next items
+  anon.counties <- function(x){paste0("&county_name=", x)}
+  
+  if(length(county) > 1){
+    
+    county.concat <- lapply(county, anon.counties)
+    
+    
+  }
+  
+  # Handle multiple counties
+  
+  
+  if(exists("program") & !is.null(program)){param1 <- paste0('&source_desc=', toupper(program))}else{param1 <- NULL}
+  if(exists("sector") & !is.null(sector)){param2 <- paste0('&sector_desc=', toupper(sector))}else{param2 <- NULL}
+  if(exists("group") & !is.null(group)){param3 <- paste0('&group_desc=', toupper(group))}else{param3 <- NULL}
+  if(exists("commodity") & !is.null(commodity)){param4 <- paste0('&commodity_desc=', toupper(commodity))}else{param4 <- NULL}
+  if(exists("category") & !is.null(category)){param6 <- paste0('&statisticcat_desc=', toupper(category))}else{param6 <- NULL}
+  if(exists("data_item") & !is.null(data_item)){param7 <- paste0('&short_desc=', toupper(data_item))}else{param7 <- NULL}
+  if(exists("domain") & !is.null(domain)){param8 <- paste0('&domain_desc=', toupper(domain))}else{param8 <- NULL}
+  if(exists("geographic_level") & !is.null(geographic_level)){param9 <- paste0('&agg_level_desc=', toupper(geographic_level))}else{param9 <- NULL}
+  if(exists("state") & !is.null(state)){param10 <- paste0('&state_name=', toupper(state))}else{param10 <- NULL}
+  # if(exists("county") & !is.null(county)){param11 <- paste0('&county_name=', toupper(county))}else{param11 <- NULL}
+  if(exists("year") & !is.null(year)){param12 <- paste0('&year=', toupper(year))}else{param12 <- NULL}
+  
+  
+  params <- c(beginning, key, param1, param2, param3, param4, param6, param7, param8, param9, param10, county.concat, param12)
+  
+  params <- unlist(params)
+  
+  
+  url <- paste0(params, collapse = " ")
+  url <- gsub("= ", "=", url)
+  url <- gsub(" &", "&", url)
+  url <- gsub("=,", "=", url)
+  url <- gsub(" ", "%20", url)
+  
+  raw <- jsonlite::fromJSON(url)
+  raw <- raw$data
+  mydata <- raw
+  return(mydata)
+  
+}
+
+# Function to call API from input params with multiple counties and multiple states
+multStatesandCounties <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
+                                  category=NULL, domain=NULL, geographic_level=NULL,
+                                  state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE){
+  
+  beginning <- "http://quickstats.nass.usda.gov/api/api_GET/?key="
+  
+  # Handle multiple counties
+  # anon fn to work with next items
+  anon.counties <- function(x){paste0("&county_name=", x)}
+  
+  if(length(county) > 1){
+    
+    county.concat <- lapply(county, anon.counties)
+    
+    
+  }
+  
+  # Handle multiple states
+  # anon fn to work with next items
+  anon.states <- function(x){paste0("&state_name=", x)}
+  
+  if(length(state) > 1){
+    print("k")
+    state.concat <- lapply(state, anon.states)
+    
+    
+  }
+  
+  # Handle multiple counties
+  
+  
+  if(exists("program") & !is.null(program)){param1 <- paste0('&source_desc=', toupper(program))}else{param1 <- NULL}
+  if(exists("sector") & !is.null(sector)){param2 <- paste0('&sector_desc=', toupper(sector))}else{param2 <- NULL}
+  if(exists("group") & !is.null(group)){param3 <- paste0('&group_desc=', toupper(group))}else{param3 <- NULL}
+  if(exists("commodity") & !is.null(commodity)){param4 <- paste0('&commodity_desc=', toupper(commodity))}else{param4 <- NULL}
+  if(exists("category") & !is.null(category)){param6 <- paste0('&statisticcat_desc=', toupper(category))}else{param6 <- NULL}
+  if(exists("data_item") & !is.null(data_item)){param7 <- paste0('&short_desc=', toupper(data_item))}else{param7 <- NULL}
+  if(exists("domain") & !is.null(domain)){param8 <- paste0('&domain_desc=', toupper(domain))}else{param8 <- NULL}
+  if(exists("geographic_level") & !is.null(geographic_level)){param9 <- paste0('&agg_level_desc=', toupper(geographic_level))}else{param9 <- NULL}
+  # if(exists("state") & !is.null(state)){param10 <- paste0('&state_name=', toupper(state))}else{param10 <- NULL}
+  # if(exists("county") & !is.null(county)){param11 <- paste0('&county_name=', toupper(county))}else{param11 <- NULL}
+  if(exists("year") & !is.null(year)){param12 <- paste0('&year=', toupper(year))}else{param12 <- NULL}
+  
+  
+  params <- c(beginning, key, param1, param2, param3, param4, param6, param7, param8, param9, state.concat, county.concat, param12)
+  
+  params <- unlist(params)
+  
+  
+  url <- paste0(params, collapse = " ")
+  url <- gsub("= ", "=", url)
+  url <- gsub(" &", "&", url)
+  url <- gsub("=,", "=", url)
+  url <- gsub(" ", "%20", url)
+  
+  raw <- jsonlite::fromJSON(url)
+  raw <- raw$data
+  mydata <- raw
+  return(mydata)
+  
+}
+
+
+
+# Fuzzy match function ----------------------------------------------------
+
+fuzzyMatch <- function(input, dataset){  
+  if(!is.null(input) & !input %in% dataset){
+    matcheddf <- dataset
+    matcheddf <- data.frame(index = seq(1, length(matcheddf),1), text = matcheddf)
+    fuzzydf <- fuzzyjoin::stringdist_join(matcheddf, data.frame(index = c(1), text = c(input)), by = c("index", "text"))
+    result <- as.character(fuzzydf[,2])
+  }
+  return(result)
+}
+ 
+
+# getQuickstat ------------------------------------------------------------
+
+getQuickstate <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
                          category=NULL, domain=NULL, geographic_level=NULL,
                          state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE) {
   
@@ -36,7 +262,6 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   #' @examples 
   #' \dontrun{
   #' getQuickstat(
-  #'
   #' key = 'your_key',
   #' program = 'CENSUS',
   #' data_item = 'CROP TOTALS - OPERATIONS WITH SALES',
@@ -48,220 +273,41 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   #' 
   #' }
 
-  # beginning <- "http://quickstats.nass.usda.gov/api/api_GET/?key="
   
-
-# Functions to handle vectors vs. single values ---------------------------
-  # Function to call API from input params
-  defaultCallAPI <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
-                          category=NULL, domain=NULL, geographic_level=NULL,
-                          state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE){
-    
-    
-    beginning <- "http://quickstats.nass.usda.gov/api/api_GET/?key="
-    
-    
-    
-    if(exists("program") & !is.null(program)){param1 <- paste0('&source_desc=', toupper(program))}else{param1 <- NULL}
-    if(exists("sector") & !is.null(sector)){param2 <- paste0('&sector_desc=', toupper(sector))}else{param2 <- NULL}
-    if(exists("group") & !is.null(group)){param3 <- paste0('&group_desc=', toupper(group))}else{param3 <- NULL}
-    if(exists("commodity") & !is.null(commodity)){param4 <- paste0('&commodity_desc=', toupper(commodity))}else{param4 <- NULL}
-    if(exists("category") & !is.null(category)){param6 <- paste0('&statisticcat_desc=', toupper(category))}else{param6 <- NULL}
-    if(exists("data_item") & !is.null(data_item)){param7 <- paste0('&short_desc=', toupper(data_item))}else{param7 <- NULL}
-    if(exists("domain") & !is.null(domain)){param8 <- paste0('&domain_desc=', toupper(domain))}else{param8 <- NULL}
-    if(exists("geographic_level") & !is.null(geographic_level)){param9 <- paste0('&agg_level_desc=', toupper(geographic_level))}else{param9 <- NULL}
-    if(exists("state") & !is.null(state)){param10 <- paste0('&state_name=', toupper(state))}else{param10 <- NULL}
-    if(exists("county") & !is.null(county)){param11 <- paste0('&county_name=', toupper(county))}else{param11 <- NULL}
-    if(exists("year") & !is.null(year)){param12 <- paste0('&year=', toupper(year))}else{param12 <- NULL}
-    
-    
-    params <- c(beginning, key, param1, param2, param3, param4, param6, param7, param8, param9, param10, param11, param12)
-    
-    
-    
-    
-    url <- paste0(params, collapse = ",")
-    url <- gsub(",&", "&", url)
-    url <- gsub("=,", "=", url)
-    url <- gsub(" ", "%20", url)
-    
-    raw <- jsonlite::fromJSON(url)
-    raw <- raw$data
-    mydata <- raw
-    return(mydata)
-    
+# TODO Uppercase all values to help with error trapping
+ 
+# Logic to handle improper inputs
+  
+  # Key
+  if(is.null(key)){
+    message("API key missing; enter an API key.")
+  } 
+  
+  # Program
+  if(!is.null(program) & !program %in% tidyUSDA::allProgram){
+    recommendation <- fuzzyMatch(program, tidyUSDA::allProgram);
+    message(paste0("Your value for PROGRAM is not valid. Did you mean ",
+                   recommendation,
+                   "? If not, check tidyUSDA::allProgram for a vector of all acceptable values."))
   }
   
-  # Function to call API from input params with multiple states
-  multStates <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
-                         category=NULL, domain=NULL, geographic_level=NULL,
-                         state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE){
-    
-    beginning <- "http://quickstats.nass.usda.gov/api/api_GET/?key="
-    
-    # Handle multiple states
-    # anon fn to work with next items
-    anon.states <- function(x){paste0("&state_name=", x)}
-    
-    if(length(state) > 1){
-      
-      state.concat <- lapply(state, anon.states)
-      
-      
-    }
-    
-    # Handle multiple states
-    
-    
-    if(exists("program") & !is.null(program)){param1 <- paste0('&source_desc=', toupper(program))}else{param1 <- NULL}
-    if(exists("sector") & !is.null(sector)){param2 <- paste0('&sector_desc=', toupper(sector))}else{param2 <- NULL}
-    if(exists("group") & !is.null(group)){param3 <- paste0('&group_desc=', toupper(group))}else{param3 <- NULL}
-    if(exists("commodity") & !is.null(commodity)){param4 <- paste0('&commodity_desc=', toupper(commodity))}else{param4 <- NULL}
-    if(exists("category") & !is.null(category)){param6 <- paste0('&statisticcat_desc=', toupper(category))}else{param6 <- NULL}
-    if(exists("data_item") & !is.null(data_item)){param7 <- paste0('&short_desc=', toupper(data_item))}else{param7 <- NULL}
-    if(exists("domain") & !is.null(domain)){param8 <- paste0('&domain_desc=', toupper(domain))}else{param8 <- NULL}
-    if(exists("geographic_level") & !is.null(geographic_level)){param9 <- paste0('&agg_level_desc=', toupper(geographic_level))}else{param9 <- NULL}
-    # if(exists("state") & !is.null(state)){param10 <- paste0('&state_name=', toupper(state))}else{param10 <- NULL}
-    if(exists("county") & !is.null(county)){param11 <- paste0('&county_name=', toupper(county))}else{param11 <- NULL}
-    if(exists("year") & !is.null(year)){param12 <- paste0('&year=', toupper(year))}else{param12 <- NULL}
-    
-    
-    params <- c(beginning, key, param1, param2, param3, param4, param6, param7, param8, param9, state.concat, param11, param12)
-    
-    params <- unlist(params)
-    
-    
-    url <- paste0(params, collapse = " ")
-    url <- gsub("= ", "=", url)
-    url <- gsub(" &", "&", url)
-    url <- gsub("=,", "=", url)
-    url <- gsub(" ", "%20", url)
-    
-    raw <- jsonlite::fromJSON(url)
-    raw <- raw$data
-    mydata <- raw
-    return(mydata)
-    
-  }
+  # Data item
   
-  # Function to call API from input params with multiple counties
-  multCounties <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
-                         category=NULL, domain=NULL, geographic_level=NULL,
-                         state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE){
-    
-    beginning <- "http://quickstats.nass.usda.gov/api/api_GET/?key="
-    
-    # Handle multiple counties
-    # anon fn to work with next items
-    anon.counties <- function(x){paste0("&county_name=", x)}
-    
-    if(length(county) > 1){
-      
-      county.concat <- lapply(county, anon.counties)
-      
-      
-    }
-    
-    # Handle multiple counties
-    
-    
-    if(exists("program") & !is.null(program)){param1 <- paste0('&source_desc=', toupper(program))}else{param1 <- NULL}
-    if(exists("sector") & !is.null(sector)){param2 <- paste0('&sector_desc=', toupper(sector))}else{param2 <- NULL}
-    if(exists("group") & !is.null(group)){param3 <- paste0('&group_desc=', toupper(group))}else{param3 <- NULL}
-    if(exists("commodity") & !is.null(commodity)){param4 <- paste0('&commodity_desc=', toupper(commodity))}else{param4 <- NULL}
-    if(exists("category") & !is.null(category)){param6 <- paste0('&statisticcat_desc=', toupper(category))}else{param6 <- NULL}
-    if(exists("data_item") & !is.null(data_item)){param7 <- paste0('&short_desc=', toupper(data_item))}else{param7 <- NULL}
-    if(exists("domain") & !is.null(domain)){param8 <- paste0('&domain_desc=', toupper(domain))}else{param8 <- NULL}
-    if(exists("geographic_level") & !is.null(geographic_level)){param9 <- paste0('&agg_level_desc=', toupper(geographic_level))}else{param9 <- NULL}
-    if(exists("state") & !is.null(state)){param10 <- paste0('&state_name=', toupper(state))}else{param10 <- NULL}
-    # if(exists("county") & !is.null(county)){param11 <- paste0('&county_name=', toupper(county))}else{param11 <- NULL}
-    if(exists("year") & !is.null(year)){param12 <- paste0('&year=', toupper(year))}else{param12 <- NULL}
-    
-    
-    params <- c(beginning, key, param1, param2, param3, param4, param6, param7, param8, param9, param10, county.concat, param12)
-    
-    params <- unlist(params)
-    
-    
-    url <- paste0(params, collapse = " ")
-    url <- gsub("= ", "=", url)
-    url <- gsub(" &", "&", url)
-    url <- gsub("=,", "=", url)
-    url <- gsub(" ", "%20", url)
-    
-    raw <- jsonlite::fromJSON(url)
-    raw <- raw$data
-    mydata <- raw
-    return(mydata)
-    
-  }
+  # Sector
   
-  # Function to call API from input params with multiple counties and multiple states
-  multStatesandCounties <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
-                         category=NULL, domain=NULL, geographic_level=NULL,
-                         state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE){
-    
-    beginning <- "http://quickstats.nass.usda.gov/api/api_GET/?key="
-    
-    # Handle multiple counties
-    # anon fn to work with next items
-    anon.counties <- function(x){paste0("&county_name=", x)}
-    
-    if(length(county) > 1){
-      
-      county.concat <- lapply(county, anon.counties)
-      
-      
-    }
-    
-    # Handle multiple states
-    # anon fn to work with next items
-    anon.states <- function(x){paste0("&state_name=", x)}
-    
-    if(length(state) > 1){
-      print("k")
-      state.concat <- lapply(state, anon.states)
-      
-      
-    }
-    
-    # Handle multiple counties
-    
-    
-    if(exists("program") & !is.null(program)){param1 <- paste0('&source_desc=', toupper(program))}else{param1 <- NULL}
-    if(exists("sector") & !is.null(sector)){param2 <- paste0('&sector_desc=', toupper(sector))}else{param2 <- NULL}
-    if(exists("group") & !is.null(group)){param3 <- paste0('&group_desc=', toupper(group))}else{param3 <- NULL}
-    if(exists("commodity") & !is.null(commodity)){param4 <- paste0('&commodity_desc=', toupper(commodity))}else{param4 <- NULL}
-    if(exists("category") & !is.null(category)){param6 <- paste0('&statisticcat_desc=', toupper(category))}else{param6 <- NULL}
-    if(exists("data_item") & !is.null(data_item)){param7 <- paste0('&short_desc=', toupper(data_item))}else{param7 <- NULL}
-    if(exists("domain") & !is.null(domain)){param8 <- paste0('&domain_desc=', toupper(domain))}else{param8 <- NULL}
-    if(exists("geographic_level") & !is.null(geographic_level)){param9 <- paste0('&agg_level_desc=', toupper(geographic_level))}else{param9 <- NULL}
-    # if(exists("state") & !is.null(state)){param10 <- paste0('&state_name=', toupper(state))}else{param10 <- NULL}
-    # if(exists("county") & !is.null(county)){param11 <- paste0('&county_name=', toupper(county))}else{param11 <- NULL}
-    if(exists("year") & !is.null(year)){param12 <- paste0('&year=', toupper(year))}else{param12 <- NULL}
-    
-    
-    params <- c(beginning, key, param1, param2, param3, param4, param6, param7, param8, param9, state.concat, county.concat, param12)
-    
-    params <- unlist(params)
-    
-    
-    url <- paste0(params, collapse = " ")
-    url <- gsub("= ", "=", url)
-    url <- gsub(" &", "&", url)
-    url <- gsub("=,", "=", url)
-    url <- gsub(" ", "%20", url)
-    
-    raw <- jsonlite::fromJSON(url)
-    raw <- raw$data
-    mydata <- raw
-    return(mydata)
-    
-  }
+  # Group
   
+  # Commodity
   
-
-# Logic to handle vectors vs. single values -------------------------------------
+  # Category
+  
+  # Domain
+  
+  # Geographic level
+  
+  # 
+  
+# Logic to handle vectors vs. single values 
  
   mult.state <- ifelse(length(state) > 1, mult.state <- TRUE, mult.state <- FALSE)
   mult.county <- ifelse(length(county) > 1, mult.county <- TRUE, mult.county <- FALSE)
@@ -349,7 +395,27 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   
   
   return(mydata)
-  print("Success")
 }
   
+
+
+
+# Test example ------------------------------------------------------------
+
+
+getQuickstate(
+  sector=NULL,
+  group=NULL,
+  commodity=NULL,
+  category=NULL,
+  domain=NULL,
+  county=NULL,
+  key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
+  program = 'CENSUSES',
+  data_item = 'CROP TOTALS - OPERATIONS WITH SALES',
+  geographic_level = 'COUNTY',
+  year = '2017',
+  state = NULL,
+  geometry = T,
+  lower48 = T)
 
