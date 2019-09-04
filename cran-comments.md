@@ -1,12 +1,7 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
-* Added @examples for the 2 functions in the package
-* Fixed issue where NAMESPACE wasn't working
-* Omitted the redundant "the R user with" text from the description
-* Explained all acronyms in the description text
-* Added link to webservice mentioned in the description text in angle brackets
-* Updated declaration of license to "License: MIT + file LICENSE", and reduced the license file to YEAR and COPYRIGHT HOLDER.
+* Reduced the length of the title in the DESCRIPTION file to less than 65 characters.
 
 ## Test environments
 * local Linux Mint 19.2, R 3.6.1
