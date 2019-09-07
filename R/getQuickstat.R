@@ -218,8 +218,9 @@ fuzzyMatch <- function(input, dataset){
   if(!is.null(input) & !input %in% dataset){
     matcheddf <- dataset
     matcheddf <- data.frame(index = seq(1, length(matcheddf),1), text = matcheddf)
-    fuzzydf <- fuzzyjoin::stringdist_join(matcheddf, data.frame(index = c(1), text = c(input)), by = c("index", "text"))
-    result <- as.character(fuzzydf[,2])
+    fuzzydf <- fuzzyjoin::stringdist_join(matcheddf, data.frame(index = c(1), text = c(input)), by = c("index", "text"), max_dist = 6, distance_col = "dist")
+    interim <- dplyr::arrange(fuzzydf, fuzzydf$text.dist)
+    result <- as.character(interim[1,2])
   }
   return(result)
 }
@@ -227,7 +228,7 @@ fuzzyMatch <- function(input, dataset){
 
 # getQuickstat ------------------------------------------------------------
 
-getQuickstate <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
+getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
                          category=NULL, domain=NULL, geographic_level=NULL,
                          state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE) {
   
@@ -284,28 +285,69 @@ getQuickstate <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, g
   } 
   
   # Program
-  if(!is.null(program) & !program %in% tidyUSDA::allProgram){
-    recommendation <- fuzzyMatch(program, tidyUSDA::allProgram);
+  if(is.null(program)){} else if(!toupper(program) %in% tidyUSDA::allProgram){
+    recommendation <- fuzzyMatch(toupper(program), tidyUSDA::allProgram);
     message(paste0("Your value for PROGRAM is not valid. Did you mean ",
                    recommendation,
                    "? If not, check tidyUSDA::allProgram for a vector of all acceptable values."))
   }
   
   # Data item
+  if(is.null(data_item)){} else if(!toupper(data_item) %in% tidyUSDA::allDataItem){
+    recommendation <- fuzzyMatch(toupper(data_item), tidyUSDA::allDataItem);
+    message(paste0("Your value for DATA_ITEM is not valid. Did you mean ",
+                   recommendation,
+                   "? If not, check tidyUSDA::allDataItem for a vector of all acceptable values."))
+  }
   
   # Sector
-  
+  if(is.null(sector)){} else if (!is.null(sector) & !toupper(sector) %in% tidyUSDA::allSector){
+    recommendation <- fuzzyMatch(toupper(sector), tidyUSDA::allSector);
+    message(paste0("Your value for SECTOR is not valid. Did you mean ",
+                   recommendation,
+                   "? If not, check tidyUSDA::allSector for a vector of all acceptable values."))
+  }
+
   # Group
+  if(is.null(group)){} else if(!toupper(group) %in% tidyUSDA::allGroup){
+    recommendation <- fuzzyMatch(toupper(group), tidyUSDA::allGroup);
+    message(paste0("Your value for GROUP is not valid. Did you mean ",
+                   recommendation,
+                   "? If not, check tidyUSDA::allGroup for a vector of all acceptable values."))
+  }
   
   # Commodity
+  if(is.null(commodity)){} else if(!toupper(commodity) %in% tidyUSDA::allCommodity){
+    recommendation <- fuzzyMatch(toupper(commodity), tidyUSDA::allCommodity);
+    message(paste0("Your value for COMMODITY is not valid. Did you mean ",
+                   recommendation,
+                   "? If not, check tidyUSDA::allCommodity for a vector of all acceptable values."))
+  }
   
   # Category
+  if(is.null(category)){} else if(!toupper(category) %in% tidyUSDA::allCategory){
+    recommendation <- fuzzyMatch(toupper(category), tidyUSDA::allCategory);
+    message(paste0("Your value for CATEGORY is not valid. Did you mean ",
+                   recommendation,
+                   "? If not, check tidyUSDA::allCategory for a vector of all acceptable values."))
+  }
   
   # Domain
+  if(is.null(domain)){} else if(!toupper(domain) %in% tidyUSDA::allDomain){
+    recommendation <- fuzzyMatch(toupper(domain), tidyUSDA::allDomain);
+    message(paste0("Your value for DOMAIN is not valid. Did you mean ",
+                   recommendation,
+                   "? If not, check tidyUSDA::allDomain for a vector of all acceptable values."))
+  }
   
   # Geographic level
+  if(is.null(geographic_level)){} else if(!toupper(geographic_level) %in% tidyUSDA::allGeogLevel){
+    recommendation <- fuzzyMatch(toupper(geographic_level), tidyUSDA::allGeogLevel);
+    message(paste0("Your value for GEOGRAPHIC_LEVEL is not valid. Did you mean ",
+                   recommendation,
+                   "? If not, check tidyUSDA::allGeogLevel for a vector of all acceptable values."))
+  }
   
-  # 
   
 # Logic to handle vectors vs. single values 
  
@@ -403,19 +445,19 @@ getQuickstate <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, g
 # Test example ------------------------------------------------------------
 
 
-getQuickstate(
-  sector=NULL,
-  group=NULL,
-  commodity=NULL,
-  category=NULL,
-  domain=NULL,
-  county=NULL,
-  key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
-  program = 'CENSUSES',
-  data_item = 'CROP TOTALS - OPERATIONS WITH SALES',
-  geographic_level = 'COUNTY',
-  year = '2017',
-  state = NULL,
-  geometry = T,
-  lower48 = T)
+# getQuickstate(
+#   sector=NULL,
+#   group=NULL,
+#   commodity=NULL,
+#   category=NULL,
+#   domain=NULL,
+#   county=NULL,
+#   key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
+#   program = 'CENSUS',
+#   data_item = 'CROP TOTALS - OPERATIONSS WITH SALES',
+#   geographic_level = 'COUNTY',
+#   year = '2017',
+#   state = NULL,
+#   geometry = T,
+#   lower48 = T)
 
