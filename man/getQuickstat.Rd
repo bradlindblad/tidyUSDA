@@ -52,7 +52,6 @@ Go to the webpage https://quickstats.nass.usda.gov/. As a best practice, select 
 \examples{
 \dontrun{
 getQuickstat(
-
 key = 'your_key',
 program = 'CENSUS',
 data_item = 'CROP TOTALS - OPERATIONS WITH SALES',

@@ -6,6 +6,7 @@ Authors@R: person("Brad", "Lindblad", email = "bradley.lindblad@gmail.com", role
 Description: Provides a consistent API to pull United States Department of Agriculture census and survey data from the National Agricultural Statistics Service (NASS) QuickStats service <https://quickstats.nass.usda.gov>.
 Imports: 
     dplyr,
+    fuzzyjoin,
     ggplot2,
     jsonlite, 
     magrittr,
