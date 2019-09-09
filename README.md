@@ -20,7 +20,39 @@
 # Install directly from CRAN:
 install.packages("tidyUSDA")
 ```
+### Windows
+Depending on which version of R you have installed, you may need to install [Rtools](https://cran.r-project.org/bin/windows/Rtools/).
 
+### Mac
+You may need to install gdal before install.packages("tidyUSDA"). Use these commands:    
+```
+brew install pkg-config     
+brew install gdal
+```
+### Linux
+You will need to install  GDAL (>= 2.0.1), GEOS (>= 3.4.0) and Proj.4 (>= 4.8.0) for most Unix-based systems.
+
+#### Ubuntu
+To install the dependencies on Ubuntu, either add ubuntugis-unstable to the package repositories:
+```
+sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+sudo apt-get update
+sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev 
+```
+or install dependencies from source; see e.g. an older travis config file for hints.
+
+#### Fedora
+The following command installs all required dependencies:
+```
+sudo dnf install gdal-devel proj-devel proj-epsg proj-nad geos-devel udunits2-devel
+```
+#### Arch
+Get gdal, proj and geos from the main repos and udunits from the AUR:
+```
+pacman -S gdal proj geos
+pacaur/yaourt/whatever -S udunits
+```
+*Thanks to the [SF package README](https://github.com/r-spatial/sf) for these OS helpers.*
 ## Usage
 You first need to grab a free API token from the USDA at [their website](https://quickstats.nass.usda.gov/api).    
 
