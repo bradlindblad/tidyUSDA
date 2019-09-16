@@ -9,6 +9,7 @@ Imports:
     fuzzyjoin,
     ggplot2,
     jsonlite, 
+    keyring,
     magrittr,
     nlme,
     rgdal,
