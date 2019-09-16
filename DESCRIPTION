@@ -11,7 +11,7 @@ Imports:
     jsonlite (>= 1.6), 
     keyring (>= 1.1.0),
     magrittr (>= 1.5),
-    nlme (>= 3.1-141),
+    nlme,
     rgdal (>= 1.4-4),
     rgeos (>= 0.5-1),
     sf (>= 0.7-7),
