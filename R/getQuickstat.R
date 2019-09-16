@@ -233,9 +233,11 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
                          state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE) {
   
   #' getQuickstat
+  #' 
   #' @description 
-  #' Get values from Quickstats in a dataframe or data frame
-  #' with sf:: geometry field
+  #' Get values from NASS Quickstats in a dataframe or data frame
+  #' with sf (simple features) geometry field.
+  #' 
   #' @param key your USDA api key. Get one at https://quickstats.nass.usda.gov/api - string
   #' @param program program field - string
   #' @param data_item data_item field - string
@@ -274,9 +276,7 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   #' 
   #' }
 
-  
-# TODO Uppercase all values to help with error trapping
- 
+
 # Logic to handle improper inputs
   
   # Key

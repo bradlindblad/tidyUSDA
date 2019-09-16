@@ -5,10 +5,11 @@
 plotUSDA <- function(df){
   
   #' plotUSDA
+  #' 
   #' @description 
-  #' Quickly plot a dataframe produced by the getQuickstat() function. 
+  #' Quickly plot a data frame produced by the getQuickstat() function. 
   #'     
-  #' @param df a dataframe with a simple feature column
+  #' @param df a data frame with a simple feature column
   #' 
   #' @examples 
   #' \dontrun{
