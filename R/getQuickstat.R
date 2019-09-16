@@ -435,29 +435,8 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
     
   }
   
-  
   return(mydata)
 }
   
 
-
-
-# Test example ------------------------------------------------------------
-
-
-# getQuickstate(
-#   sector=NULL,
-#   group=NULL,
-#   commodity=NULL,
-#   category=NULL,
-#   domain=NULL,
-#   county=NULL,
-#   key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
-#   program = 'CENSUS',
-#   data_item = 'CROP TOTALS - OPERATIONSS WITH SALES',
-#   geographic_level = 'COUNTY',
-#   year = '2017',
-#   state = NULL,
-#   geometry = T,
-#   lower48 = T)
 

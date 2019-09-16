@@ -7,10 +7,10 @@
 plotUSDA(df)
 }
 \arguments{
-\item{df}{a dataframe with a simple feature column}
+\item{df}{a data frame with a simple feature column}
 }
 \description{
-Quickly plot a dataframe produced by the getQuickstat() function.
+Quickly plot a data frame produced by the getQuickstat() function.
 }
 \examples{
 \dontrun{
