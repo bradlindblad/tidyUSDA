@@ -3,3 +3,6 @@
 .RData
 .Ruserdata
 _config.yml
+inst/doc
+doc
+Meta

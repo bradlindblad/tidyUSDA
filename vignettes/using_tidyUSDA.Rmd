@@ -1,0 +1,29 @@
+---
+title: "using_tidyUSDA"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{using_tidyUSDA}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(tidyUSDA)
+```
+
+
+# TODO
+- Why tidyUSDA
+- What problems does it solve
+- Get API Key
+- Use case 1: extracting data from NASS
+- Use case 2: quickly plotting data from NASS
+- Use case 3: building datasets from many pulls for geospatial ML
+- You can help
