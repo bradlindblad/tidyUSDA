@@ -1,5 +1,5 @@
 
-# tidyUSDA <img src='/images/tidyusda.png' align="right" height="200" />
+# tidyUSDA <img src='https://github.com/bradlindblad/tidyUSDA/blob/master/images/tidyusda.png' align="right" height="200" />
 *Note that this is a pre-release, development package currently*
  <!-- badges: start -->
   [![Travis build status](https://travis-ci.com/bradlindblad/tidyusda.svg?branch=master)](https://travis-ci.com/bradlindblad/tidyusda)[![CRAN status](https://www.r-pkg.org/badges/version/tidyUSDA)](https://CRAN.R-project.org/package=tidyUSDA)
@@ -92,7 +92,7 @@ ops.with.sales <- tidyUSDA::getQuickstat(
 tidyUSDA::plotUSDA(df = ops.with.sales)
 ```
 The last function returns this ggplot choropleth:    
-<img src='/images/choropleth.png' align="center"  />
+<img src='https://github.com/bradlindblad/tidyUSDA/blob/master/images/choropleth.png' align="center"  />
 
 
 ## Contact
