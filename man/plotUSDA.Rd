@@ -7,7 +7,7 @@
 plotUSDA(df, fill_by = "Value")
 }
 \arguments{
-\item{df}{a data frame with a simple feature column}
+\item{df}{a data frame with a simple feature column (geometry)}
 
 \item{fill_by}{the value you would like to fill your choropleth output}
 }

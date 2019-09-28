@@ -9,7 +9,7 @@ plotUSDA <- function(df, fill_by = 'Value'){
   #' @description 
   #' Quickly plot a data frame produced by the getQuickstat() function. 
   #'     
-  #' @param df a data frame with a simple feature column
+  #' @param df a data frame with a simple feature column (geometry)
   #' 
   #' @param fill_by the value you would like to fill your choropleth output
   #' 

@@ -1,6 +1,6 @@
 #' tidyUSDA: An Interface to USDA QuickStats Data with Mapping Capabilities.
 #' 
-#' Lets you query the USDA QuickStats data from R, and join in geometries for plotting.
+#' A minimal toolset for gathering USDA Quick Stat data for analysis and visualization.
 #' 
 #' @docType package
 #' @name tidyUSDA

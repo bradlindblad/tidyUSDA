@@ -52,6 +52,22 @@ key <- '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'  # please get your own key!
 
 At this point, it's best to use the actual Quick Stats website to pick out the parameters you would like to filter by. This way you know for sure that data will be returned. I want to see a state-level breakdown of counts of operations using the 2017 census data.
 
+At this point it helps to see which possible values you **can** input into the function parameters. You can view these possible inputs for all of the parameters with the built-in datasets. Let's check a few out.
+
+```{r}
+tidyUSDA::allCategory %>% head()
+```
+
+So it looks like there are only six possible input values for the *category* field. Good to know.
+
+```{r}
+tidyUSDA::allGeogLevel %>% head()
+```
+
+There are many different geography levels. Currently there is only support for providing geometries for *county* and *state* values.
+
+Now that we're a little more clear on what we can input, let's use our main function for data pulling.
+
 ```{r, results = "hide"}
 # Get count of operations with sales in 2017
 ops.with.sales <- tidyUSDA::getQuickstat(

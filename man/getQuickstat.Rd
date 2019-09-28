@@ -40,8 +40,8 @@ Only works when geographic_level is set to 'COUNTY' or 'STATE'}
 \item{lower48}{limit data to the lower 48 states? - TRUE or FALSE}
 }
 \description{
-Get values from NASS Quickstats in a dataframe or data frame
-with sf (simple features) geometry field.
+Get values from USDA Quick Stats in a dataframe
+with optional sf (simple features) geometry field
 }
 \note{
 Go to the webpage https://quickstats.nass.usda.gov/. As a best practice, select the items in these fields and test that that data item 
