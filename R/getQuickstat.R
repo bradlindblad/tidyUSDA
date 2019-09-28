@@ -435,6 +435,10 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
     
   }
   
+  # Make sure value is numeric
+  mydata$Value <- gsub(",", "", mydata$Value)
+  mydata$Value <- as.numeric(mydata$Value)
+  
   return(mydata)
 }
   

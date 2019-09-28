@@ -7,5 +7,7 @@
 ^CRAN-RELEASE$
 
 ^tests$
-^doc$
 ^Meta$
+^docs$
+^pkgdown$
+^doc$

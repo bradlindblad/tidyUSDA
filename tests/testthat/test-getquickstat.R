@@ -16,7 +16,7 @@ test_that("getQuickstat1", {
     key = keyring::key_get("tidyusda"),
     program = 'CENSUS',
     data_item = 'CROP TOTALS - OPERATIONS WITH SALES',
-    geographic_level = 'COUNTY',
+    geographic_level = 'STATE',
     year = '2017',
     state = NULL,
     geometry = T,

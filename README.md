@@ -54,6 +54,12 @@ pacaur/yaourt/whatever -S udunits
 ```
 *Thanks to the [SF package README](https://github.com/r-spatial/sf) for these OS helpers.*
 ## Usage
+
+Check out the vignette with:
+```
+vignette("using_tidyusda")
+```
+
 You first need to grab a free API token from the USDA at [their website](https://quickstats.nass.usda.gov/api).    
 
 ```
