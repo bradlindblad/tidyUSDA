@@ -4,13 +4,15 @@
 \alias{plotUSDA}
 \title{plotUSDA}
 \usage{
-plotUSDA(df)
+plotUSDA(df, fill_by = "Value")
 }
 \arguments{
-\item{df}{a dataframe with a simple feature column}
+\item{df}{a data frame with a simple feature column (geometry)}
+
+\item{fill_by}{the value you would like to fill your choropleth output}
 }
 \description{
-Quickly plot a dataframe produced by the getQuickstat() function.
+Quickly plot a data frame produced by the getQuickstat() function.
 }
 \examples{
 \dontrun{

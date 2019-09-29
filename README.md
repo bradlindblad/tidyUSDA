@@ -1,5 +1,5 @@
 
-# tidyUSDA <a href='https://github.com/bradlindblad/tidyusda'><img src='/images/tidyusda.png' align="right" height="200" /></a>
+# tidyUSDA <img src='https://raw.githubusercontent.com/bradlindblad/tidyUSDA/master/images/tidyusda.png' align="right" height="200" />
 *Note that this is a pre-release, development package currently*
  <!-- badges: start -->
   [![Travis build status](https://travis-ci.com/bradlindblad/tidyusda.svg?branch=master)](https://travis-ci.com/bradlindblad/tidyusda)[![CRAN status](https://www.r-pkg.org/badges/version/tidyUSDA)](https://CRAN.R-project.org/package=tidyUSDA)
@@ -54,6 +54,12 @@ pacaur/yaourt/whatever -S udunits
 ```
 *Thanks to the [SF package README](https://github.com/r-spatial/sf) for these OS helpers.*
 ## Usage
+
+Check out the vignette with:
+```
+vignette("using_tidyusda")
+```
+
 You first need to grab a free API token from the USDA at [their website](https://quickstats.nass.usda.gov/api).    
 
 ```
@@ -92,7 +98,7 @@ ops.with.sales <- tidyUSDA::getQuickstat(
 tidyUSDA::plotUSDA(df = ops.with.sales)
 ```
 The last function returns this ggplot choropleth:    
-<a href='https://github.com/bradlindblad/tidyusda'><img src='/images/choropleth.png' align="center"  />
+<img src='https://github.com/bradlindblad/tidyUSDA/blob/master/images/choropleth.png?raw=true' align="center"  />
 
 
 ## Contact

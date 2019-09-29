@@ -1,7 +1,4 @@
-# library(sf)
-# library(tigris)
-# library(testthat)
-library(keyring)
+
 
 # keyring::key_set("tidyusda")
 
@@ -19,7 +16,7 @@ test_that("getQuickstat1", {
     key = keyring::key_get("tidyusda"),
     program = 'CENSUS',
     data_item = 'CROP TOTALS - OPERATIONS WITH SALES',
-    geographic_level = 'COUNTY',
+    geographic_level = 'STATE',
     year = '2017',
     state = NULL,
     geometry = T,
@@ -70,6 +67,22 @@ test_that("getQuickstat4", {
                  data_item = 'ALMONDS - ACRES BEARING',
                  geographic_level = 'NATIONAL',
                  year = '2018',
+                 geometry = T),
+    
+    "list"
+    
+  )
+})
+
+test_that("getQuickstat5", {
+  
+  testthat::expect_type(
+    
+    getQuickstat(key = keyring::key_get("tidyusda"),
+                 program = 'SURVEY',
+                 data_item = 'AUTOS - INDEX FOR PRICE PAID, 2011',
+                 geographic_level = 'NATIONAL',
+                 year = '2019',
                  geometry = T),
     
     "list"

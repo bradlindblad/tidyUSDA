@@ -4,7 +4,7 @@
 \name{tidyUSDA}
 \alias{tidyUSDA}
 \alias{tidyUSDA-package}
-\title{tidyUSDA: An interface to USDA Quick Stats data with mapping capabilities.}
+\title{tidyUSDA: An Interface to USDA QuickStats Data with Mapping Capabilities.}
 \description{
-The package lets you query the USDA QuickStats data from R, and join in geometries.
+A minimal toolset for gathering USDA Quick Stat data for analysis and visualization.
 }

@@ -2,13 +2,16 @@
 # plotting.R
 
 
-plotUSDA <- function(df){
+plotUSDA <- function(df, fill_by = 'Value'){
   
   #' plotUSDA
+  #' 
   #' @description 
-  #' Quickly plot a dataframe produced by the getQuickstat() function. 
+  #' Quickly plot a data frame produced by the getQuickstat() function. 
   #'     
-  #' @param df a dataframe with a simple feature column
+  #' @param df a data frame with a simple feature column (geometry)
+  #' 
+  #' @param fill_by the value you would like to fill your choropleth output
   #' 
   #' @examples 
   #' \dontrun{
@@ -18,10 +21,11 @@ plotUSDA <- function(df){
   #' 
   #' @export
 
+  
   z <- ggplot2::ggplot(df) +
-    ggplot2::geom_sf(ggplot2::aes(fill = df$Value)) +
+    ggplot2::geom_sf(ggplot2::aes_string(fill = fill_by)) +
     ggplot2::coord_sf(datum=NA) +
-    ggplot2::scale_fill_viridis_d() +
+    ggplot2::scale_fill_viridis_c() +
     ggplot2::theme_minimal() +
     ggplot2::theme(legend.position = "None") 
   
