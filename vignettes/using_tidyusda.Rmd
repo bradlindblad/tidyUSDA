@@ -127,7 +127,6 @@ This package was designed for data analysts and scientists, meaning that the out
 ## How you can contribute
 You can report a bug or request new features at [https://github.com/bradlindblad/tidyUSDA/issues](https://github.com/bradlindblad/tidyUSDA/issues). 
 
-Feel free to contact me directly at [bradley.lindblad@gmail.com](bradley.lindblad@gmail.com)
 
 ## References
 
