@@ -77,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyUSDA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -100,7 +100,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/using_tidyUSDA.html">using_tidyUSDA</a>
+      <a href="../articles/using_tidyusda.html">Using tidyUSDA</a>
     </li>
   </ul>
 </li>
@@ -132,14 +132,18 @@
     <p>Quickly plot a data frame produced by the getQuickstat() function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plotUSDA</span>(<span class='no'>df</span>)</pre>
+    <pre class="usage"><span class='fu'>plotUSDA</span>(<span class='no'>df</span>, <span class='kw'>fill_by</span> <span class='kw'>=</span> <span class='st'>"Value"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>df</th>
-      <td><p>a data frame with a simple feature column</p></td>
+      <td><p>a data frame with a simple feature column (geometry)</p></td>
+    </tr>
+    <tr>
+      <th>fill_by</th>
+      <td><p>the value you would like to fill your choropleth output</p></td>
     </tr>
     </table>
 
