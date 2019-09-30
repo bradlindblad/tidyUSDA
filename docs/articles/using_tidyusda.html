@@ -69,7 +69,14 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/bradlindblad/tidyUSDA">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -85,7 +92,7 @@
       <h1>Using tidyUSDA</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/bradlindblad/tidyUSDA/blob/master/vignettes/using_tidyusda.Rmd"><code>vignettes/using_tidyusda.Rmd</code></a></small>
       <div class="hidden name"><code>using_tidyusda.Rmd</code></div>
 
     </div>
@@ -162,8 +169,7 @@
 <a class="sourceLine" id="cb8-2" data-line-number="2">mydata<span class="op">$</span>ALAND &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(mydata<span class="op">$</span>ALAND)</a>
 <a class="sourceLine" id="cb8-3" data-line-number="3">mydata<span class="op">$</span>modified_value &lt;-<span class="st"> </span>mydata<span class="op">$</span>Value <span class="op">/</span><span class="st"> </span>mydata<span class="op">$</span>ALAND</a></code></pre></div>
 <p>This gives us a bunch of really small numbers that don’t make sense, but for our purposes of mapping, they’ll do.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># tidyUSDA::plotUSDA(df = mydata, target_col = 'modified_value')</span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">tidyUSDA<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/tidyUSDA/man/plotUSDA.html">plotUSDA</a></span>(<span class="dt">df =</span> mydata, <span class="dt">fill_by =</span> <span class="st">'modified_value'</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">tidyUSDA<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/tidyUSDA/man/plotUSDA.html">plotUSDA</a></span>(<span class="dt">df =</span> mydata, <span class="dt">fill_by =</span> <span class="st">'modified_value'</span>)</a></code></pre></div>
 <p><img src="using_tidyusda_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 <p>Ahh, much better. Now we have a true plot showing the number of operations per square meter. Looks like California still has the most farms per dirt clod than any other state.</p>
 </div>

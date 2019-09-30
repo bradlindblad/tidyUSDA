@@ -115,7 +115,6 @@ mydata$modified_value <- mydata$Value / mydata$ALAND
 This gives us a bunch of really small numbers that don't make sense, but for our purposes of mapping, they'll do.
 
 ```{r}
-# tidyUSDA::plotUSDA(df = mydata, target_col = 'modified_value')
 tidyUSDA::plotUSDA(df = mydata, fill_by = 'modified_value')
 ```
 
