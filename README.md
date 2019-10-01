@@ -1,15 +1,8 @@
 
 # tidyUSDA <img src='https://raw.githubusercontent.com/bradlindblad/tidyUSDA/master/images/tidyusda.png' align="right" height="200" />
 
- <!-- badges: start -->
- 
-[![Travis build status](https://travis-ci.com/bradlindblad/tidyusda.svg?branch=master)](https://travis-ci.com/bradlindblad/tidyusda)
-[![CRAN status](https://www.r-pkg.org/badges/version/tidyUSDA)](https://CRAN.R-project.org/package=tidyUSDA)  
-[![metacran downloads](https://cranlogs.r-pkg.org/badges/grand-total/tidyUSDA)](https://cran.r-project.org/package=tidyUSDA)   
-[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.1-6666ff.svg)](https://cran.r-project.org/)
+[![Travis build status](https://travis-ci.com/bradlindblad/tidyusda.svg?branch=master)](https://travis-ci.com/bradlindblad/tidyusda)[![CRAN status](https://www.r-pkg.org/badges/version/tidyUSDA)](https://CRAN.R-project.org/package=tidyUSDA)[![metacran downloads](https://cranlogs.r-pkg.org/badges/grand-total/tidyUSDA)](https://cran.r-project.org/package=tidyUSDA)[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.1-6666ff.svg)](https://cran.r-project.org/)
 
-  <!-- badges: end -->
-  
 **tidyUSDA**, an interface to USDA Quick Stats data with mapping capabilities.
 
 
