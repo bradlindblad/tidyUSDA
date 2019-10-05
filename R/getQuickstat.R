@@ -211,6 +211,322 @@ multStatesandCounties <- function(key=NULL, program=NULL, data_item=NULL, sector
 }
 
 
+# Geospatial functions - thanks Kyle! -------------------------------------
+
+# Load tiger
+load_tiger <- function(url,
+                       refresh=getOption("tigris_refresh", FALSE),
+                       tigris_type=NULL,
+                       class = getOption("tigris_class", "sp"),
+                       progress_bar = TRUE,
+                       query = NULL) {
+  
+  use_cache <- getOption("tigris_use_cache", FALSE)
+  tiger_file <- basename(url)
+  
+  obj <- NULL
+  
+  if (use_cache) {
+    if (Sys.getenv("TIGRIS_CACHE_DIR") != "") {
+      cache_dir <- Sys.getenv("TIGRIS_CACHE_DIR")
+      cache_dir <- path.expand(cache_dir)
+    } else {
+      cache_dir <- user_cache_dir("tigris")
+    }
+    if (!file.exists(cache_dir)) {
+      dir.create(cache_dir, recursive=TRUE)
+    }
+    
+    if (file.exists(cache_dir)) {
+      
+      file_loc <- file.path(cache_dir, tiger_file)
+      
+      if (refresh | !file.exists(file_loc)) {
+        # try(download.file(url, file_loc, mode = "wb"))
+        # GET requests not working at the moment.
+        # Change back if you get additional info.
+        
+        if (progress_bar) {
+          try(GET(url,
+                  write_disk(file_loc, overwrite=refresh),
+                  progress(type="down")), silent=TRUE)
+        } else {
+          try(GET(url,
+                  write_disk(file_loc, overwrite=refresh)),
+              silent=TRUE)
+        }
+        
+        
+      }
+      
+      shape <- gsub(".zip", "", tiger_file)
+      shape <- gsub("_shp", "", shape) # for historic tracts
+      
+      if (refresh | !file.exists(file.path(cache_dir,
+                                           sprintf("%s.shp", shape)))) {
+        
+        unzip_tiger <- function() {
+          unzip(file_loc, exdir = cache_dir, overwrite=TRUE)
+        }
+        
+        # Logic for handling download errors and re-downloading
+        t <- tryCatch(unzip_tiger(), warning = function(w) w)
+        
+        if ("warning" %in% class(t)) {
+          
+          i <- 1
+          
+          while (i < 4) {
+            
+            message(sprintf("Previous download failed.  Re-download attempt %s of 3...",
+                            as.character(i)))
+            
+            # try(download.file(url, file_loc, mode = "wb"))
+            
+            if (progress_bar) {
+              try(GET(url,
+                      write_disk(file_loc, overwrite=TRUE),
+                      progress(type="down")), silent=TRUE)
+            } else {
+              try(GET(url,
+                      write_disk(file_loc, overwrite=TRUE)),
+                  silent=TRUE)
+            }
+            
+            
+            
+            shape <- gsub(".zip", "", tiger_file)
+            shape <- gsub("_shp", "", shape)
+            
+            t <- tryCatch(unzip_tiger(), warning = function(w) w)
+            
+            if ("warning" %in% class(t)) {
+              i <- i + 1
+            } else {
+              break
+            }
+            
+          }
+          
+          if (i == 4) {
+            
+            stop("Download failed; check your internet connection or the status of the Census Bureau website
+                 at http://www2.census.gov/geo/tiger/.", call. = FALSE)
+          }
+          
+        } else {
+          
+          unzip_tiger()
+          
+        }
+        
+      }
+      
+      if (class == "sp") {
+        
+        obj <- rgdal::readOGR(dsn = cache_dir, layer = shape, encoding = "UTF-8",
+                       verbose = FALSE, stringsAsFactors = FALSE)
+        
+        if (is.na(proj4string(obj))) {
+          
+          proj4string(obj) <- CRS("+proj=longlat +datum=NAD83 +no_defs")
+          
+        }
+        
+      } else if (class == "sf") {
+        
+        obj <- st_read(dsn = cache_dir, layer = shape,
+                       quiet = TRUE, stringsAsFactors = FALSE)
+        
+        if (is.na(st_crs(obj)$proj4string)) {
+          
+          st_crs(obj) <- "+proj=longlat +datum=NAD83 +no_defs"
+          
+        }
+        
+      }
+      
+      
+      
+    }
+    
+  } else {
+    
+    tmp <- tempdir()
+    file_loc <- file.path(tmp, tiger_file)
+    
+    if (progress_bar) {
+      try(GET(url, write_disk(file_loc),
+              progress(type = "down")), silent = TRUE)
+    } else {
+      try(GET(url, write_disk(file_loc)),
+          silent = TRUE)
+    }
+    
+    
+    # download.file(url, tiger_file, mode = 'wb')
+    unzip(file_loc, exdir = tmp)
+    shape <- gsub(".zip", "", tiger_file)
+    shape <- gsub("_shp", "", shape) # for historic tracts
+    
+    
+    if (class == "sp") {
+      
+      obj <- rgdal::readOGR(dsn = tmp, layer = shape, encoding = "UTF-8",
+                     verbose = FALSE, stringsAsFactors = FALSE)
+      
+      if (is.na(proj4string(obj))) {
+        
+        proj4string(obj) <- CRS("+proj=longlat +datum=NAD83 +no_defs")
+        
+      }
+      
+    } else if (class == "sf") {
+      
+      obj <- st_read(dsn = tmp, layer = shape,
+                     quiet = TRUE, stringsAsFactors = FALSE)
+      
+      if (is.na(st_crs(obj)$proj4string)) {
+        
+        st_crs(obj) <- "+proj=longlat +datum=NAD83 +no_defs"
+        
+      }
+      
+    }
+    
+  }
+  
+  attr(obj, "tigris") <- "tigris"
+  
+  # this will help identify the object "sub type"
+  if (!is.null(tigris_type)) attr(obj, "tigris") <- tigris_type
+  
+  # Take care of COUNTYFP, STATEFP issues for historic data
+  if ("COUNTYFP00" %in% names(obj)) {
+    obj$COUNTYFP <- obj$COUNTYFP00
+    obj$STATEFP <- obj$STATEFP00
+  }
+  if ("COUNTYFP10" %in% names(obj)) {
+    obj$COUNTYFP <- obj$COUNTYFP10
+    obj$STATEFP <- obj$STATEFP10
+  }
+  if ("COUNTY" %in% names(obj)) {
+    obj$COUNTYFP <- obj$COUNTY
+    obj$STATEFP <- obj$STATE
+  }
+  if ("CO" %in% names(obj)) {
+    obj$COUNTYFP <- obj$CO
+    obj$STATEFP <- obj$ST
+  }
+  
+  return(obj)
+  
+}
+
+# Is tigris
+is_tigris <- function (obj) 
+{
+  !is.null(attr(obj, "tigris"))
+}
+
+# Geo join
+geo_join <- function (spatial_data, data_frame, by_sp, by_df, by = NULL, 
+                      how = "left") 
+{
+  if (!is.null(by)) {
+    by_sp <- by
+    by_df <- by
+  }
+  if (class(spatial_data)[1] %in% c("SpatialGridDataFrame", 
+                                    "SpatialLinesDataFrame", "SpatialPixelsDataFrame", "SpatialPointsDataFrame", 
+                                    "SpatialPolygonsDataFrame")) {
+    spatial_data@data <- data.frame(spatial_data@data, data_frame[match(spatial_data@data[[by_sp]], 
+                                                                        data_frame[[by_df]]), ])
+    if (how == "inner") {
+      matches <- match(spatial_data@data[[by_sp]], data_frame[[by_df]])
+      spatial_data <- spatial_data[!is.na(matches), ]
+      return(spatial_data)
+    }
+    else if (how == "left") {
+      return(spatial_data)
+    }
+    else {
+      stop("The available options for `how` are 'left' and 'inner'.", 
+           call. = FALSE)
+    }
+  }
+  else if ("sf" %in% class(spatial_data)) {
+    join_vars <- c(by_df)
+    names(join_vars) <- by_sp
+    if (how == "inner") {
+      joined <- spatial_data %>% inner_join(data_frame, 
+                                            by = join_vars) %>% st_as_sf()
+      attr(joined, "tigris") <- tigris_type(spatial_data)
+      return(joined)
+    }
+    else if (how == "left") {
+      df_unique <- data_frame %>% group_by_(by_df) %>% 
+        mutate(rank = row_number()) %>% filter(rank == 
+                                                 1)
+      joined <- spatial_data %>% left_join(df_unique, by = join_vars) %>% 
+        st_as_sf()
+      if (!is.na(st_crs(spatial_data)$epsg)) {
+        crs <- st_crs(spatial_data)$epsg
+      }
+      else {
+        crs <- st_crs(spatial_data)$proj4string
+      }
+      st_crs(joined) <- crs
+      attr(joined, "tigris") <- tigris_type(spatial_data)
+      return(joined)
+    }
+    else {
+      stop("The available options for `how` are 'left' and 'inner'.", 
+           call. = FALSE)
+    }
+  }
+}
+
+# Tigris type
+tigris_type <- function (obj) 
+{
+  if (is_tigris(obj)) 
+    return(attr(obj, "tigris"))
+  return(NA)
+}
+
+# Counties
+get.counties <- function(){
+  
+  temp <- tempfile()
+  download.file("https://www2.census.gov/geo/tiger/TIGER2019/COUNTY/tl_2019_us_county.zip", "counties", mode = "wb")
+  unzip("counties")
+  file.remove("counties")
+  
+  z <- rgdal::readOGR("tl_2019_us_county.shp")
+  file.remove(c("tl_2019_us_county.cpg", "tl_2019_us_county.dbf",
+                "tl_2019_us_county.prj", "tl_2019_us_county.shp",
+                "tl_2019_us_county.shp.ea.iso.xml", "tl_2019_us_county.shp.iso.xml",
+                "tl_2019_us_county.shx"))
+  return(z)
+}
+
+# States
+
+get.states <- function(){
+  
+  temp <- tempfile()
+  download.file("https://www2.census.gov/geo/tiger/TIGER2019/STATE/tl_2019_us_state.zip", "states", mode = "wb")
+  unzip("states")
+  file.remove("states")
+  
+  z <- rgdal::readOGR("tl_2019_us_state.shp")
+  file.remove(c("tl_2019_us_state.cpg", "tl_2019_us_state.dbf",
+                "tl_2019_us_state.prj", "tl_2019_us_state.shp",
+                "tl_2019_us_state.shp.ea.iso.xml", "tl_2019_us_state.shp.iso.xml",
+                "tl_2019_us_state.shx"))
+  return(z)
+}
 
 # Fuzzy match function ----------------------------------------------------
 
@@ -255,6 +571,21 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   #' @param lower48 limit data to the lower 48 states? - TRUE or FALSE
   #' @export
   #' 
+  #' 
+  # sector=NULL
+  # group=NULL
+  # commodity=NULL
+  # category=NULL
+  # domain='TOTAL'
+  # county=NULL
+  # key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
+  # program = 'CENSUS'
+  # data_item = 'CROP TOTALS - OPERATIONS WITH SALES'
+  # geographic_level = 'STATE'
+  # year = '2017'
+  # state = NULL
+  # geometry = T
+  # lower48 = T
   #' 
   #' @note  
   #'Go to the webpage https://quickstats.nass.usda.gov/. As a best practice, select the items in these fields and test that that data item 
@@ -398,11 +729,11 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   
   # STATE
   if(geometry & geographic_level == 'STATE'){
-    geoms <- tigris::states()
+    geoms <- get.states()
     
     #options(tigris_use_cache = TRUE)
     
-    combined <- tigris::geo_join(spatial_data = geoms,
+    combined <- geo_join(spatial_data = geoms,
                                  data_frame = mydata,
                                  by_sp = 'STATEFP',
                                  by_df = 'state_fips_code',
@@ -417,13 +748,13 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   if(geometry & geographic_level == 'COUNTY'){
     
     #options(tigris_use_cache = TRUE)
-    geoms <- tigris::counties()
+    geoms <- get.counties()
     geoms@data$COUNTYKEY <- paste0(geoms@data$STATEFP, geoms@data$COUNTYFP)
     
     
     mydata$COUNTYKEY <- paste0(mydata$state_ansi, mydata$county_code)
     
-    combined <- tigris::geo_join(spatial_data = geoms,
+    combined <- geo_join(spatial_data = geoms,
                                  data_frame = mydata,
                                  by_sp = 'COUNTYKEY',
                                  by_df = 'COUNTYKEY',
