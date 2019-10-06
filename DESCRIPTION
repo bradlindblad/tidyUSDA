@@ -11,6 +11,7 @@ Authors@R: c(
 Description: Provides a consistent API to pull United States Department of Agriculture census and survey data from
     the National Agricultural Statistics Service (NASS) QuickStats service <https://quickstats.nass.usda.gov>.
 Imports: 
+    curl,
     dplyr,
     fuzzyjoin,
     ggplot2,
@@ -19,7 +20,8 @@ Imports:
     magrittr,
     nlme,
     rgdal,
-    sf
+    sf,
+    tigris
 License: MIT + file LICENSE
 Depends: R (>= 3.6)
 Encoding: UTF-8

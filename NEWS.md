@@ -1,5 +1,6 @@
-# tidyUSDA 0.2.1 (10/5/2019)
+# tidyUSDA 0.2.1 (10/6/2019)
 * Fixed bug in vignette where domain was scoped incorrectly
+* Added comments to vignette regarding slow plotting on Mac OsX
 
 
 # tidyUSDA 0.2.0 (09/28/2019)
