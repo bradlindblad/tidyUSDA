@@ -256,6 +256,21 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   #' @export
   #' 
   #' 
+  # sector=NULL
+  # group=NULL
+  # commodity=NULL
+  # category=NULL
+  # domain='TOTAL'
+  # county=NULL
+  # key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
+  # program = 'CENSUS'
+  # data_item = 'CROP TOTALS - OPERATIONS WITH SALES'
+  # geographic_level = 'STATE'
+  # year = '2017'
+  # state = NULL
+  # geometry = T
+  # lower48 = T
+  #' 
   #' @note  
   #'Go to the webpage https://quickstats.nass.usda.gov/. As a best practice, select the items in these fields and test that that data item 
   #'    exists in the browser before using those parameters in this function. When you have a dataset that works, enter those values in the 

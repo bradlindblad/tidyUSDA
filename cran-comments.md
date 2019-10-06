@@ -1,6 +1,4 @@
-## Resubmission comments
-* Fixed possible error in description ("Toolset" to "Tool Set")
-* Removed invalid URI in using_tidyusda.Rmd vignette
+Quick fix of a few errors in the vignette.
 
 ## Test environments
 * local Linux Mint 19.2, R 3.6.1
