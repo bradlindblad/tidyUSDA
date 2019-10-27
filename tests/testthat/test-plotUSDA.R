@@ -1,5 +1,4 @@
 
-# keyring::key_set("tidyusda")
 
 
 test_that("getQuickstat1", {
@@ -17,7 +16,7 @@ test_that("getQuickstat1", {
       category=NULL,
       domain=NULL,
       county=NULL,
-      key = keyring::key_get("tidyusda"),
+      key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
       program = 'CENSUS',
       data_item = 'CROP TOTALS - OPERATIONS WITH SALES',
       geographic_level = 'STATE',

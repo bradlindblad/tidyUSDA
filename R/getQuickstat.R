@@ -293,7 +293,7 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   
   
 # Install rgeos if not already installed
-if (!"rgeos" %in% installed.packages()) {
+if (!"rgeos" %in% utils::installed.packages()) {
   stop("Package \"rgeos\" needed for this function to work. Please install it with install.packages(\"rgeos\")",
        call. = FALSE)
 }
