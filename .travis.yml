@@ -25,3 +25,5 @@ addons:
       - libgeos-dev
       - libproj.dev
       - libsodium-dev
+after_success:
+    - Rscript -e 'covr::codecov()'
