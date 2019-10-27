@@ -22,7 +22,8 @@ Imports:
     rgdal,
     sf,
     tigris,
-    stringi
+    stringi,
+    usethis
 License: MIT + file LICENSE
 Depends: R (>= 3.6)
 Encoding: UTF-8
