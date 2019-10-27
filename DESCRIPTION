@@ -15,13 +15,14 @@ Imports:
     dplyr,
     fuzzyjoin,
     ggplot2,
-    jsonlite, 
+    jsonlite,
     keyring,
     magrittr,
     nlme,
     rgdal,
     sf,
-    tigris
+    tigris,
+    stringi
 License: MIT + file LICENSE
 Depends: R (>= 3.6)
 Encoding: UTF-8

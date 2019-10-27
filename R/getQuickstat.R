@@ -291,7 +291,11 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   #' 
   #' }
 
-
+  
+# Logic to warn if using Mac OsX - issue with plotting
+  
+  if(stringi::stri_detect(str = utils::osVersion, regex = "Linux")) print("This be linux")
+  if(stringi::stri_detect(str = utils::osVersion, regex = "Mac")) print("This be Mac")
 # Logic to handle improper inputs
   
   # Key
