@@ -28,9 +28,7 @@ plotUSDA <- function(df, fill_by = 'Value'){
   if(stringi::stri_detect(str = utils::osVersion, regex = "mac")) {mac <- TRUE}
   if(mac) {
     
-    stopit <- usethis::ui_yeah("It appears you are using Mac. Mac OsX has a graphics device that doesn't handle the underlying ggplot2::geom_sf()
-                               very well. We recommend you use a package like tmap or leaflet to plot this dataframe. You can still use
-                               plotUSDA, it will just take 10 minutes possibly. Do you want to skip plotting using plotUSDA?")
+    stopit <- usethis::ui_yeah("It appears you are using Mac. Mac OsX has a graphics device that doesn't handle the underlying ggplot2::geom_sf() very well. We recommend you use a package like tmap or leaflet to plot this dataframe. You can still use plotUSDA, it will just take 10 minutes possibly. Do you want to skip plotting using plotUSDA?")
   }
   
   if(stopit) {stop("Quitting since using Mac, gonna try another mapping package like tmap or leaflet.")}
