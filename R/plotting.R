@@ -25,7 +25,7 @@ plotUSDA <- function(df, fill_by = 'Value'){
   # Logic to warn if using Mac OsX - issue with plotting
   mac <- FALSE
   stopit <- FALSE
-  if(stringi::stri_detect(str = utils::osVersion, regex = "Mac")) {mac <- TRUE}
+  if(stringi::stri_detect(str = utils::osVersion, regex = "mac")) {mac <- TRUE}
   if(mac) {
     
     stopit <- usethis::ui_yeah("It appears you are using Mac. Mac OsX has a graphics device that doesn't handle the underlying ggplot2::geom_sf()
