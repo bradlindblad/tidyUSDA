@@ -1,3 +1,5 @@
+# tidyUSDA (development version)
+
 # tidyUSDA 0.2.2 
 * Added messages for macOS users before they try plotUSDA (graphics issue with underlying geom_sf())
 * Minor bug fixes
