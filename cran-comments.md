@@ -1,4 +1,4 @@
-Quick fix of a few errors in the vignette.
+Fixed a few minor bugs.
 
 ## Test environments
 * local Linux Mint 19.2, R 3.6.1

@@ -228,69 +228,75 @@ fuzzyMatch <- function(input, dataset){
 
 # getQuickstat ------------------------------------------------------------
 
+#' getQuickstat
+#' 
+#' @description 
+#' Get values from USDA Quick Stats in a dataframe
+#' with optional sf (simple features) geometry field
+#' 
+#' @param key your USDA api key. Get one at https://quickstats.nass.usda.gov/api - string
+#' @param program program field - string
+#' @param data_item data_item field - string
+#' @param sector sector field - string
+#' @param group group field - string
+#' @param commodity commodity field - string
+#' @param category category field - string
+#' @param domain domain field - string
+#' @param geographic_level geographic_level field - string
+#' @param state state field - either a string or character vector with multiple states
+#' @param county county field - either a string or character vector with multiple states
+#' @param year year field - string
+#' @param geometry geometry field (TRUE or FALSE), set to TRUE if you would like a simple features (SF) geometry field included. 
+#' Only works when geographic_level is set to 'COUNTY' or 'STATE'
+#' @param lower48 limit data to the lower 48 states? - TRUE or FALSE
+#' @export
+#' 
+#' 
+# sector=NULL
+# group=NULL
+# commodity=NULL
+# category=NULL
+# domain='TOTAL'
+# county=NULL
+# key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
+# program = 'CENSUS'
+# data_item = 'CROP TOTALS - OPERATIONS WITH SALES'
+# geographic_level = 'STATE'
+# year = '2017'
+# state = NULL
+# geometry = T
+# lower48 = T
+#' 
+#' @note  
+#'Go to the webpage https://quickstats.nass.usda.gov/. As a best practice, select the items in these fields and test that that data item 
+#'    exists in the browser before using those parameters in this function. When you have a dataset that works, enter those values in the 
+#'    function as parameters. Ideally, only enter values for your key obviously, then PROGRAM, DATA_ITEM, GEOGRAPHIC_LEVEL and then if
+#'    necessary, DOMAIN, STATE, COUNTY or YEAR. 
+#' 
+#' @examples 
+#' \dontrun{
+#' getQuickstat(
+#' key = 'your_key',
+#' program = 'CENSUS',
+#' data_item = 'CROP TOTALS - OPERATIONS WITH SALES',
+#' geographic_level = 'COUNTY',
+#' year = '2017',
+#' state = NULL,
+#' geometry = T,
+#' lower48 = T)
+#' 
+#' }
+
 getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
                          category=NULL, domain=NULL, geographic_level=NULL,
                          state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE) {
   
-  #' getQuickstat
-  #' 
-  #' @description 
-  #' Get values from USDA Quick Stats in a dataframe
-  #' with optional sf (simple features) geometry field
-  #' 
-  #' @param key your USDA api key. Get one at https://quickstats.nass.usda.gov/api - string
-  #' @param program program field - string
-  #' @param data_item data_item field - string
-  #' @param sector sector field - string
-  #' @param group group field - string
-  #' @param commodity commodity field - string
-  #' @param category category field - string
-  #' @param domain domain field - string
-  #' @param geographic_level geographic_level field - string
-  #' @param state state field - either a string or character vector with multiple states
-  #' @param county county field - either a string or character vector with multiple states
-  #' @param year year field - string
-  #' @param geometry geometry field (TRUE or FALSE), set to TRUE if you would like a simple features (SF) geometry field included. 
-  #' Only works when geographic_level is set to 'COUNTY' or 'STATE'
-  #' @param lower48 limit data to the lower 48 states? - TRUE or FALSE
-  #' @export
-  #' 
-  #' 
-  # sector=NULL
-  # group=NULL
-  # commodity=NULL
-  # category=NULL
-  # domain='TOTAL'
-  # county=NULL
-  # key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
-  # program = 'CENSUS'
-  # data_item = 'CROP TOTALS - OPERATIONS WITH SALES'
-  # geographic_level = 'STATE'
-  # year = '2017'
-  # state = NULL
-  # geometry = T
-  # lower48 = T
-  #' 
-  #' @note  
-  #'Go to the webpage https://quickstats.nass.usda.gov/. As a best practice, select the items in these fields and test that that data item 
-  #'    exists in the browser before using those parameters in this function. When you have a dataset that works, enter those values in the 
-  #'    function as parameters. Ideally, only enter values for your key obviously, then PROGRAM, DATA_ITEM, GEOGRAPHIC_LEVEL and then if
-  #'    necessary, DOMAIN, STATE, COUNTY or YEAR. 
-  #' 
-  #' @examples 
-  #' \dontrun{
-  #' getQuickstat(
-  #' key = 'your_key',
-  #' program = 'CENSUS',
-  #' data_item = 'CROP TOTALS - OPERATIONS WITH SALES',
-  #' geographic_level = 'COUNTY',
-  #' year = '2017',
-  #' state = NULL,
-  #' geometry = T,
-  #' lower48 = T)
-  #' 
-  #' }
-
+  
+# Install rgeos if not already installed
+if (!"rgeos" %in% utils::installed.packages()) {
+  stop("Package \"rgeos\" needed for this function to work. Please install it with install.packages(\"rgeos\")",
+       call. = FALSE)
+}
 
 # Logic to handle improper inputs
   
@@ -450,8 +456,8 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
     
   }
   
-  # Make sure value is numeric
-  mydata$Value <- gsub(",", "", mydata$Value)
+  # Make sure value is numeric, and get rid of non-numerics
+  mydata$Value <- gsub("[^0-9.-]", "", mydata$Value)
   mydata$Value <- as.numeric(mydata$Value)
   
   return(mydata)

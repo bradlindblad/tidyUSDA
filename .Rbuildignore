@@ -12,3 +12,4 @@
 ^pkgdown$
 ^doc$
 ^revdep$
+^codecov\.yml$

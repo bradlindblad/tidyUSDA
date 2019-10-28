@@ -25,3 +25,9 @@ addons:
       - libgeos-dev
       - libproj.dev
       - libsodium-dev
+      
+r_packages:
+  - covr
+  
+after_success:
+    - Rscript -e 'library(covr); codecov(token = "b442cfab-4b70-4c03-855c-49f5c5bae0ca")'
