@@ -26,4 +26,4 @@ addons:
       - libproj.dev
       - libsodium-dev
 after_success:
-    - Rscript -e 'covr::codecov()'
+    - Rscript -e 'covr::codecov("b442cfab-4b70-4c03-855c-49f5c5bae0ca")'
