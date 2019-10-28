@@ -456,8 +456,8 @@ if (!"rgeos" %in% utils::installed.packages()) {
     
   }
   
-  # Make sure value is numeric
-  mydata$Value <- gsub(",", "", mydata$Value)
+  # Make sure value is numeric, and get rid of non-numerics
+  mydata$Value <- gsub("[^0-9.-]", "", mydata$Value)
   mydata$Value <- as.numeric(mydata$Value)
   
   return(mydata)
