@@ -1,4 +1,5 @@
-# tidyUSDA 
+# tidyUSDA 0.2.3
+
 
 # tidyUSDA 0.2.3
 * Fixed interacting plotting issue with builds
