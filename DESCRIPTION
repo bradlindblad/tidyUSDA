@@ -38,7 +38,8 @@ Imports:
     sf,
     stringi,
     tigris,
-    usethis
+    usethis,
+    crayon
 Suggests: 
     knitr,
     rgeos,
