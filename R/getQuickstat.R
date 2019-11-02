@@ -294,7 +294,7 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   
 # Install rgeos if not already installed
 if (!"rgeos" %in% utils::installed.packages()) {
-  stop("Package \"rgeos\" needed for this function to work. Please install it with install.packages(\"rgeos\")",
+  stop(crayon::cyan("Package \"rgeos\" needed for this function to work. Please install it with install.packages(\"rgeos\")"),
        call. = FALSE)
 }
 
@@ -302,71 +302,71 @@ if (!"rgeos" %in% utils::installed.packages()) {
   
   # Key
   if(is.null(key)){
-    message("API key missing; enter an API key.")
+    message(crayon::cyan("API key missing; enter an API key."))
   } 
   
   # Program
   if(is.null(program)){} else if(!toupper(program) %in% tidyUSDA::allProgram){
-    recommendation <- fuzzyMatch(toupper(program), tidyUSDA::allProgram);
-    message(paste0("Your value for PROGRAM is not valid. Did you mean ",
+    recommendation <- crayon::red(fuzzyMatch(toupper(program), tidyUSDA::allProgram));
+    message(crayon::cyan(paste0("Your value for PROGRAM is not valid. Did you mean ",
                    recommendation,
-                   "? If not, check tidyUSDA::allProgram for a vector of all acceptable values."))
+                   "? If not, check tidyUSDA::allProgram for a vector of all acceptable values.")))
   }
   
   # Data item
   if(is.null(data_item)){} else if(!toupper(data_item) %in% tidyUSDA::allDataItem){
-    recommendation <- fuzzyMatch(toupper(data_item), tidyUSDA::allDataItem);
-    message(paste0("Your value for DATA_ITEM is not valid. Did you mean ",
+    recommendation <- crayon::red(fuzzyMatch(toupper(data_item), tidyUSDA::allDataItem));
+    message(crayon::cyan(paste0("Your value for DATA_ITEM is not valid. Did you mean ",
                    recommendation,
-                   "? If not, check tidyUSDA::allDataItem for a vector of all acceptable values."))
+                   "? If not, check tidyUSDA::allDataItem for a vector of all acceptable values.")))
   }
   
   # Sector
   if(is.null(sector)){} else if (!is.null(sector) & !toupper(sector) %in% tidyUSDA::allSector){
-    recommendation <- fuzzyMatch(toupper(sector), tidyUSDA::allSector);
-    message(paste0("Your value for SECTOR is not valid. Did you mean ",
+    recommendation <- crayon::red(fuzzyMatch(toupper(sector), tidyUSDA::allSector));
+    message(crayon::cyan(paste0("Your value for SECTOR is not valid. Did you mean ",
                    recommendation,
-                   "? If not, check tidyUSDA::allSector for a vector of all acceptable values."))
+                   "? If not, check tidyUSDA::allSector for a vector of all acceptable values.")))
   }
 
   # Group
   if(is.null(group)){} else if(!toupper(group) %in% tidyUSDA::allGroup){
-    recommendation <- fuzzyMatch(toupper(group), tidyUSDA::allGroup);
-    message(paste0("Your value for GROUP is not valid. Did you mean ",
+    recommendation <- crayon::red(fuzzyMatch(toupper(group), tidyUSDA::allGroup));
+    message(crayon::cyan(paste0("Your value for GROUP is not valid. Did you mean ",
                    recommendation,
-                   "? If not, check tidyUSDA::allGroup for a vector of all acceptable values."))
+                   "? If not, check tidyUSDA::allGroup for a vector of all acceptable values.")))
   }
   
   # Commodity
   if(is.null(commodity)){} else if(!toupper(commodity) %in% tidyUSDA::allCommodity){
-    recommendation <- fuzzyMatch(toupper(commodity), tidyUSDA::allCommodity);
-    message(paste0("Your value for COMMODITY is not valid. Did you mean ",
+    recommendation <- crayon::red(fuzzyMatch(toupper(commodity), tidyUSDA::allCommodity));
+    message(crayon::cyan(paste0("Your value for COMMODITY is not valid. Did you mean ",
                    recommendation,
-                   "? If not, check tidyUSDA::allCommodity for a vector of all acceptable values."))
+                   "? If not, check tidyUSDA::allCommodity for a vector of all acceptable values.")))
   }
   
   # Category
   if(is.null(category)){} else if(!toupper(category) %in% tidyUSDA::allCategory){
-    recommendation <- fuzzyMatch(toupper(category), tidyUSDA::allCategory);
-    message(paste0("Your value for CATEGORY is not valid. Did you mean ",
+    recommendation <- crayon::red(fuzzyMatch(toupper(category), tidyUSDA::allCategory));
+    message(crayon::cyan(paste0("Your value for CATEGORY is not valid. Did you mean ",
                    recommendation,
-                   "? If not, check tidyUSDA::allCategory for a vector of all acceptable values."))
+                   "? If not, check tidyUSDA::allCategory for a vector of all acceptable values.")))
   }
   
   # Domain
   if(is.null(domain)){} else if(!toupper(domain) %in% tidyUSDA::allDomain){
-    recommendation <- fuzzyMatch(toupper(domain), tidyUSDA::allDomain);
-    message(paste0("Your value for DOMAIN is not valid. Did you mean ",
+    recommendation <- crayon::red(fuzzyMatch(toupper(domain), tidyUSDA::allDomain));
+    message(crayon::cyan(paste0("Your value for DOMAIN is not valid. Did you mean ",
                    recommendation,
-                   "? If not, check tidyUSDA::allDomain for a vector of all acceptable values."))
+                   "? If not, check tidyUSDA::allDomain for a vector of all acceptable values.")))
   }
   
   # Geographic level
   if(is.null(geographic_level)){} else if(!toupper(geographic_level) %in% tidyUSDA::allGeogLevel){
-    recommendation <- fuzzyMatch(toupper(geographic_level), tidyUSDA::allGeogLevel);
-    message(paste0("Your value for GEOGRAPHIC_LEVEL is not valid. Did you mean ",
+    recommendation <- crayon::red(fuzzyMatch(toupper(geographic_level), tidyUSDA::allGeogLevel));
+    message(crayon::cyan(paste0("Your value for GEOGRAPHIC_LEVEL is not valid. Did you mean ",
                    recommendation,
-                   "? If not, check tidyUSDA::allGeogLevel for a vector of all acceptable values."))
+                   "? If not, check tidyUSDA::allGeogLevel for a vector of all acceptable values.")))
   }
   
   
@@ -403,19 +403,9 @@ if (!"rgeos" %in% utils::installed.packages()) {
                  state=state, county=county, year=year, geometry = geometry, lower48 = lower48)
   }
   
-  # Reset variables to a default value if not used
-  # if(is.null(program)){program <- 'NON'}
-  # if(is.null(sector)){sector <- 'NON'}
-  # if(is.null(group)){group <- 'NON'}
-  # if(is.null(commodity)){commodity <- 'NON'}
-  # if(is.null(category)){category <- 'NON'}
-  # if(is.null(data_item)){data_item <- 'NON'}
-  # if(is.null(domain)){domain <- 'NON'}
+  
   if(is.null(geographic_level)){geographic_level <- 'NON'}
-  # if(is.null(state)){state <- 'NON'}
-  # if(is.null(county)){county <- 'NON'}
-  # if(is.null(year)){year <- 'NON'} 
-  # 
+
   
   # STATE
   if(geometry & geographic_level == 'STATE'){
@@ -462,6 +452,6 @@ if (!"rgeos" %in% utils::installed.packages()) {
   
   return(mydata)
 }
-  
+
 
 

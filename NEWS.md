@@ -1,4 +1,9 @@
-# tidyUSDA (development version)
+# tidyUSDA 0.2.3
+
+
+# tidyUSDA 0.2.3
+* Fixed interacting plotting issue with builds
+* Added crayon highlighting to error trapping code
 
 # tidyUSDA 0.2.2 
 * Added messages for macOS users before they try plotUSDA (graphics issue with underlying geom_sf())

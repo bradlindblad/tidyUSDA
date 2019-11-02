@@ -20,23 +20,26 @@
 
 plotUSDA <- function(df, fill_by = 'Value'){
   
+  
   # Install rgeos if not already installed
   if (!"rgeos" %in% utils::installed.packages()) {
-    stop("Package \"rgeos\" needed for this function to work. Please install it with install.packages(\"rgeos\")",
+    stop(crayon::cyan("Package \"rgeos\" needed for this function to work. Please install it with install.packages(\"rgeos\")"),
          call. = FALSE)
   }
 
   
   # Logic to warn if using Mac OsX - issue with plotting
-  mac <- FALSE
+  quartz <- FALSE
   stopit <- FALSE
-  if(stringi::stri_detect(str = utils::osVersion, regex = "mac")) {mac <- TRUE}
-  if(mac) {
-    
-    stopit <- usethis::ui_yeah("It appears you are using Mac. Mac OsX has a graphics device that doesn't handle the underlying ggplot2::geom_sf() very well. We recommend you use a package like tmap or leaflet to plot this dataframe. You can still use plotUSDA, it will just take 10 minutes possibly. Do you want to skip plotting using plotUSDA?")
-  }
   
-  if(stopit) {stop("Quitting since using Mac, gonna try another mapping package like tmap or leaflet.")}
+  
+  if(identical(getOption("bitmapType"), "quartz")) {quartz <- TRUE}
+  if(quartz) {
+    
+    stopit <- message(cat(crayon::cyan("It appears your session is using a", crayon::red("quartz graphics device"), crayon::cyan("- probably macOS. The quartz graphics device doesn't handle the underlying ggplot2::geom_sf() very well. We recommend you either switch to another device, like X11, or use a package like tmap or leaflet to plot this dataframe. You can still use plotUSDA with quartz, it just may take 10 minutes."))))
+
+  # if(stopit) {message("Quitting, gonna try another mapping package like tmap or leaflet.")}
+  }
   
   z <- ggplot2::ggplot(df) +
     ggplot2::geom_sf(ggplot2::aes_string(fill = fill_by)) +
@@ -48,4 +51,5 @@ plotUSDA <- function(df, fill_by = 'Value'){
   return(z)
   
 }
+
 
