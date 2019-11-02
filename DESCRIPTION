@@ -1,7 +1,7 @@
 Package: tidyUSDA
 Type: Package
 Title: A Minimal Tool Set for Gathering USDA Quick Stat Data for Analysis and Visualization
-Version: 0.2.1
+Version: 0.2.3.9000
 URL: https://bradlindblad.github.io/tidyUSDA, https://github.com/bradlindblad/tidyUSDA
 Authors@R: c(
     person("Brad", "Lindblad", email = "bradley.lindblad@gmail.com", role = c("aut", "cre")),
