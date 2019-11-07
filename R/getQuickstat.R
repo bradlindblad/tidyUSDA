@@ -252,20 +252,20 @@ fuzzyMatch <- function(input, dataset){
 #' @export
 #' 
 #' 
-# sector=NULL
-# group=NULL
-# commodity=NULL
-# category=NULL
-# domain='TOTAL'
-# county=NULL
-# key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
-# program = 'CENSUS'
-# data_item = 'CROP TOTALS - OPERATIONS WITH SALES'
-# geographic_level = 'STATE'
-# year = '2017'
-# state = NULL
-# geometry = T
-# lower48 = T
+  # sector=NULL
+  # group=NULL
+  # commodity=NULL
+  # category=NULL
+  # domain='TOTAL'
+  # county=NULL
+  # key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
+  # program = 'CENSUS'
+  # data_item = 'AG LAND, INCL BUILDINGS - ASSET VALUE, MEASURED IN $'
+  # geographic_level = 'STATE'
+  # year = NULL
+  # state = NULL
+  # geometry = T
+  # lower48 = T
 #' 
 #' @note  
 #'Go to the webpage https://quickstats.nass.usda.gov/. As a best practice, select the items in these fields and test that that data item 
@@ -413,13 +413,19 @@ if (!"rgeos" %in% utils::installed.packages()) {
     
     #options(tigris_use_cache = TRUE)
     
-    combined <- tigris::geo_join(spatial_data = geoms,
-                                 data_frame = mydata,
-                                 by_sp = 'STATEFP',
-                                 by_df = 'state_fips_code',
-                                 how = 'inner')
+    # combined <- tigris::geo_join(spatial_data = geoms,
+    #                              data_frame = mydata,
+    #                              by_sp = 'STATEFP',
+    #                              by_df = 'state_fips_code',
+    #                              how = 'left')
     
-    mydata <- sf::st_as_sf(combined)
+    mydata.sf <- sf::st_as_sf(geoms)
+    mydata <- dplyr::left_join(mydata,
+                               mydata.sf,
+                               by = c("state_fips_code" = "STATEFP"))
+    
+    mydata <- sf::st_as_sf(mydata)
+    # mydata <- sf::st_as_sf(combined)
     
     if(lower48){mydata <- dplyr::filter(mydata, !(toupper(mydata$state_name) %in% c("ALASKA", "HAWAII", "PUERTO RICO")))}
   }
@@ -434,13 +440,19 @@ if (!"rgeos" %in% utils::installed.packages()) {
     
     mydata$COUNTYKEY <- paste0(mydata$state_ansi, mydata$county_code)
     
-    combined <- tigris::geo_join(spatial_data = geoms,
-                                 data_frame = mydata,
-                                 by_sp = 'COUNTYKEY',
-                                 by_df = 'COUNTYKEY',
-                                 how = 'inner')
+    # combined <- tigris::geo_join(spatial_data = geoms,
+    #                              data_frame = mydata,
+    #                              by_sp = 'COUNTYKEY',
+    #                              by_df = 'COUNTYKEY',
+    #                              how = 'left')
     
-    mydata <- sf::st_as_sf(combined)
+    mydata.sf <- sf::st_as_sf(geoms)
+    mydata <- dplyr::left_join(mydata,
+                               mydata.sf,
+                               by = "COUNTYKEY")
+    
+    mydata <- sf::st_as_sf(mydata)
+    # mydata <- sf::st_as_sf(combined)
     
     if(lower48){mydata <- dplyr::filter(mydata, !(toupper(mydata$state_name) %in% c("ALASKA", "HAWAII", "PUERTO RICO")))}
     
