@@ -1,4 +1,4 @@
-Per Prof Brian Ripley's request: the plotUSDA() function was testing for the OS, where Professor Ripley rightly pointed out that I need to test the device instead. This version fixes that.
+Fixed a few minor things that needed addressing.
 
 ## Test environments
 * local Linux Mint 19.2, R 3.6.1

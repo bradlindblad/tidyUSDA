@@ -249,6 +249,7 @@ fuzzyMatch <- function(input, dataset){
 #' @param geometry geometry field (TRUE or FALSE), set to TRUE if you would like a simple features (SF) geometry field included. 
 #' Only works when geographic_level is set to 'COUNTY' or 'STATE'
 #' @param lower48 limit data to the lower 48 states? - TRUE or FALSE
+#' @param weighted_by_area option to mutate a new column that takes the target ('Value') and divides it by the square miles in that state or county; only works when GEOMETRY = TRUE - TRUE or FALSE
 #' @export
 #' 
 #' 
@@ -280,6 +281,7 @@ fuzzyMatch <- function(input, dataset){
 #' program = 'CENSUS',
 #' data_item = 'CROP TOTALS - OPERATIONS WITH SALES',
 #' geographic_level = 'COUNTY',
+#' domain = 'TOTAL',
 #' year = '2017',
 #' state = NULL,
 #' geometry = T,
@@ -289,7 +291,7 @@ fuzzyMatch <- function(input, dataset){
 
 getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
                          category=NULL, domain=NULL, geographic_level=NULL,
-                         state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE) {
+                         state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE, weighted_by_area = FALSE) {
   
   
 # Install rgeos if not already installed
@@ -457,10 +459,34 @@ if (!"rgeos" %in% utils::installed.packages()) {
     if(lower48){mydata <- dplyr::filter(mydata, !(toupper(mydata$state_name) %in% c("ALASKA", "HAWAII", "PUERTO RICO")))}
     
   }
+
   
   # Make sure value is numeric, and get rid of non-numerics
   mydata$Value <- gsub("[^0-9.-]", "", mydata$Value)
   mydata$Value <- as.numeric(mydata$Value)
+  
+  
+  # Logic to handle imputing weighted by land area
+  if(geometry & weighted_by_area){
+    
+    mydata <- mydata %>%
+      dplyr::mutate(value_per_sq_mile = round(as.numeric(mydata$Value)/(as.numeric(mydata$ALAND)/2589988.110336), 0))  # this is conversion rate from meters ^2 to miles ^2
+    
+    
+  }
+  
+  # If geometry, put important cols first
+  if(geometry & geographic_level %in% c("COUNTY", "STATE")){
+    mydata <- mydata %>%
+      dplyr::select('GEOID', 'year', 'ALAND', 'unit_desc', 'short_desc', 'Value', dplyr::everything())
+  }
+  
+  # If weighted value, put that up front, too
+  if(weighted_by_area){
+    mydata <- mydata %>%
+      dplyr::select('GEOID', 'year', 'ALAND', 'unit_desc', 'short_desc', 'Value', 'value_per_sq_mile', dplyr::everything())
+    
+  }
   
   return(mydata)
 }
