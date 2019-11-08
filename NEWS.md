@@ -1,4 +1,7 @@
-# tidyUSDA (development version)
+
+# tidyUSDA 0.2.4
+* Redid the geospatial joins in getQuickstat()
+* Added more unit tests
 
 # tidyUSDA 0.2.3
 * Fixed interacting plotting issue with builds

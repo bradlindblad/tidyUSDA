@@ -3,12 +3,9 @@
 
 test_that("getQuickstat1", {
   
-  testthat::expect_type(
+
     
-    
-    # Get count of operations with sales in 2017
-    
-    plotUSDA(
+   raw <- plotUSDA(
     tidyUSDA::getQuickstat(
       sector=NULL,
       group=NULL,
@@ -27,10 +24,8 @@ test_that("getQuickstat1", {
     )
     
 
+    testthat::expect_s3_class(object = raw, class = "ggplot")
     
-    ,
     
-    "list"
-    
-  )
+  
 })

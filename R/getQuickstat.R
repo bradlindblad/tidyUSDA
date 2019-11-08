@@ -249,23 +249,24 @@ fuzzyMatch <- function(input, dataset){
 #' @param geometry geometry field (TRUE or FALSE), set to TRUE if you would like a simple features (SF) geometry field included. 
 #' Only works when geographic_level is set to 'COUNTY' or 'STATE'
 #' @param lower48 limit data to the lower 48 states? - TRUE or FALSE
+#' @param weighted_by_area option to mutate a new column that takes the target ('Value') and divides it by the square miles in that state or county; only works when GEOMETRY = TRUE - TRUE or FALSE
 #' @export
 #' 
 #' 
-# sector=NULL
-# group=NULL
-# commodity=NULL
-# category=NULL
-# domain='TOTAL'
-# county=NULL
-# key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
-# program = 'CENSUS'
-# data_item = 'CROP TOTALS - OPERATIONS WITH SALES'
-# geographic_level = 'STATE'
-# year = '2017'
-# state = NULL
-# geometry = T
-# lower48 = T
+  # sector=NULL
+  # group=NULL
+  # commodity=NULL
+  # category=NULL
+  # domain='TOTAL'
+  # county=NULL
+  # key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
+  # program = 'CENSUS'
+  # data_item = 'AG LAND, INCL BUILDINGS - ASSET VALUE, MEASURED IN $'
+  # geographic_level = 'STATE'
+  # year = NULL
+  # state = NULL
+  # geometry = T
+  # lower48 = T
 #' 
 #' @note  
 #'Go to the webpage https://quickstats.nass.usda.gov/. As a best practice, select the items in these fields and test that that data item 
@@ -280,6 +281,7 @@ fuzzyMatch <- function(input, dataset){
 #' program = 'CENSUS',
 #' data_item = 'CROP TOTALS - OPERATIONS WITH SALES',
 #' geographic_level = 'COUNTY',
+#' domain = 'TOTAL',
 #' year = '2017',
 #' state = NULL,
 #' geometry = T,
@@ -289,7 +291,7 @@ fuzzyMatch <- function(input, dataset){
 
 getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
                          category=NULL, domain=NULL, geographic_level=NULL,
-                         state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE) {
+                         state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE, weighted_by_area = FALSE) {
   
   
 # Install rgeos if not already installed
@@ -413,13 +415,19 @@ if (!"rgeos" %in% utils::installed.packages()) {
     
     #options(tigris_use_cache = TRUE)
     
-    combined <- tigris::geo_join(spatial_data = geoms,
-                                 data_frame = mydata,
-                                 by_sp = 'STATEFP',
-                                 by_df = 'state_fips_code',
-                                 how = 'inner')
+    # combined <- tigris::geo_join(spatial_data = geoms,
+    #                              data_frame = mydata,
+    #                              by_sp = 'STATEFP',
+    #                              by_df = 'state_fips_code',
+    #                              how = 'left')
     
-    mydata <- sf::st_as_sf(combined)
+    mydata.sf <- sf::st_as_sf(geoms)
+    mydata <- dplyr::left_join(mydata,
+                               mydata.sf,
+                               by = c("state_fips_code" = "STATEFP"))
+    
+    mydata <- sf::st_as_sf(mydata)
+    # mydata <- sf::st_as_sf(combined)
     
     if(lower48){mydata <- dplyr::filter(mydata, !(toupper(mydata$state_name) %in% c("ALASKA", "HAWAII", "PUERTO RICO")))}
   }
@@ -434,21 +442,51 @@ if (!"rgeos" %in% utils::installed.packages()) {
     
     mydata$COUNTYKEY <- paste0(mydata$state_ansi, mydata$county_code)
     
-    combined <- tigris::geo_join(spatial_data = geoms,
-                                 data_frame = mydata,
-                                 by_sp = 'COUNTYKEY',
-                                 by_df = 'COUNTYKEY',
-                                 how = 'inner')
+    # combined <- tigris::geo_join(spatial_data = geoms,
+    #                              data_frame = mydata,
+    #                              by_sp = 'COUNTYKEY',
+    #                              by_df = 'COUNTYKEY',
+    #                              how = 'left')
     
-    mydata <- sf::st_as_sf(combined)
+    mydata.sf <- sf::st_as_sf(geoms)
+    mydata <- dplyr::left_join(mydata,
+                               mydata.sf,
+                               by = "COUNTYKEY")
+    
+    mydata <- sf::st_as_sf(mydata)
+    # mydata <- sf::st_as_sf(combined)
     
     if(lower48){mydata <- dplyr::filter(mydata, !(toupper(mydata$state_name) %in% c("ALASKA", "HAWAII", "PUERTO RICO")))}
     
   }
+
   
   # Make sure value is numeric, and get rid of non-numerics
   mydata$Value <- gsub("[^0-9.-]", "", mydata$Value)
   mydata$Value <- as.numeric(mydata$Value)
+  
+  
+  # Logic to handle imputing weighted by land area
+  if(geometry & weighted_by_area){
+    
+    mydata <- mydata %>%
+      dplyr::mutate(value_per_sq_mile = round(as.numeric(mydata$Value)/(as.numeric(mydata$ALAND)/2589988.110336), 0))  # this is conversion rate from meters ^2 to miles ^2
+    
+    
+  }
+  
+  # If geometry, put important cols first
+  if(geometry & geographic_level %in% c("COUNTY", "STATE")){
+    mydata <- mydata %>%
+      dplyr::select('GEOID', 'year', 'ALAND', 'unit_desc', 'short_desc', 'Value', dplyr::everything())
+  }
+  
+  # If weighted value, put that up front, too
+  if(weighted_by_area){
+    mydata <- mydata %>%
+      dplyr::select('GEOID', 'year', 'ALAND', 'unit_desc', 'short_desc', 'Value', 'value_per_sq_mile', dplyr::everything())
+    
+  }
   
   return(mydata)
 }

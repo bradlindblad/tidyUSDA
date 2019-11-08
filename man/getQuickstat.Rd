@@ -7,7 +7,8 @@
 getQuickstat(key = NULL, program = NULL, data_item = NULL,
   sector = NULL, group = NULL, commodity = NULL, category = NULL,
   domain = NULL, geographic_level = NULL, state = NULL,
-  county = NULL, year = NULL, geometry = FALSE, lower48 = FALSE)
+  county = NULL, year = NULL, geometry = FALSE, lower48 = FALSE,
+  weighted_by_area = FALSE)
 }
 \arguments{
 \item{key}{your USDA api key. Get one at https://quickstats.nass.usda.gov/api - string}
@@ -38,6 +39,8 @@ getQuickstat(key = NULL, program = NULL, data_item = NULL,
 Only works when geographic_level is set to 'COUNTY' or 'STATE'}
 
 \item{lower48}{limit data to the lower 48 states? - TRUE or FALSE}
+
+\item{weighted_by_area}{option to mutate a new column that takes the target ('Value') and divides it by the square miles in that state or county; only works when GEOMETRY = TRUE - TRUE or FALSE}
 }
 \description{
 Get values from USDA Quick Stats in a dataframe
@@ -56,6 +59,7 @@ key = 'your_key',
 program = 'CENSUS',
 data_item = 'CROP TOTALS - OPERATIONS WITH SALES',
 geographic_level = 'COUNTY',
+domain = 'TOTAL',
 year = '2017',
 state = NULL,
 geometry = T,
