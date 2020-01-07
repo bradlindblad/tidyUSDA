@@ -1,0 +1,25 @@
+
+
+year <- sub("-.*", "", meta$Date)
+if(!length(year))
+  year <- substr(Sys.Date(),1,4)
+vers <- meta$Version
+if(is.null(vers))
+  vers <- packageVersion("tidyUSDA")
+vers <- paste("R package version", vers)
+
+# Grab authors from DESCRIPTION file
+# authors <- eval(parse(text=as.list(read.dcf("../DESCRIPTION")[1, ])$`Authors@R`))
+# authors <- authors[sapply(authors$role, function(roles) "aut" %in% roles)]
+# authors <- sapply(authors, function(author) paste(author$given, author$family))
+# authors <- paste(authors, collapse = " and ")
+
+citHeader("To cite the tidyUSDA package in publications, please use:")
+
+bibentry(bibtype = "Manual",
+  title = "{tidyUSDA}: A Minimal Tool Set for Gathering USDA Quick Stat Data for Analysis and Visualization",
+  author = "Brad Lindblad",
+  year = year,
+  note = vers,
+  url = "https://bradlindblad.github.io/tidyUSDA/")
+

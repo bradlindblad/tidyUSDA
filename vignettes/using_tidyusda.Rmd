@@ -132,3 +132,6 @@ You can report a bug or request new features at [https://github.com/bradlindblad
 ## References
 
 [1] (https://www.usda.gov/media/press-releases/2019/04/11/2017-census-agriculture-data-now-available)
+
+## Important note
+This product uses the NASS API but is not endorsed or certified by NASS.

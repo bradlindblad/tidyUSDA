@@ -1,7 +1,7 @@
 Fixed a few minor things that needed addressing.
 
 ## Test environments
-* local Linux Mint 19.2, R 3.6.1
+* local Linux Mint 19.3, R 3.6.2
 * ubuntu 16.04 (on travis-ci), R 3.6.1
 
 
