@@ -43,13 +43,18 @@ plotUSDA <- function(df, fill_by = 'Value'){
   
   z <- ggplot2::ggplot(df) +
     ggplot2::geom_sf(ggplot2::aes_string(fill = fill_by)) +
-    ggplot2::coord_sf(datum=NA) +
+    # ggplot2::coord_sf(datum=NA) +
+    
     ggplot2::scale_fill_viridis_c() +
     ggplot2::theme_minimal() +
-    ggplot2::theme(legend.position = "None") 
+    ggplot2::theme(legend.position = "None") +
+    ggplot2::theme(panel.grid.major = ggplot2::element_line(colour = "transparent"),
+                   axis.text.x=ggplot2::element_blank(),
+                   axis.ticks.x=ggplot2::element_blank(),
+                   axis.text.y=ggplot2::element_blank(),
+                   axis.ticks.y=ggplot2::element_blank()) 
   
   return(z)
   
 }
-
 

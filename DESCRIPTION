@@ -2,7 +2,7 @@ Type: Package
 Package: tidyUSDA
 Title: A Minimal Tool Set for Gathering USDA Quick Stat Data for
     Analysis and Visualization
-Version: 0.2.4
+Version: 0.2.5
 Authors@R: 
     c(person(given = "Brad",
              family = "Lindblad",
@@ -26,6 +26,7 @@ URL: https://bradlindblad.github.io/tidyUSDA,
 Depends: 
     R (>= 3.6)
 Imports: 
+    crayon,
     curl,
     dplyr,
     fuzzyjoin,
@@ -38,18 +39,17 @@ Imports:
     sf,
     stringi,
     tigris,
-    usethis,
-    crayon
+    usethis
 Suggests: 
+    covr,
     knitr,
     rgeos,
     rmarkdown,
-    testthat (>= 2.1.0),
-    covr,
-    spelling
+    spelling,
+    testthat (>= 2.1.0)
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
+Language: en-US
 LazyData: true
 RoxygenNote: 6.1.1
-Language: en-US

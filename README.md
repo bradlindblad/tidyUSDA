@@ -101,3 +101,5 @@ The last function returns this ggplot choropleth:
 
 ## Contact
 * [Brad Lindblad](https://github.com/bradlindblad)
+
+***This product uses the NASS API but is not endorsed or certified by NASS.***
