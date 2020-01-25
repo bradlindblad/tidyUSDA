@@ -470,7 +470,7 @@ if (!"rgeos" %in% utils::installed.packages()) {
   if(geometry & weighted_by_area){
     
     mydata <- mydata %>%
-      dplyr::mutate(value_per_sq_mile = round(as.numeric(mydata$Value)/(as.numeric(mydata$ALAND)/2589988.110336), 0))  # this is conversion rate from meters ^2 to miles ^2
+      dplyr::mutate(value_per_sq_mile = round(as.numeric(mydata$Value)/(as.numeric(mydata$ALAND)/2589988.110336), 4))  # this is conversion rate from meters ^2 to miles ^2
     
     
   }

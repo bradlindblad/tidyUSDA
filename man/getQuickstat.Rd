@@ -4,11 +4,23 @@
 \alias{getQuickstat}
 \title{getQuickstat}
 \usage{
-getQuickstat(key = NULL, program = NULL, data_item = NULL,
-  sector = NULL, group = NULL, commodity = NULL, category = NULL,
-  domain = NULL, geographic_level = NULL, state = NULL,
-  county = NULL, year = NULL, geometry = FALSE, lower48 = FALSE,
-  weighted_by_area = FALSE)
+getQuickstat(
+  key = NULL,
+  program = NULL,
+  data_item = NULL,
+  sector = NULL,
+  group = NULL,
+  commodity = NULL,
+  category = NULL,
+  domain = NULL,
+  geographic_level = NULL,
+  state = NULL,
+  county = NULL,
+  year = NULL,
+  geometry = FALSE,
+  lower48 = FALSE,
+  weighted_by_area = FALSE
+)
 }
 \arguments{
 \item{key}{your USDA api key. Get one at https://quickstats.nass.usda.gov/api - string}

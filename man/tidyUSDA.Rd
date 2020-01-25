@@ -3,7 +3,6 @@
 \docType{package}
 \name{tidyUSDA}
 \alias{tidyUSDA}
-\alias{tidyUSDA-package}
 \title{tidyUSDA: An Interface to USDA QuickStats Data with Mapping Capabilities.}
 \description{
 A minimal toolset for gathering USDA Quick Stat data for analysis and visualization.
