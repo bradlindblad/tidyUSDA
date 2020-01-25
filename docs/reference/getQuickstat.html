@@ -78,7 +78,7 @@ with optional sf (simple features) geometry field" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyUSDA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.6</span>
       </span>
     </div>
 
@@ -139,11 +139,23 @@ with optional sf (simple features) geometry field" />
 with optional sf (simple features) geometry field</p>
     </div>
 
-    <pre class="usage"><span class='fu'>getQuickstat</span>(<span class='kw'>key</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>program</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data_item</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sector</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>commodity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>category</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>geographic_level</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>state</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>county</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>year</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>geometry</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lower48</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>weighted_by_area</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>getQuickstat</span>(
+  <span class='kw'>key</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>program</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>data_item</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>sector</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>group</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>commodity</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>category</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>domain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>geographic_level</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>state</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>county</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>year</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>geometry</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>lower48</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>weighted_by_area</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

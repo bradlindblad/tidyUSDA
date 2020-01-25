@@ -1,4 +1,8 @@
 
+# tidyUSDA 0.2.6
+* Added more test coverage
+* Fixed error in getQuickstat where 'weighted_by_sq_mile' rounded the numbers too much to make sense
+
 # tidyUSDA 0.2.5
 * Fixed error caused by changes to underlying geospatial libs
 

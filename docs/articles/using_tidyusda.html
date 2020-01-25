@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyUSDA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.6</span>
       </span>
     </div>
 
@@ -155,7 +155,8 @@
 <a class="sourceLine" id="cb5-13" data-line-number="13">  <span class="dt">year =</span> <span class="st">'2017'</span>,</a>
 <a class="sourceLine" id="cb5-14" data-line-number="14">  <span class="dt">state =</span> <span class="ot">NULL</span>,</a>
 <a class="sourceLine" id="cb5-15" data-line-number="15">  <span class="dt">geometry =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb5-16" data-line-number="16">  <span class="dt">lower48 =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb5-16" data-line-number="16">  <span class="dt">lower48 =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb5-17" data-line-number="17">  <span class="dt">weighted_by_area =</span> T)</a></code></pre></div>
 <p>Note that I set <em>geometry = TRUE</em> in order to include the geometry feature that we need for plotting, and that I set <em>lower48 = TRUE</em> in order to exclude Hawaii and Alaska.</p>
 <p>At this point, I have a dataframe with a rather verbose number of data fields. If you set <em>geometry = TRUE</em>, you will have even more columns. The main data point from Quick Stats will be in the ‘Value’ field. Feel free to filter the data frame for the fields you actually need at this point.</p>
 <p>Now let’s see what the data looks like with a basic choropleth map.</p>
@@ -163,16 +164,12 @@
 <a class="sourceLine" id="cb6-2" data-line-number="2">tidyUSDA<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/tidyUSDA/man/plotUSDA.html">plotUSDA</a></span>(<span class="dt">df =</span> ops.with.sales)</a></code></pre></div>
 <p><img src="using_tidyusda_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 <p><em>Note: it is a known issue that the RStudio graphics device on macOS can be extremely laggy when plotting. To get around this, feel free to use your own plotting methods such as the <a href="https://github.com/mtennekes/tmap">tmap</a> package or <a href="https://rstudio.github.io/leaflet/">leaflet</a>.</em></p>
-<p>OK wow so it looks like all the farms in the country are in California. But wait a second, California is huge as far as landmass, and the relative size of the farms are smaller on balance, so maybe we should look at this a different way. First let’s clean up the dataframe so it’s easier to work with.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">mydata &lt;-<span class="st"> </span>ops.with.sales[,<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"NAME"</span>, <span class="st">"Value"</span>, <span class="st">"ALAND"</span>)]</a></code></pre></div>
-<p>We select the name of the state, the value from our Quick Stat query (number of ops) and ‘ALAND’, which is the land area in square meters. Let’s modify our dataframe to calculate the number of operations per square meter, so the size of the state doesn’t affect what we’re trying to derive.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">mydata<span class="op">$</span>ALAND &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(mydata<span class="op">$</span>ALAND)</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">mydata<span class="op">$</span>modified_value &lt;-<span class="st"> </span>mydata<span class="op">$</span>Value <span class="op">/</span><span class="st"> </span>mydata<span class="op">$</span>ALAND</a></code></pre></div>
+<p>OK wow so it looks like all the farms in the country are in California. But wait a second, California is huge as far as landmass, and the relative size of the farms are smaller on balance, so maybe we should look at this a different way.</p>
+<p>When we grabbed our data with getQuickstat above, we set weighted_by_area = TRUE, which creates a new field that,as you guessed, weights our main value by the land area in that county or state.</p>
 <p>This gives us a bunch of really small numbers that don’t make sense, but for our purposes of mapping, they’ll do.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">tidyUSDA<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/tidyUSDA/man/plotUSDA.html">plotUSDA</a></span>(<span class="dt">df =</span> mydata, <span class="dt">fill_by =</span> <span class="st">'modified_value'</span>)</a></code></pre></div>
-<p><img src="using_tidyusda_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
-<p>Ahh, much better. Now we have a true plot showing the number of operations per square meter. Looks like California still has the most farms per dirt clod than any other state.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">tidyUSDA<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/tidyUSDA/man/plotUSDA.html">plotUSDA</a></span>(<span class="dt">df =</span> ops.with.sales, <span class="dt">fill_by =</span> <span class="st">'value_per_sq_mile'</span>)</a></code></pre></div>
+<p><img src="using_tidyusda_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<p>Ahh, much better. Now we have a true plot showing the number of operations per square mile.</p>
 </div>
 <div id="taking-it-further" class="section level2">
 <h2 class="hasAnchor">

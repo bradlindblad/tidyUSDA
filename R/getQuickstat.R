@@ -170,7 +170,7 @@ multStatesandCounties <- function(key=NULL, program=NULL, data_item=NULL, sector
   anon.states <- function(x){paste0("&state_name=", x)}
   
   if(length(state) > 1){
-    print("k")
+    
     state.concat <- lapply(state, anon.states)
     
     
