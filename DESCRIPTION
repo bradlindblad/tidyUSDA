@@ -1,4 +1,4 @@
-  Type: Package
+Type: Package
 Package: tidyUSDA
 Title: A Minimal Tool Set for Gathering USDA Quick Stat Data for
     Analysis and Visualization
