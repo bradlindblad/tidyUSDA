@@ -4,7 +4,9 @@
 \name{allDataItem}
 \alias{allDataItem}
 \title{All possible values from the DATA ITEM field.}
-\format{A vector with 1 variable}
+\format{
+A vector with 1 variable
+}
 \source{
 \url{https://quickstats.nass.usda.gov}
 }

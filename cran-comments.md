@@ -1,4 +1,4 @@
-Fixed a few minor things that needed addressing.
+Fixed one line that made the NAMESPACE for package work correctly.
 
 ## Test environments
 * local Linux Mint 19.3, R 3.6.2

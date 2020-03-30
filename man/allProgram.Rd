@@ -4,7 +4,9 @@
 \name{allProgram}
 \alias{allProgram}
 \title{All possible values from the PROGRAM field.}
-\format{A vector with 1 variable}
+\format{
+A vector with 1 variable
+}
 \source{
 \url{https://quickstats.nass.usda.gov}
 }

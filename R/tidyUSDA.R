@@ -4,4 +4,4 @@
 #' 
 #' @docType package
 #' @name tidyUSDA
-NULL
+"_PACKAGE"

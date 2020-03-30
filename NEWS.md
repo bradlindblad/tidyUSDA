@@ -1,3 +1,5 @@
+# tidyUSDA 0.2.7
+* Minor bug fix
 
 # tidyUSDA 0.2.6
 * Added more test coverage
