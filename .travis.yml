@@ -25,6 +25,8 @@ addons:
       - libgeos-dev
       - libproj.dev
       - libsodium-dev
+      - liblwgeom
+      
       
 r_packages:
   - covr
