@@ -1,7 +1,7 @@
-Fixed one line that made the NAMESPACE for package work correctly.
+Update package for 4.0.2
 
 ## Test environments
-* local Linux Mint 19.3, R 3.6.2
+* local Linux Mint 19.3, R 4.0.2
 * ubuntu 16.04 (on travis-ci), R 3.6.1
 
 

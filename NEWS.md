@@ -1,3 +1,6 @@
+# tidyUSDA 0.2.8
+* Update for R 4.0.2
+
 # tidyUSDA 0.2.7
 * Minor bug fix
 

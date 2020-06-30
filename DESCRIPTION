@@ -2,7 +2,7 @@ Type: Package
 Package: tidyUSDA
 Title: A Minimal Tool Set for Gathering USDA Quick Stat Data for
     Analysis and Visualization
-Version: 0.2.7
+Version: 0.2.8
 Authors@R: 
     c(person(given = "Brad",
              family = "Lindblad",
@@ -52,4 +52,4 @@ VignetteBuilder:
 Encoding: UTF-8
 Language: en-US
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
