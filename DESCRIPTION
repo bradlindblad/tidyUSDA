@@ -2,7 +2,7 @@ Type: Package
 Package: tidyUSDA
 Title: A Minimal Tool Set for Gathering USDA Quick Stat Data for
     Analysis and Visualization
-Version: 0.2.8
+Version: 0.2.9
 Authors@R: 
     c(person(given = "Brad",
              family = "Lindblad",
@@ -38,7 +38,7 @@ Imports:
     rgdal,
     sf,
     stringi,
-    tigris,
+    tigris (>= 1.0),
     usethis
 Suggests: 
     covr,

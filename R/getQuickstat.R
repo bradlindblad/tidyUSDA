@@ -437,7 +437,7 @@ if (!"rgeos" %in% utils::installed.packages()) {
     
     #options(tigris_use_cache = TRUE)
     geoms <- tigris::counties()
-    geoms@data$COUNTYKEY <- paste0(geoms@data$STATEFP, geoms@data$COUNTYFP)
+    geoms$COUNTYKEY <- paste0(geoms$STATEFP, geoms$COUNTYFP)
     
     
     mydata$COUNTYKEY <- paste0(mydata$state_ansi, mydata$county_code)

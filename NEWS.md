@@ -1,3 +1,6 @@
+# tidyUSDA 0.2.9
+* Updated to use {tigris} v1.0
+
 # tidyUSDA 0.2.8
 * Update for R 4.0.2
 

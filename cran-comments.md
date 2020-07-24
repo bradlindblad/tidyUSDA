@@ -1,4 +1,4 @@
-Update package for 4.0.2
+Change 1 line for tigris v1.0
 
 ## Test environments
 * local Linux Mint 19.3, R 4.0.2
