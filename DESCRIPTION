@@ -39,7 +39,12 @@ Imports:
     sf,
     stringi,
     tigris (>= 1.0),
-    usethis
+    usethis,
+    httr,
+    brio,
+    waldo,
+    diffobj,
+    gitcreds
 Suggests: 
     covr,
     knitr,

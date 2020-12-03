@@ -101,7 +101,7 @@ tidyUSDA::plotUSDA(df = ops.with.sales)
 
 *Note: it is a known issue that the RStudio graphics device on macOS can be extremely laggy when plotting. To get around this, feel free to use your own plotting methods such as the [tmap](https://github.com/mtennekes/tmap) package or [leaflet](https://rstudio.github.io/leaflet/).*
 
-OK wow so it looks like all the farms in the country are in California. But wait a second, California is huge as far as landmass, and the relative size of the farms are smaller on balance, so maybe we should look at this a different way. 
+OK wow so it looks like all the farms in the country are in Texas But wait a second, Texass is huge as far as landmass, and the relative size of the farms are smaller on balance, so maybe we should look at this a different way. 
 
 When we grabbed our data with getQuickstat above, we set weighted_by_area = TRUE, which creates a new field that,as you guessed, weights our main value by the land area in that county or state.
 

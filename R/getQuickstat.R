@@ -36,7 +36,13 @@ defaultCallAPI <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, 
   url <- gsub("=,", "=", url)
   url <- gsub(" ", "%20", url)
   
-  raw <- jsonlite::fromJSON(url)
+ 
+  httr::set_config(httr::config(ssl_verifypeer = 0L))
+  resp <- httr::GET(url = url)
+  jsonRespText <- httr::content(resp,as="text", encoding = "UTF-8") 
+  
+  
+  raw <- jsonlite::fromJSON(jsonRespText)
   raw <- raw$data
   mydata <- raw
   return(mydata)
@@ -88,7 +94,12 @@ multStates <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, grou
   url <- gsub("=,", "=", url)
   url <- gsub(" ", "%20", url)
   
-  raw <- jsonlite::fromJSON(url)
+  httr::set_config(httr::config(ssl_verifypeer = 0L))
+  resp <- httr::GET(url = url)
+  jsonRespText <- httr::content(resp,as="text", encoding = "UTF-8") 
+  
+  
+  raw <- jsonlite::fromJSON(jsonRespText)
   raw <- raw$data
   mydata <- raw
   return(mydata)
@@ -140,7 +151,11 @@ multCounties <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   url <- gsub("=,", "=", url)
   url <- gsub(" ", "%20", url)
   
-  raw <- jsonlite::fromJSON(url)
+  httr::set_config(httr::config(ssl_verifypeer = 0L))
+  resp <- httr::GET(url = url)
+  jsonRespText <- httr::content(resp,as="text", encoding = "UTF-8") 
+  
+  raw <- jsonlite::fromJSON(jsonRespText)
   raw <- raw$data
   mydata <- raw
   return(mydata)
@@ -203,7 +218,12 @@ multStatesandCounties <- function(key=NULL, program=NULL, data_item=NULL, sector
   url <- gsub("=,", "=", url)
   url <- gsub(" ", "%20", url)
   
-  raw <- jsonlite::fromJSON(url)
+  httr::set_config(httr::config(ssl_verifypeer = 0L))
+  resp <- httr::GET(url = url)
+  jsonRespText <- httr::content(resp,as="text", encoding = "UTF-8") 
+  
+  
+  raw <- jsonlite::fromJSON(jsonRespText)
   raw <- raw$data
   mydata <- raw
   return(mydata)
@@ -292,6 +312,23 @@ fuzzyMatch <- function(input, dataset){
 getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, group=NULL, commodity=NULL,
                          category=NULL, domain=NULL, geographic_level=NULL,
                          state=NULL, county=NULL, year=NULL, geometry = FALSE, lower48 = FALSE, weighted_by_area = FALSE) {
+  # 
+  # key <- '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
+  # sector=NULL
+  # group=NULL
+  # commodity=NULL
+  # category=NULL
+  # domain='TOTAL'
+  # county=NULL
+  # key = key
+  # program = 'CENSUS'
+  # data_item = 'CROP TOTALS - OPERATIONS WITH SALES'
+  # geographic_level = 'STATE'
+  # year = '2017'
+  # state = NULL
+  # geometry = TRUE
+  # lower48 = TRUE
+  # weighted_by_area = T
   
   
 # Install rgeos if not already installed
