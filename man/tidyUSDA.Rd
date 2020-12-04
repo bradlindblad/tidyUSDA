@@ -11,8 +11,8 @@ A minimal toolset for gathering USDA Quick Stat data for analysis and visualizat
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://bradlindblad.github.io/tidyUSDA}
-  \item \url{https://github.com/bradlindblad/tidyUSDA}
+  \item \url{https://bradlindblad.github.io/tidyUSDA/}
+  \item \url{https://github.com/bradlindblad/tidyUSDA/}
 }
 
 }

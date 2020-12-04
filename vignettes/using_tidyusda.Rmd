@@ -39,7 +39,7 @@ Next, call tidyUSDA to make sure everything is installed correctly.
 library(tidyUSDA)
 ```
 
-The USDA controls access to their data with API keys. You can quickly obtain your free API key by following the brief instructions at [this link](https://quickstats.nass.usda.gov/api).
+The USDA controls access to their data with API keys. You can quickly obtain your free API key by following the brief instructions at the USDA quickstats website.
 
 Let's pull some data now.
 ```{r}
