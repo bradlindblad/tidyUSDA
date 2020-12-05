@@ -22,9 +22,7 @@
     Analysis and Visualization">
 <meta property="og:description" content="Provides a consistent API to pull United States
     Department of Agriculture census and survey data from the National
-    Agricultural Statistics Service (NASS) QuickStats service
-    &lt;https://quickstats.nass.usda.gov&gt;.">
-<meta property="og:image" content="/logo.png">
+    Agricultural Statistics Service (NASS) QuickStats service.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -43,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">tidyUSDA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -102,7 +100,7 @@
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p><strong>tidyUSDA</strong> provides the R user with a consistent API to pull USDA census and survey data from <a href="https://quickstats.nass.usda.gov/">QuickStats</a>. You can:</p>
+<p><strong>tidyUSDA</strong> provides the R user with a consistent API to pull USDA census and survey data from Quickstats. You can:</p>
 <ul>
 <li>
 <code><a href="reference/getQuickstat.html">getQuickstat()</a></code> lets you pass values to the fields you see on the QuickStats website, as well as include a simple features (SF) geometry field for the county or state level.</li>
@@ -163,8 +161,8 @@ pacaur/yaourt/whatever -S udunits</code></pre>
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>Check out the vignette with:</p>
 <pre><code><a href="articles/using_tidyusda.html">vignette("using_tidyusda")</a></code></pre>
-<p>You first need to grab a free API token from the USDA at <a href="https://quickstats.nass.usda.gov/api">their website</a>.</p>
-<pre><code><a href="https://rdrr.io/pkg/tidyUSDA/man">library(tidyUSDA)
+<p>You first need to grab a free API token from the USDA at their Quickstats website.</p>
+<pre><code><a href="https://bradlindblad.github.io/tidyUSDA/">library(tidyUSDA)
 
 # Save your API token to a variable, or better yet, use the keyring package to store it securely
 key &lt;- '1234-abcd'
@@ -261,7 +259,7 @@ tidyUSDA::plotUSDA(df = ops.with.sales)</a></code></pre>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

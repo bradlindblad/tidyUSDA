@@ -2,7 +2,7 @@ Type: Package
 Package: tidyUSDA
 Title: A Minimal Tool Set for Gathering USDA Quick Stat Data for
     Analysis and Visualization
-Version: 0.2.9
+Version: 0.3.0
 Authors@R: 
     c(person(given = "Brad",
              family = "Lindblad",
@@ -18,11 +18,10 @@ Authors@R:
              email = "alexandramindeman@gmail.com"))
 Description: Provides a consistent API to pull United States
     Department of Agriculture census and survey data from the National
-    Agricultural Statistics Service (NASS) QuickStats service
-    <https://quickstats.nass.usda.gov>.
+    Agricultural Statistics Service (NASS) QuickStats service.
 License: MIT + file LICENSE
-URL: https://bradlindblad.github.io/tidyUSDA,
-    https://github.com/bradlindblad/tidyUSDA
+URL: https://bradlindblad.github.io/tidyUSDA/,
+    https://github.com/bradlindblad/tidyUSDA/
 Depends: 
     R (>= 3.6)
 Imports: 

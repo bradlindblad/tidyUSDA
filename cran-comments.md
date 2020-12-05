@@ -1,7 +1,7 @@
-Change 1 line for tigris v1.0
+Fixing breaking SSL issue from {jsonlite}
 
 ## Test environments
-* local Linux Mint 19.3, R 4.0.2
+* local Linux Mint 20, R 4.0.3
 * ubuntu 16.04 (on travis-ci), R 3.6.1
 
 

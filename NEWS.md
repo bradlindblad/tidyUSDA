@@ -1,3 +1,6 @@
+# tidyUSDA 0.3.0
+* Fixed SSL issue from {jsonlite} dep
+
 # tidyUSDA 0.2.9
 * Updated to use {tigris} v1.0
 
