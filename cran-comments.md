@@ -1,7 +1,7 @@
-Fixing breaking SSL issue from {jsonlite}
+Hotfix issue with & encoding in API call
 
 ## Test environments
-* local Linux Mint 20, R 4.0.3
+* local Linux Mint 20.1, R 4.0.3
 * ubuntu 16.04 (on travis-ci), R 3.6.1
 
 
