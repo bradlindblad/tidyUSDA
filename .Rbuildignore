@@ -13,3 +13,4 @@
 ^doc$
 ^revdep$
 ^codecov\.yml$
+^\.github$
