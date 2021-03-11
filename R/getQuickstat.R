@@ -330,7 +330,8 @@ getQuickstat <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   # lower48 = TRUE
   # weighted_by_area = T
   
-  
+
+
 # Install rgeos if not already installed
 if (!"rgeos" %in% utils::installed.packages()) {
   stop(crayon::cyan("Package \"rgeos\" needed for this function to work. Please install it with install.packages(\"rgeos\")"),
@@ -407,6 +408,16 @@ if (!"rgeos" %in% utils::installed.packages()) {
                    recommendation,
                    "? If not, check tidyUSDA::allGeogLevel for a vector of all acceptable values.")))
   }
+  
+  
+  # Need to recode an & to the url encode %26
+  if(is.null(sector)){}else{sector <- gsub(pattern = "&", replacement = "%26", x = sector)}
+  if(is.null(data_item)){}else{data_item <- gsub(pattern = "&", replacement = "%26", x = data_item)}
+  if(is.null(commodity)){}else{commodity <- gsub(pattern = "&", replacement = "%26", x = commodity)}
+  if(is.null(category)){}else{category <- gsub(pattern = "&", replacement = "%26", x = category)}
+  if(is.null(domain)){}else{domain <- gsub(pattern = "&", replacement = "%26", x = domain)}
+  if(is.null(program)){}else{program <- gsub(pattern = "&", replacement = "%26", x = program)}
+  
   
   
 # Logic to handle vectors vs. single values 
