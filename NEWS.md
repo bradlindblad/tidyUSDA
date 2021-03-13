@@ -1,3 +1,5 @@
+# tidyUSDA (development version)
+
 # tidyUSDA 0.3.1
 * Fixed issue where input parameters with an '&' weren't encoding correctly in API call to USDA
 * Added some more unit tests
