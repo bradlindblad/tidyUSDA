@@ -7,7 +7,7 @@
 [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.1-6666ff.svg)](https://cran.r-project.org/)
 [![Codecov test coverage](https://codecov.io/gh/bradlindblad/tidyusda/branch/master/graph/badge.svg)](https://codecov.io/gh/bradlindblad/tidyusda?branch=master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-
+[![pkgdown](https://github.com/bradlindblad/tidyUSDA/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/bradlindblad/tidyUSDA/actions/workflows/pkgdown.yaml)
 **tidyUSDA**, an interface to USDA Quick Stats data with mapping capabilities.
 
 
