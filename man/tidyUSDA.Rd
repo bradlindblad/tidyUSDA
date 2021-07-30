@@ -17,7 +17,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Brad Lindblad \email{bradley.lindblad@gmail.com}
+\strong{Maintainer}: Brad Lindblad \email{me@bradlindblad.com}
 
 Other contributors:
 \itemize{

@@ -26,31 +26,26 @@ Depends:
     R (>= 3.6)
 Imports: 
     crayon,
-    curl,
     dplyr,
-    fuzzyjoin,
+    fuzzyjoin (>= 0.1.6),
     ggplot2,
     jsonlite,
-    keyring,
     magrittr,
     nlme,
     rgdal,
     sf,
     stringi,
     tigris (>= 1.0),
-    usethis,
     httr,
-    brio,
     waldo,
-    diffobj,
-    gitcreds
-Suggests: 
+    testthat (>= 2.1.0),
     covr,
+    spelling
+Suggests: 
     knitr,
     rgeos,
     rmarkdown,
-    spelling,
-    testthat (>= 2.1.0)
+    usethis
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
