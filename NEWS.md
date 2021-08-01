@@ -1,10 +1,6 @@
 # tidyUSDA (development version)
 
 # tidyUSDA 0.3.2
-
-# tidyUSDA
-
-# tidyUSDA 0.3.2
 * Added error catch to https API calls
 
 # tidyUSDA 0.3.1

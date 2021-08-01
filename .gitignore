@@ -6,3 +6,5 @@ _config.yml
 inst/doc
 doc
 Meta
+/doc/
+/Meta/
