@@ -37,14 +37,27 @@ defaultCallAPI <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, 
   url <- gsub(" ", "%20", url)
   
  
-  httr::set_config(httr::config(ssl_verifypeer = 0L))
-  resp <- httr::GET(url = url)
-  jsonRespText <- httr::content(resp,as="text", encoding = "UTF-8") 
-  
-  
-  raw <- jsonlite::fromJSON(jsonRespText)
-  raw <- raw$data
-  mydata <- raw
+  call_api <- function(url) {
+    httr::set_config(httr::config(ssl_verifypeer = 0L))
+    resp <- httr::GET(url = url)
+    jsonRespText <- httr::content(resp,as="text", encoding = "UTF-8") 
+    
+    
+    raw <- jsonlite::fromJSON(jsonRespText)
+    raw <- raw$data
+    return(raw)
+  }
+  try_call_api <- purrr::possibly(.f = call_api, otherwise = "Error - USDA not available; try in a few mins.")
+  mydata <- try_call_api(url)
+  # 
+  # httr::set_config(httr::config(ssl_verifypeer = 0L))
+  # resp <- httr::GET(url = url)
+  # jsonRespText <- httr::content(resp,as="text", encoding = "UTF-8") 
+  # 
+  # 
+  # raw <- jsonlite::fromJSON(jsonRespText)
+  # raw <- raw$data
+  # mydata <- raw
   return(mydata)
   
 }
@@ -94,14 +107,27 @@ multStates <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, grou
   url <- gsub("=,", "=", url)
   url <- gsub(" ", "%20", url)
   
-  httr::set_config(httr::config(ssl_verifypeer = 0L))
-  resp <- httr::GET(url = url)
-  jsonRespText <- httr::content(resp,as="text", encoding = "UTF-8") 
-  
-  
-  raw <- jsonlite::fromJSON(jsonRespText)
-  raw <- raw$data
-  mydata <- raw
+  call_api <- function(url) {
+    httr::set_config(httr::config(ssl_verifypeer = 0L))
+    resp <- httr::GET(url = url)
+    jsonRespText <- httr::content(resp,as="text", encoding = "UTF-8") 
+    
+    
+    raw <- jsonlite::fromJSON(jsonRespText)
+    raw <- raw$data
+    return(raw)
+  }
+  try_call_api <- purrr::possibly(.f = call_api, otherwise = "Error - USDA not available; try in a few mins.")
+  mydata <- try_call_api(url)
+  # 
+  # httr::set_config(httr::config(ssl_verifypeer = 0L))
+  # resp <- httr::GET(url = url)
+  # jsonRespText <- httr::content(resp,as="text", encoding = "UTF-8") 
+  # 
+  # 
+  # raw <- jsonlite::fromJSON(jsonRespText)
+  # raw <- raw$data
+  # mydata <- raw
   return(mydata)
   
 }
@@ -151,13 +177,27 @@ multCounties <- function(key=NULL, program=NULL, data_item=NULL, sector=NULL, gr
   url <- gsub("=,", "=", url)
   url <- gsub(" ", "%20", url)
   
-  httr::set_config(httr::config(ssl_verifypeer = 0L))
-  resp <- httr::GET(url = url)
-  jsonRespText <- httr::content(resp,as="text", encoding = "UTF-8") 
-  
-  raw <- jsonlite::fromJSON(jsonRespText)
-  raw <- raw$data
-  mydata <- raw
+  call_api <- function(url) {
+    httr::set_config(httr::config(ssl_verifypeer = 0L))
+    resp <- httr::GET(url = url)
+    jsonRespText <- httr::content(resp,as="text", encoding = "UTF-8") 
+    
+    
+    raw <- jsonlite::fromJSON(jsonRespText)
+    raw <- raw$data
+    return(raw)
+  }
+  try_call_api <- purrr::possibly(.f = call_api, otherwise = "Error - USDA not available; try in a few mins.")
+  mydata <- try_call_api(url)
+  # 
+  # httr::set_config(httr::config(ssl_verifypeer = 0L))
+  # resp <- httr::GET(url = url)
+  # jsonRespText <- httr::content(resp,as="text", encoding = "UTF-8") 
+  # 
+  # 
+  # raw <- jsonlite::fromJSON(jsonRespText)
+  # raw <- raw$data
+  # mydata <- raw
   return(mydata)
   
 }
@@ -218,14 +258,27 @@ multStatesandCounties <- function(key=NULL, program=NULL, data_item=NULL, sector
   url <- gsub("=,", "=", url)
   url <- gsub(" ", "%20", url)
   
-  httr::set_config(httr::config(ssl_verifypeer = 0L))
-  resp <- httr::GET(url = url)
-  jsonRespText <- httr::content(resp,as="text", encoding = "UTF-8") 
-  
-  
-  raw <- jsonlite::fromJSON(jsonRespText)
-  raw <- raw$data
-  mydata <- raw
+  call_api <- function(url) {
+    httr::set_config(httr::config(ssl_verifypeer = 0L))
+    resp <- httr::GET(url = url)
+    jsonRespText <- httr::content(resp,as="text", encoding = "UTF-8") 
+    
+    
+    raw <- jsonlite::fromJSON(jsonRespText)
+    raw <- raw$data
+    return(raw)
+  }
+  try_call_api <- purrr::possibly(.f = call_api, otherwise = "Error - USDA not available; try in a few mins.")
+  mydata <- try_call_api(url)
+  # 
+  # httr::set_config(httr::config(ssl_verifypeer = 0L))
+  # resp <- httr::GET(url = url)
+  # jsonRespText <- httr::content(resp,as="text", encoding = "UTF-8") 
+  # 
+  # 
+  # raw <- jsonlite::fromJSON(jsonRespText)
+  # raw <- raw$data
+  # mydata <- raw
   return(mydata)
   
 }

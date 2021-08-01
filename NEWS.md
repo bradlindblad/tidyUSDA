@@ -1,4 +1,9 @@
-# tidyUSDA (development version)
+# tidyUSDA 0.3.2
+
+# tidyUSDA
+
+# tidyUSDA 0.3.2
+* Added error catch to https API calls
 
 # tidyUSDA 0.3.1
 * Fixed issue where input parameters with an '&' weren't encoding correctly in API call to USDA

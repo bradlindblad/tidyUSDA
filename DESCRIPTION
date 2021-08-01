@@ -1,8 +1,8 @@
 Type: Package
 Package: tidyUSDA
-Title: A Minimal Tool Set for Gathering USDA Quick Stat Data for
-    Analysis and Visualization
-Version: 0.3.1.9000
+Title: A Minimal Tool Set for Gathering USDA Quick Stat Data for Analysis
+    and Visualization
+Version: 0.3.2
 Authors@R: 
     c(person(given = "Brad",
              family = "Lindblad",
@@ -16,9 +16,9 @@ Authors@R:
              family = "Mindeman",
              role = "ctb",
              email = "alexandramindeman@gmail.com"))
-Description: Provides a consistent API to pull United States
-    Department of Agriculture census and survey data from the National
-    Agricultural Statistics Service (NASS) QuickStats service.
+Description: Provides a consistent API to pull United States Department of
+    Agriculture census and survey data from the National Agricultural
+    Statistics Service (NASS) QuickStats service.
 License: MIT + file LICENSE
 URL: https://bradlindblad.github.io/tidyUSDA/,
     https://github.com/bradlindblad/tidyUSDA/
@@ -26,27 +26,19 @@ Depends:
     R (>= 3.6)
 Imports: 
     crayon,
-    curl,
     dplyr,
     fuzzyjoin,
     ggplot2,
-    jsonlite,
-    keyring,
-    magrittr,
-    nlme,
-    rgdal,
-    sf,
-    stringi,
-    tigris (>= 1.0),
-    usethis,
     httr,
-    brio,
-    waldo,
-    diffobj,
-    gitcreds
+    jsonlite,
+    magrittr,
+    purrr,
+    sf,
+    tigris (>= 1.0)
 Suggests: 
     covr,
     knitr,
+    rgdal,
     rgeos,
     rmarkdown,
     spelling,

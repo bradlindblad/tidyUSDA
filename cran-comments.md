@@ -1,8 +1,8 @@
-Hotfix issue with & encoding in API call
+Fix issue where API call did not fail gracefully, per Brian Ripley request.
 
 ## Test environments
-* local Linux Mint 20.1, R 4.0.3
-* ubuntu 16.04 (on travis-ci), R 3.6.1
+* local Linux Mint 20.2, R 4.1.0
+* ubuntu 20.04 (on github-ci), R 4.0.3
 
 
 ## R CMD check results
