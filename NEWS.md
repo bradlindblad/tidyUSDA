@@ -1,4 +1,4 @@
-# tidyUSDA (development version)
+# tidyUSDA 0.3.3
 
 # tidyUSDA 0.3.3
 * Fixed issue where vignette was not building correctly
