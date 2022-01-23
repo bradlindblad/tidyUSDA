@@ -25,6 +25,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -37,18 +39,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyUSDA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.2.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -70,7 +66,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/bradlindblad/tidyUSDA/">
+  <a href="https://github.com/bradlindblad/tidyUSDA/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -91,29 +87,29 @@
       <h1 data-toc-skip>Using tidyUSDA</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/bradlindblad/tidyUSDA/blob/master/vignettes/using_tidyusda.Rmd"><code>vignettes/using_tidyusda.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/bradlindblad/tidyUSDA/blob/HEAD/vignettes/using_tidyusda.Rmd" class="external-link"><code>vignettes/using_tidyusda.Rmd</code></a></small>
       <div class="hidden name"><code>using_tidyusda.Rmd</code></div>
 
     </div>
 
     
     
-<div id="why-tidyusda" class="section level2">
-<h2 class="hasAnchor">
-<a href="#why-tidyusda" class="anchor"></a>Why tidyUSDA?</h2>
+<div class="section level2">
+<h2 id="why-tidyusda">Why tidyUSDA?<a class="anchor" aria-label="anchor" href="#why-tidyusda"></a>
+</h2>
 <p><em>Why do we need yet another “tidy” package? Why do I have to install so many geospatial dependencies?</em></p>
 <p>Valid questions. If you work with USDA data, you know that it is difficult at times to find what you need, when you need it. The sheer amount of data (the 2017 Census of Agriculture included some 6.4 million points of information [1]) should be a credit to the USDA, as that is a huge organizational task.</p>
-<p>Currently, the best way to pull data from previous Censuses of Agriculture and Agriculture Surveys is through the <a href="https://quickstats.nass.usda.gov/">Quick Stats web portal</a>, which allows you to apply filters in an interactive gui and then download CSV files. This works great for most applications, but R programmers hate having to pull data non-programmatically, which is where tidyUSDA comes in.</p>
+<p>Currently, the best way to pull data from previous Censuses of Agriculture and Agriculture Surveys is through the <a href="https://quickstats.nass.usda.gov/" class="external-link">Quick Stats web portal</a>, which allows you to apply filters in an interactive gui and then download CSV files. This works great for most applications, but R programmers hate having to pull data non-programmatically, which is where tidyUSDA comes in.</p>
 <p><strong><em>Programmatic data pulls directly from Quick Stats</em></strong> At its core, tidyUSDA is an API for the Quick Stats data, allowing you to pull that same data into a dataframe in your R session.</p>
 <p><strong><em>Geospatial capabilities</em></strong> tidyUSDA also gives you the option to automatically add a simple features column to the Quick Stats data, either at a county or national level. This allows you to quickly visualize Quick Stats data for fast iterations or report generation.</p>
 </div>
-<div id="quick-start" class="section level2">
-<h2 class="hasAnchor">
-<a href="#quick-start" class="anchor"></a>Quick start</h2>
-<p>First, install tidyUSDA with the instructions in the <a href="https://github.com/bradlindblad/tidyUSDA#Installation">README section</a>. Note that you may have to upgrade your R version if you are on an older build.</p>
+<div class="section level2">
+<h2 id="quick-start">Quick start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
+</h2>
+<p>First, install tidyUSDA with the instructions in the <a href="https://github.com/bradlindblad/tidyUSDA#Installation" class="external-link">README section</a>. Note that you may have to upgrade your R version if you are on an older build.</p>
 <p>Next, call tidyUSDA to make sure everything is installed correctly.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bradlindblad.github.io/tidyUSDA/">tidyUSDA</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://bradlindblad.github.io/tidyUSDA/" class="external-link">tidyUSDA</a></span><span class="op">)</span></code></pre></div>
 <p>The USDA controls access to their data with API keys. You can quickly obtain your free API key by following the brief instructions at the USDA quickstats website.</p>
 <p>Let’s pull some data now.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -125,7 +121,7 @@
 <p>At this point, it’s best to use the actual Quick Stats website to pick out the parameters you would like to filter by. This way you know for sure that data will be returned. I want to see a state-level breakdown of counts of operations using the 2017 census data.</p>
 <p>At this point it helps to see which possible values you <strong>can</strong> input into the function parameters. You can view these possible inputs for all of the parameters with the built-in datasets. Let’s check a few out.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="va"><a href="../reference/allCategory.html">allCategory</a></span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="va"><a href="../reference/allCategory.html">allCategory</a></span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt;             statisticcat_desc1             statisticcat_desc2 </span>
 <span class="co">#&gt;                "ACCESSIBILITY"    "ACCESSIBILITY, 5 YEAR AVG" </span>
 <span class="co">#&gt;             statisticcat_desc3             statisticcat_desc4 </span>
@@ -134,7 +130,7 @@
 <span class="co">#&gt;                     "ACTIVITY"         "ACTIVITY, 5 YEAR AVG"</span></code></pre></div>
 <p>So it looks like there are only six possible input values for the <em>category</em> field. Good to know.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="va"><a href="../reference/allGeogLevel.html">allGeogLevel</a></span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="va"><a href="../reference/allGeogLevel.html">allGeogLevel</a></span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt;               agg_level_desc1               agg_level_desc2 </span>
 <span class="co">#&gt;       "AGRICULTURAL DISTRICT" "AMERICAN INDIAN RESERVATION" </span>
 <span class="co">#&gt;               agg_level_desc3               agg_level_desc4 </span>
@@ -166,39 +162,35 @@
 <p>Now let’s see what the data looks like with a basic choropleth map.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Plot this data for each state</span>
-<span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="../reference/plotUSDA.html">plotUSDA</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">ops.with.sales</span><span class="op">)</span>
-<span class="co">#&gt; It appears your session is using a quartz graphics device - probably macOS. The quartz graphics device doesn't handle the underlying ggplot2::geom_sf() very well. We recommend you either switch to another device, like X11, or use a package like tmap or leaflet to plot this dataframe. You can still use plotUSDA with quartz, it just may take 10 minutes.</span>
-<span class="co">#&gt; </span></code></pre></div>
-<p><img src="using_tidyusda_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
-<p><em>Note: it is a known issue that the RStudio graphics device on macOS can be extremely laggy when plotting. To get around this, feel free to use your own plotting methods such as the <a href="https://github.com/mtennekes/tmap">tmap</a> package or <a href="https://rstudio.github.io/leaflet/">leaflet</a>.</em></p>
+<span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="../reference/plotUSDA.html">plotUSDA</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">ops.with.sales</span><span class="op">)</span></code></pre></div>
+<p><img src="https://github.com/bradlindblad/tidyUSDA/blob/master/images/vignette_1.png?raw=true"></p>
+<p><em>Note: it is a known issue that the RStudio graphics device on macOS can be extremely laggy when plotting. To get around this, feel free to use your own plotting methods such as the <a href="https://github.com/r-tmap/tmap" class="external-link">tmap</a> package or <a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a>.</em></p>
 <p>OK wow so it looks like all the farms in the country are in Texas But wait a second, Texass is huge as far as landmass, and the relative size of the farms are smaller on balance, so maybe we should look at this a different way.</p>
 <p>When we grabbed our data with getQuickstat above, we set weighted_by_area = TRUE, which creates a new field that,as you guessed, weights our main value by the land area in that county or state.</p>
 <p>This gives us a bunch of really small numbers that don’t make sense, but for our purposes of mapping, they’ll do.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="../reference/plotUSDA.html">plotUSDA</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">ops.with.sales</span>, fill_by <span class="op">=</span> <span class="st">'value_per_sq_mile'</span><span class="op">)</span>
-<span class="co">#&gt; It appears your session is using a quartz graphics device - probably macOS. The quartz graphics device doesn't handle the underlying ggplot2::geom_sf() very well. We recommend you either switch to another device, like X11, or use a package like tmap or leaflet to plot this dataframe. You can still use plotUSDA with quartz, it just may take 10 minutes.</span>
-<span class="co">#&gt; </span></code></pre></div>
-<p><img src="using_tidyusda_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<code class="sourceCode R"><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="../reference/plotUSDA.html">plotUSDA</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">ops.with.sales</span>, fill_by <span class="op">=</span> <span class="st">'value_per_sq_mile'</span><span class="op">)</span></code></pre></div>
+<p><img src="https://github.com/bradlindblad/tidyUSDA/blob/master/images/vignette_2.png?raw=true"></p>
 <p>Ahh, much better. Now we have a true plot showing the number of operations per square mile.</p>
 </div>
-<div id="taking-it-further" class="section level2">
-<h2 class="hasAnchor">
-<a href="#taking-it-further" class="anchor"></a>Taking it further</h2>
+<div class="section level2">
+<h2 id="taking-it-further">Taking it further<a class="anchor" aria-label="anchor" href="#taking-it-further"></a>
+</h2>
 <p>This package was designed for data analysts and scientists, meaning that the output of getQuickstat is particularly verbose, rather than cherry-picked, giving the user extra data that may be useful. If you do intend to plot the data that you pull down with <em>getQuickstat</em>, don’t feel like you need to use <em>plotUSDA</em> to visualize the results; you can use any method you’d like to plot the simple features geometry.</p>
 </div>
-<div id="how-you-can-contribute" class="section level2">
-<h2 class="hasAnchor">
-<a href="#how-you-can-contribute" class="anchor"></a>How you can contribute</h2>
-<p>You can report a bug or request new features at <a href="https://github.com/bradlindblad/tidyUSDA/issues">https://github.com/bradlindblad/tidyUSDA/issues</a>.</p>
+<div class="section level2">
+<h2 id="how-you-can-contribute">How you can contribute<a class="anchor" aria-label="anchor" href="#how-you-can-contribute"></a>
+</h2>
+<p>You can report a bug or request new features at <a href="https://github.com/bradlindblad/tidyUSDA/issues" class="external-link">https://github.com/bradlindblad/tidyUSDA/issues</a>.</p>
 </div>
-<div id="references" class="section level2">
-<h2 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h2>
-<p>[1] (<a href="https://www.usda.gov/media/press-releases/2019/04/11/2017-census-agriculture-data-now-available" class="uri">https://www.usda.gov/media/press-releases/2019/04/11/2017-census-agriculture-data-now-available</a>)</p>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<p>[1] (<a href="https://www.usda.gov/media/press-releases/2019/04/11/2017-census-agriculture-data-now-available" class="external-link uri">https://www.usda.gov/media/press-releases/2019/04/11/2017-census-agriculture-data-now-available</a>)</p>
 </div>
-<div id="important-note" class="section level2">
-<h2 class="hasAnchor">
-<a href="#important-note" class="anchor"></a>Important note</h2>
+<div class="section level2">
+<h2 id="important-note">Important note<a class="anchor" aria-label="anchor" href="#important-note"></a>
+</h2>
 <p>This product uses the NASS API but is not endorsed or certified by NASS.</p>
 </div>
   </div>
@@ -214,11 +206,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Brad Lindblad.</p>
+  <p></p>
+<p>Developed by Brad Lindblad.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -226,6 +220,8 @@
 
   
 
+
+  
 
   </body>
 </html>

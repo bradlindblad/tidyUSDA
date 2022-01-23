@@ -29,6 +29,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -41,18 +43,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">tidyUSDA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.2.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -74,7 +70,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/bradlindblad/tidyUSDA/">
+  <a href="https://github.com/bradlindblad/tidyUSDA/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -91,117 +87,105 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="tidyusda-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#tidyusda-" class="anchor"></a>tidyUSDA <img src="https://raw.githubusercontent.com/bradlindblad/tidyUSDA/master/images/tidyusda.png" align="right" height="200">
+<div class="section level1">
+<div class="page-header"><h1 id="tidyusda-">tidyUSDA <img src="https://raw.githubusercontent.com/bradlindblad/tidyUSDA/master/images/tidyusda.png" align="right" height="200"><a class="anchor" aria-label="anchor" href="#tidyusda-"></a>
 </h1></div>
 
 <p><strong>tidyUSDA</strong>, an interface to USDA Quick Stats data with mapping capabilities.</p>
-<div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
-<p><strong>tidyUSDA</strong> provides the R user with a consistent API to pull USDA census and survey data from Quickstats. You can:</p>
-<ul>
-<li>
-<code><a href="reference/getQuickstat.html">getQuickstat()</a></code> lets you pass values to the fields you see on the QuickStats website, as well as include a simple features (SF) geometry field for the county or state level.</li>
-<li>
-<code>View({parameter name})</code> lets you view QuickStats all available values for a given field (which you would input into getQuickstats(), preferably with copy paste)</li>
-<li>
-<code><a href="reference/plotUSDA.html">plotUSDA()</a></code> provides a quick way to plot your data if you set geometry = TRUE</li>
-</ul>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
+<p><strong>tidyUSDA</strong> provides the R user with a consistent API to pull USDA census and survey data from Quickstats. You can:<br>
+* <code><a href="reference/getQuickstat.html">getQuickstat()</a></code> lets you pass values to the fields you see on the QuickStats website, as well as include a simple features (SF) geometry field for the county or state level. * <code>View({parameter name})</code> lets you view QuickStats all available values for a given field (which you would input into getQuickstats(), preferably with copy paste) * <code><a href="reference/plotUSDA.html">plotUSDA()</a></code> provides a quick way to plot your data if you set geometry = TRUE</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<pre><code><a href="https://rdrr.io/r/utils/install.packages.html"># Install directly from CRAN:
-install.packages("tidyUSDA")</a></code></pre>
-<div id="windows" class="section level3">
-<h3 class="hasAnchor">
-<a href="#windows" class="anchor"></a>Windows</h3>
-<p>Depending on which version of R you have installed, you may need to install <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a>.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<pre><code><span class="co"># Install directly from CRAN:</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"tidyUSDA"</span><span class="op">)</span></code></pre>
+<div class="section level3">
+<h3 id="windows">Windows<a class="anchor" aria-label="anchor" href="#windows"></a>
+</h3>
+<p>Depending on which version of R you have installed, you may need to install <a href="https://cran.r-project.org/bin/windows/Rtools/" class="external-link">Rtools</a>.</p>
 </div>
-<div id="mac" class="section level3">
-<h3 class="hasAnchor">
-<a href="#mac" class="anchor"></a>Mac</h3>
+<div class="section level3">
+<h3 id="mac">Mac<a class="anchor" aria-label="anchor" href="#mac"></a>
+</h3>
 <p>You may need to install gdal before install.packages(“tidyUSDA”). Use these commands:</p>
 <pre><code>brew install pkg-config     
 brew install gdal</code></pre>
 </div>
-<div id="linux" class="section level3">
-<h3 class="hasAnchor">
-<a href="#linux" class="anchor"></a>Linux</h3>
+<div class="section level3">
+<h3 id="linux">Linux<a class="anchor" aria-label="anchor" href="#linux"></a>
+</h3>
 <p>You will need to install GDAL (&gt;= 2.0.1), GEOS (&gt;= 3.4.0) and Proj.4 (&gt;= 4.8.0) for most Unix-based systems.</p>
-<div id="ubuntu" class="section level4">
-<h4 class="hasAnchor">
-<a href="#ubuntu" class="anchor"></a>Ubuntu</h4>
+<div class="section level4">
+<h4 id="ubuntu">Ubuntu<a class="anchor" aria-label="anchor" href="#ubuntu"></a>
+</h4>
 <p>To install the dependencies on Ubuntu, either add ubuntugis-unstable to the package repositories:</p>
 <pre><code>sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
 sudo apt-get update
 sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev </code></pre>
 <p>or install dependencies from source; see e.g. an older travis config file for hints.</p>
 </div>
-<div id="fedora" class="section level4">
-<h4 class="hasAnchor">
-<a href="#fedora" class="anchor"></a>Fedora</h4>
+<div class="section level4">
+<h4 id="fedora">Fedora<a class="anchor" aria-label="anchor" href="#fedora"></a>
+</h4>
 <p>The following command installs all required dependencies:</p>
 <pre><code>sudo dnf install gdal-devel proj-devel proj-epsg proj-nad geos-devel udunits2-devel</code></pre>
 </div>
-<div id="arch" class="section level4">
-<h4 class="hasAnchor">
-<a href="#arch" class="anchor"></a>Arch</h4>
+<div class="section level4">
+<h4 id="arch">Arch<a class="anchor" aria-label="anchor" href="#arch"></a>
+</h4>
 <p>Get gdal, proj and geos from the main repos and udunits from the AUR:</p>
 <pre><code>pacman -S gdal proj geos
 pacaur/yaourt/whatever -S udunits</code></pre>
-<p><em>Thanks to the <a href="https://github.com/r-spatial/sf">SF package README</a> for these OS helpers.</em></p>
-</div>
-</div>
-</div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
+<p><em>Thanks to the <a href="https://github.com/r-spatial/sf" class="external-link">SF package README</a> for these OS helpers.</em> ## Usage</p>
 <p>Check out the vignette with:</p>
-<pre><code><a href="articles/using_tidyusda.html">vignette("using_tidyusda")</a></code></pre>
+<pre><code><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"using_tidyusda"</span><span class="op">)</span></code></pre>
 <p>You first need to grab a free API token from the USDA at their Quickstats website.</p>
-<pre><code><a href="https://bradlindblad.github.io/tidyUSDA/">library(tidyUSDA)
+<pre><code><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://bradlindblad.github.io/tidyUSDA/" class="external-link">tidyUSDA</a></span><span class="op">)</span>
 
-# Save your API token to a variable, or better yet, use the keyring package to store it securely
-key &lt;- '1234-abcd'
-
-
-
-# View all parameter names for the 'program' field
-View(tidyUSDA::allProgram)
+<span class="co"># Save your API token to a variable, or better yet, use the keyring package to store it securely</span>
+<span class="va">key</span> <span class="op">&lt;-</span> <span class="st">'1234-abcd'</span>
 
 
 
-# Get count of operations with sales in 2017
-ops.with.sales &lt;- tidyUSDA::getQuickstat(
-  sector=NULL,
-  group=NULL,
-  commodity=NULL,
-  category=NULL,
-  domain=NULL,
-  county=NULL,
-  key = key,
-  program = 'CENSUS',
-  data_item = 'CROP TOTALS - OPERATIONS WITH SALES',
-  geographic_level = 'COUNTY',
-  year = '2017',
-  state = NULL,
-  geometry = T,
-  lower48 = T)
+<span class="co"># View all parameter names for the 'program' field</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/View.html" class="external-link">View</a></span><span class="op">(</span><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="va"><a href="reference/allProgram.html">allProgram</a></span><span class="op">)</span>
 
 
 
-# Plot this data for each state
-tidyUSDA::plotUSDA(df = ops.with.sales)</a></code></pre>
+<span class="co"># Get count of operations with sales in 2017</span>
+<span class="va">ops.with.sales</span> <span class="op">&lt;-</span> <span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="reference/getQuickstat.html">getQuickstat</a></span><span class="op">(</span>
+  sector<span class="op">=</span><span class="cn">NULL</span>,
+  group<span class="op">=</span><span class="cn">NULL</span>,
+  commodity<span class="op">=</span><span class="cn">NULL</span>,
+  category<span class="op">=</span><span class="cn">NULL</span>,
+  domain<span class="op">=</span><span class="cn">NULL</span>,
+  county<span class="op">=</span><span class="cn">NULL</span>,
+  key <span class="op">=</span> <span class="va">key</span>,
+  program <span class="op">=</span> <span class="st">'CENSUS'</span>,
+  data_item <span class="op">=</span> <span class="st">'CROP TOTALS - OPERATIONS WITH SALES'</span>,
+  geographic_level <span class="op">=</span> <span class="st">'COUNTY'</span>,
+  year <span class="op">=</span> <span class="st">'2017'</span>,
+  state <span class="op">=</span> <span class="cn">NULL</span>,
+  geometry <span class="op">=</span> <span class="cn">T</span>,
+  lower48 <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
+
+
+
+<span class="co"># Plot this data for each state</span>
+<span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="reference/plotUSDA.html">plotUSDA</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">ops.with.sales</span><span class="op">)</span></code></pre>
 <p>The last function returns this ggplot choropleth:<br><img src="https://github.com/bradlindblad/tidyUSDA/blob/master/images/choropleth.png?raw=true" align="center"></p>
 </div>
-<div id="contact" class="section level2">
-<h2 class="hasAnchor">
-<a href="#contact" class="anchor"></a>Contact</h2>
+</div>
+</div>
+<div class="section level2">
+<h2 id="contact">Contact<a class="anchor" aria-label="anchor" href="#contact"></a>
+</h2>
 <ul>
-<li><a href="https://github.com/bradlindblad">Brad Lindblad</a></li>
+<li><a href="https://github.com/bradlindblad" class="external-link">Brad Lindblad</a></li>
 </ul>
 <p><strong><em>This product uses the NASS API but is not endorsed or certified by NASS.</em></strong></p>
 </div>
@@ -210,58 +194,63 @@ tidyUSDA::plotUSDA(df = ops.with.sales)</a></code></pre>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=tidyUSDA">https://​cloud.r-project.org/​package=tidyUSDA</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/bradlindblad/tidyUSDA/">https://​github.com/​bradlindblad/​tidyUSDA/​</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
-</ul>
-</div>
-<div class="citation">
-<h2>Citation</h2>
-<ul class="list-unstyled">
-<li><a href="authors.html">Citing tidyUSDA</a></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Brad Lindblad <br><small class="roles"> Author, maintainer </small>  </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="https://cloud.r-project.org/package=tidyUSDA" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/bradlindblad/tidyUSDA/" class="external-link">Browse source code</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/bradlindblad/tidyUSDA/actions"><img src="https://github.com/bradlindblad/tidyUSDA/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://CRAN.R-project.org/package=tidyUSDA"><img src="https://www.r-pkg.org/badges/version/tidyUSDA" alt="CRAN status"></a></li>
-<li><a href="https://cran.r-project.org/package=tidyUSDA"><img src="https://cranlogs.r-pkg.org/badges/grand-total/tidyUSDA" alt="metacran downloads"></a></li>
-<li><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.1-6666ff.svg" alt="minimal R version"></a></li>
-<li><a href="https://codecov.io/gh/bradlindblad/tidyusda?branch=master"><img src="https://codecov.io/gh/bradlindblad/tidyusda/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></li>
-<li><a href="https://github.com/bradlindblad/tidyUSDA/actions/workflows/pkgdown.yaml"><img src="https://github.com/bradlindblad/tidyUSDA/actions/workflows/pkgdown.yaml/badge.svg?branch=master" alt="pkgdown"></a></li>
+<li>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+</li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing tidyUSDA</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Brad Lindblad <br><small class="roles"> Author, maintainer </small>  </li>
+<li><a href="authors.html">More about authors...</a></li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/bradlindblad/tidyUSDA/actions" class="external-link"><img src="https://github.com/bradlindblad/tidyUSDA/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://CRAN.R-project.org/package=tidyUSDA" class="external-link"><img src="https://www.r-pkg.org/badges/version/tidyUSDA" alt="CRAN status"></a></li>
+<li><a href="https://cran.r-project.org/package=tidyUSDA" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/tidyUSDA" alt="metacran downloads"></a></li>
+<li><a href="https://cran.r-project.org/" class="external-link"><img src="https://img.shields.io/badge/R%3E%3D-3.6.1-6666ff.svg" alt="minimal R version"></a></li>
+<li><a href="https://app.codecov.io/gh/bradlindblad/tidyusda?branch=master" class="external-link"><img src="https://codecov.io/gh/bradlindblad/tidyusda/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></li>
+<li><a href="https://github.com/bradlindblad/tidyUSDA/actions/workflows/pkgdown.yaml" class="external-link"><img src="https://github.com/bradlindblad/tidyUSDA/actions/workflows/pkgdown.yaml/badge.svg?branch=master" alt="pkgdown"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Brad Lindblad.</p>
+  <p></p>
+<p>Developed by Brad Lindblad.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -269,6 +258,8 @@ tidyUSDA::plotUSDA(df = ops.with.sales)</a></code></pre>
 
   
 
+
+  
 
   </body>
 </html>
