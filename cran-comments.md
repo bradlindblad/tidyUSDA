@@ -1,4 +1,4 @@
-Fix issue where API call did not fail gracefully, per Brian Ripley request.
+Fix issue where vignette failed to build per Brian Ripley email.
 
 ## Test environments
 * local Linux Mint 20.2, R 4.1.0
