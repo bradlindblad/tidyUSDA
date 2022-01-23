@@ -2,7 +2,7 @@ Type: Package
 Package: tidyUSDA
 Title: A Minimal Tool Set for Gathering USDA Quick Stat Data for Analysis
     and Visualization
-Version: 0.3.3
+Version: 0.3.3.9000
 Authors@R: 
     c(person(given = "Brad",
              family = "Lindblad",
