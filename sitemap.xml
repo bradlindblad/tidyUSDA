@@ -1,69 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/articles/index.html</loc>
   </url>
   <url>
-    <loc>/articles/using_tidyusda.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/articles/using_tidyusda.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/index.html</loc>
   </url>
   <url>
-    <loc>/news/index.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/allCategory.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/reference/allCategory.html</loc>
   </url>
   <url>
-    <loc>/reference/allCommodity.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/reference/allCommodity.html</loc>
   </url>
   <url>
-    <loc>/reference/allCounty.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/reference/allCounty.html</loc>
   </url>
   <url>
-    <loc>/reference/allDataItem.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/reference/allDataItem.html</loc>
   </url>
   <url>
-    <loc>/reference/allDomain.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/reference/allDomain.html</loc>
   </url>
   <url>
-    <loc>/reference/allGeogLevel.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/reference/allGeogLevel.html</loc>
   </url>
   <url>
-    <loc>/reference/allGroup.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/reference/allGroup.html</loc>
   </url>
   <url>
-    <loc>/reference/allProgram.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/reference/allProgram.html</loc>
   </url>
   <url>
-    <loc>/reference/allSector.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/reference/allSector.html</loc>
   </url>
   <url>
-    <loc>/reference/allState.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/reference/allState.html</loc>
   </url>
   <url>
-    <loc>/reference/getQuickstat.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/reference/getQuickstat.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/plotUSDA.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/reference/plotUSDA.html</loc>
   </url>
   <url>
-    <loc>/reference/reexports.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/reference/reexports.html</loc>
   </url>
   <url>
-    <loc>/reference/tidyUSDA.html</loc>
+    <loc>https://bradlindblad.github.io/tidyusda/reference/tidyUSDA.html</loc>
   </url>
 </urlset>
