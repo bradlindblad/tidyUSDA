@@ -107,7 +107,7 @@ test_that("weighted by mile", {
       program = 'CENSUS',
       data_item = 'AG LAND, INCL BUILDINGS - ASSET VALUE, MEASURED IN $',
       geographic_level = 'STATE',
-      year = 2017,
+      year = '2017',
       state = NULL,
       geometry = T,
       lower48 = T, 
