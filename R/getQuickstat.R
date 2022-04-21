@@ -490,22 +490,22 @@ fuzzyMatch <- function(input, dataset) {
 getQuickstat <- function(key = NULL, program = NULL, data_item = NULL, sector = NULL, group = NULL, commodity = NULL,
                          category = NULL, domain = NULL, geographic_level = NULL,
                          state = NULL, county = NULL, year = NULL, geometry = FALSE, lower48 = FALSE, weighted_by_area = FALSE) {
-  #
-  # sector=NULL
-  # group=NULL
-  # commodity=NULL
-  # category=NULL
-  # domain='TOTAL'
-  # county=NULL
+
   # key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'
   # program = 'CENSUS'
-  # data_item = 'AG LAND, INCL BUILDINGS - ASSET VALUE, MEASURED IN $'
+  # sector = 'CROPS'
+  # group = 'CROP TOTALS'
+  # commodity = 'CROP TOTALSS'
+  # category = 'SALES'
+  # data_item = 'CROP TOTALS - SALES, MEASURED IN $'
+  # domain = 'TOTAL'
   # geographic_level = 'STATE'
-  # year = NULL
   # state = NULL
-  # geometry = T
-  # weighted_by_area = NULL
-  #
+  # county = NULL
+  # year = NULL
+  # geometry = FALSE
+  # lower48 = FALSE
+  # weighted_by_area = FALSE
 
 
 

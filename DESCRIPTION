@@ -1,46 +1,39 @@
 Type: Package
 Package: tidyUSDA
-Title: A Minimal Tool Set for Gathering USDA Quick Stat Data for
-    Analysis and Visualization
+Title: A Minimal Tool Set for Gathering USDA Quick Stat Data for Analysis
+    and Visualization
 Version: 0.3.1.9000
-Authors@R: 
-    c(person(given = "Brad",
-             family = "Lindblad",
-             role = c("aut", "cre"),
-             email = "me@bradlindblad.com"),
-      person(given = "Michael",
-             family = "Thomas",
-             role = "ctb",
-             email = "mthomas@ketchbrookanalytics.com"),
-      person(given = "Alex",
-             family = "Mindeman",
-             role = "ctb",
-             email = "alexandramindeman@gmail.com"))
-Description: Provides a consistent API to pull United States
-    Department of Agriculture census and survey data from the National
-    Agricultural Statistics Service (NASS) QuickStats service.
+Authors@R: c(
+    person("Brad", "Lindblad", , "me@bradlindblad.com", role = c("aut", "cre")),
+    person("Michael", "Thomas", , "mthomas@ketchbrookanalytics.com", role = "ctb"),
+    person("Alex", "Mindeman", , "alexandramindeman@gmail.com", role = "ctb")
+  )
+Description: Provides a consistent API to pull United States Department of
+    Agriculture census and survey data from the National Agricultural
+    Statistics Service (NASS) QuickStats service.
 License: MIT + file LICENSE
 URL: https://bradlindblad.github.io/tidyUSDA/,
     https://github.com/bradlindblad/tidyUSDA/
 Depends: 
     R (>= 3.6)
 Imports: 
+    checkmate,
+    covr,
     crayon,
     dplyr,
     fuzzyjoin (>= 0.1.6),
     ggplot2,
+    httr,
     jsonlite,
     magrittr,
     nlme,
     rgdal,
     sf,
-    stringi,
-    tigris (>= 1.0),
-    httr,
-    waldo,
-    testthat (>= 2.1.0),
-    covr,
     spelling,
+    stringi,
+    testthat (>= 2.1.0),
+    tigris (>= 1.0),
+    waldo
 Suggests: 
     knitr,
     rgeos,
