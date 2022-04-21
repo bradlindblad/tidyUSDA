@@ -68,7 +68,7 @@ There are many different geography levels. Currently there is only support for p
 
 Now that we're a little more clear on what we can input, let's use our main function for data pulling.
 
-```{r, results = "hide"}
+```{r, results = "hide", eval=FALSE}
 # Get count of operations with sales in 2017
 ops.with.sales <- tidyUSDA::getQuickstat(
   sector=NULL,
@@ -93,13 +93,14 @@ Note that I set *geometry = TRUE* in order to include the geometry feature that 
 At this point, I have a dataframe with a rather verbose number of data fields. If you set *geometry = TRUE*, you will have even more columns. The main data point from Quick Stats will be in the 'Value' field. Feel free to filter the data frame for the fields you actually need at this point.
 
 Now let's see what the data looks like with a basic choropleth map.
-```{r}
+```{r, eval=FALSE}
 # Plot this data for each state
 tidyUSDA::plotUSDA(df = ops.with.sales)
 
 ```
+<img src='https://github.com/bradlindblad/tidyUSDA/blob/dev/images/vig_1.png?raw=true' align="center"  />
 
-*Note: it is a known issue that the RStudio graphics device on macOS can be extremely laggy when plotting. To get around this, feel free to use your own plotting methods such as the [tmap](https://github.com/mtennekes/tmap) package or [leaflet](https://rstudio.github.io/leaflet/).*
+*Note: it is a known issue that the RStudio graphics device on macOS can be extremely laggy when plotting. To get around this, feel free to use your own plotting methods such as the [tmap](https://github.com/r-tmap/tmap) package or [leaflet](https://rstudio.github.io/leaflet/).*
 
 OK wow so it looks like all the farms in the country are in Texas But wait a second, Texas is huge as far as landmass, and the relative size of the farms are smaller on balance, so maybe we should look at this a different way. 
 
@@ -107,9 +108,10 @@ When we grabbed our data with getQuickstat above, we set weighted_by_area = TRUE
 
 This gives us a bunch of really small numbers that don't make sense, but for our purposes of mapping, they'll do.
 
-```{r}
+```{r, eval=FALSE}
 tidyUSDA::plotUSDA(df = ops.with.sales, fill_by = 'value_per_sq_mile')
 ```
+<img src='https://github.com/bradlindblad/tidyUSDA/blob/dev/images/vig_2.png?raw=true' align="center"  />
 
 Ahh, much better. Now we have a true plot showing the number of operations per square mile.
 

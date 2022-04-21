@@ -2,7 +2,7 @@ Type: Package
 Package: tidyUSDA
 Title: A Minimal Tool Set for Gathering USDA Quick Stat Data for Analysis
     and Visualization
-Version: 0.3.1.9000
+Version: 0.3.3.9000
 Authors@R: c(
     person("Brad", "Lindblad", , "me@bradlindblad.com", role = c("aut", "cre")),
     person("Michael", "Thomas", , "mthomas@ketchbrookanalytics.com", role = "ctb"),
@@ -18,7 +18,6 @@ Depends:
     R (>= 3.6)
 Imports: 
     checkmate,
-    covr,
     crayon,
     dplyr,
     fuzzyjoin (>= 0.1.6),
@@ -26,19 +25,20 @@ Imports:
     httr,
     jsonlite,
     magrittr,
+    sf,
+    tigris (>= 1.0)
+Suggests: 
+    covr,
+    knitr,
     nlme,
     rgdal,
-    sf,
+    rgeos,
+    rmarkdown,
     spelling,
     stringi,
     testthat (>= 2.1.0),
-    tigris (>= 1.0),
+    usethis,
     waldo
-Suggests: 
-    knitr,
-    rgeos,
-    rmarkdown,
-    usethis
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
