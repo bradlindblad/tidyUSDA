@@ -47,7 +47,7 @@ getQuickstat(
 
 \item{year}{year field - string}
 
-\item{geometry}{geometry field (TRUE or FALSE), set to TRUE if you would like a simple features (SF) geometry field included. 
+\item{geometry}{geometry field (TRUE or FALSE), set to TRUE if you would like a simple features (SF) geometry field included.
 Only works when geographic_level is set to 'COUNTY' or 'STATE'}
 
 \item{lower48}{limit data to the lower 48 states? - TRUE or FALSE}
@@ -59,23 +59,24 @@ Get values from USDA Quick Stats in a dataframe
 with optional sf (simple features) geometry field
 }
 \note{
-Go to the webpage https://quickstats.nass.usda.gov/. As a best practice, select the items in these fields and test that that data item 
-   exists in the browser before using those parameters in this function. When you have a dataset that works, enter those values in the 
+Go to the webpage https://quickstats.nass.usda.gov/. As a best practice, select the items in these fields and test that that data item
+   exists in the browser before using those parameters in this function. When you have a dataset that works, enter those values in the
    function as parameters. Ideally, only enter values for your key obviously, then PROGRAM, DATA_ITEM, GEOGRAPHIC_LEVEL and then if
    necessary, DOMAIN, STATE, COUNTY or YEAR.
 }
 \examples{
 \dontrun{
 getQuickstat(
-key = 'your_key',
-program = 'CENSUS',
-data_item = 'CROP TOTALS - OPERATIONS WITH SALES',
-geographic_level = 'COUNTY',
-domain = 'TOTAL',
-year = '2017',
-state = NULL,
-geometry = T,
-lower48 = T)
-
+  key = "your_key",
+  program = "CENSUS",
+  data_item = "CROP TOTALS - OPERATIONS WITH SALES",
+  geographic_level = "COUNTY",
+  domain = "TOTAL",
+  year = "2017",
+  state = NULL,
+  geometry = T,
+  lower48 = T
+)
 }
+
 }

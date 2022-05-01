@@ -1,5 +1,8 @@
 # tidyUSDA (development version)
 
+# tidyUSDA 0.4.0
+* Added more verbose error messages if your parameters are rejected by the API
+
 # tidyUSDA 0.3.3
 * Fixed issue where vignette was not building correctly
 

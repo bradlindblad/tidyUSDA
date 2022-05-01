@@ -34,7 +34,7 @@ test_that("no key", {
 
 test_that("bad program", {
   
-  testthat::expect_message(
+  testthat::expect_error(
     
 
   getQuickstat(key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
@@ -58,7 +58,7 @@ test_that("bad program", {
 testthat::test_that("bad sector", {
   
     
-  testthat::expect_message(
+  testthat::expect_error(
     
     object = getQuickstat(key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
                  program = 'CENSUS',
@@ -82,7 +82,7 @@ testthat::test_that("bad sector", {
 
 test_that("bad group", {
   
-  testthat::expect_message(
+  testthat::expect_error(
     
     
     getQuickstat(key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
@@ -105,7 +105,7 @@ test_that("bad group", {
 
 test_that("bad commodity", {
   
-  testthat::expect_message(
+  testthat::expect_error(
     
     
     getQuickstat(key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
@@ -128,7 +128,7 @@ test_that("bad commodity", {
 
 test_that("bad category", {
   
-  testthat::expect_message(
+  testthat::expect_error(
     
     
     getQuickstat(key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
@@ -151,7 +151,7 @@ test_that("bad category", {
 
 test_that("bad domain", {
   
-  testthat::expect_message(
+  testthat::expect_error(
     
     
     getQuickstat(key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
@@ -173,7 +173,7 @@ test_that("bad domain", {
 
 test_that("bad data item", {
   
-  testthat::expect_message(
+  testthat::expect_error(
     
     
     getQuickstat(key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
@@ -196,7 +196,7 @@ test_that("bad data item", {
 
 test_that("bad geographic_level", {
   
-  testthat::expect_message(
+  testthat::expect_error(
     
     
     getQuickstat(key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
