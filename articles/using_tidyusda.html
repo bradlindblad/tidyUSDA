@@ -32,7 +32,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">tidyUSDA</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.3.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -156,16 +156,14 @@
 <code class="sourceCode R">
 <span class="co"># Plot this data for each state</span>
 <span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="../reference/plotUSDA.html">plotUSDA</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">ops.with.sales</span><span class="op">)</span></code></pre></div>
-<p><img src="https://github.com/bradlindblad/tidyUSDA/blob/master/images/vignette_1.png?raw=true"></p>
-<p><em>Note: it is a known issue that the RStudio graphics device on macOS can be extremely laggy when plotting. To get around this, feel free to use your own plotting methods such as the <a href="https://github.com/r-tmap/tmap" class="external-link">tmap</a> package or <a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a>.</em></p>
-<p><a href="https://bradlindblad.github.io/tidyUSDA" class="external-link"><img src="images/vig_1.png" align="center" height="300"></a></p>
+<p><a href="https://bradlindblad.github.io/tidyUSDA/" class="external-link"><img src="images/vig_1.png" align="center" height="300"></a></p>
 <p><em>Note: it is a known issue that the RStudio graphics device on macOS can be extremely laggy when plotting. To get around this, feel free to use your own plotting methods such as the <a href="https://github.com/r-tmap/tmap" class="external-link">tmap</a> package or <a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a>.</em></p>
 <p>OK wow so it looks like all the farms in the country are in Texas But wait a second, Texas is huge as far as landmass, and the relative size of the farms are smaller on balance, so maybe we should look at this a different way.</p>
 <p>When we grabbed our data with getQuickstat above, we set weighted_by_area = TRUE, which creates a new field that,as you guessed, weights our main value by the land area in that county or state.</p>
 <p>This gives us a bunch of really small numbers that don’t make sense, but for our purposes of mapping, they’ll do.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="../reference/plotUSDA.html">plotUSDA</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">ops.with.sales</span>, fill_by <span class="op">=</span> <span class="st">'value_per_sq_mile'</span><span class="op">)</span></code></pre></div>
-<p><a href="https://bradlindblad.github.io/tidyUSDA" class="external-link"><img src="images/vig_2.png" align="center" height="300"></a></p>
+<p><a href="https://bradlindblad.github.io/tidyUSDA/" class="external-link"><img src="images/vig_2.png" align="center" height="300"></a></p>
 <p>Ahh, much better. Now we have a true plot showing the number of operations per square mile.</p>
 </div>
 <div class="section level2">
