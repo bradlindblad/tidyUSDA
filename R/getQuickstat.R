@@ -80,6 +80,7 @@ defaultCallAPI <- function(key = NULL, program = NULL, data_item = NULL, sector 
   url <- gsub(" ", "%20", url)
 
 
+
   httr::set_config(httr::config(ssl_verifypeer = 0L))
   resp <- httr::GET(url = url)
 
@@ -95,6 +96,7 @@ defaultCallAPI <- function(key = NULL, program = NULL, data_item = NULL, sector 
   raw <- jsonlite::fromJSON(jsonRespText)
   raw <- raw$data
   mydata <- raw
+
   return(mydata)
 }
 
@@ -181,6 +183,7 @@ multStates <- function(key = NULL, program = NULL, data_item = NULL, sector = NU
   url <- gsub("=,", "=", url)
   url <- gsub(" ", "%20", url)
 
+
   httr::set_config(httr::config(ssl_verifypeer = 0L))
   resp <- httr::GET(url = url)
 
@@ -197,6 +200,7 @@ multStates <- function(key = NULL, program = NULL, data_item = NULL, sector = NU
   raw <- jsonlite::fromJSON(jsonRespText)
   raw <- raw$data
   mydata <- raw
+
   return(mydata)
 }
 
@@ -283,6 +287,7 @@ multCounties <- function(key = NULL, program = NULL, data_item = NULL, sector = 
   url <- gsub("=,", "=", url)
   url <- gsub(" ", "%20", url)
 
+
   httr::set_config(httr::config(ssl_verifypeer = 0L))
   resp <- httr::GET(url = url)
 
@@ -298,6 +303,7 @@ multCounties <- function(key = NULL, program = NULL, data_item = NULL, sector = 
   raw <- jsonlite::fromJSON(jsonRespText)
   raw <- raw$data
   mydata <- raw
+
   return(mydata)
 }
 
@@ -390,6 +396,7 @@ multStatesandCounties <- function(key = NULL, program = NULL, data_item = NULL, 
   url <- gsub("=,", "=", url)
   url <- gsub(" ", "%20", url)
 
+
   httr::set_config(httr::config(ssl_verifypeer = 0L))
   resp <- httr::GET(url = url)
 
@@ -405,6 +412,7 @@ multStatesandCounties <- function(key = NULL, program = NULL, data_item = NULL, 
   raw <- jsonlite::fromJSON(jsonRespText)
   raw <- raw$data
   mydata <- raw
+
   return(mydata)
 }
 

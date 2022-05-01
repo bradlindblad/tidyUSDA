@@ -3,6 +3,12 @@
 # tidyUSDA 0.4.0
 * Added more verbose error messages if your parameters are rejected by the API
 
+# tidyUSDA 0.3.3
+* Fixed issue where vignette was not building correctly
+
+# tidyUSDA 0.3.2
+* Added error catch to https API calls
+
 # tidyUSDA 0.3.1
 * Fixed issue where input parameters with an '&' weren't encoding correctly in API call to USDA
 * Added some more unit tests

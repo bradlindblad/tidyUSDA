@@ -1,0 +1,7 @@
+url: https://bradlindblad.github.io/tidyusda/
+template:
+  bootstrap: 5
+  bootswatch: lux
+  theme: nord
+  bslib:
+    pkgdown-nav-height: 100px
