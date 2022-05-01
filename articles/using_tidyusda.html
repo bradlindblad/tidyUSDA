@@ -112,7 +112,7 @@
 <p>At this point, it’s best to use the actual Quick Stats website to pick out the parameters you would like to filter by. This way you know for sure that data will be returned. I want to see a state-level breakdown of counts of operations using the 2017 census data.</p>
 <p>At this point it helps to see which possible values you <strong>can</strong> input into the function parameters. You can view these possible inputs for all of the parameters with the built-in datasets. Let’s check a few out.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="va"><a href="../reference/allCategory.html">allCategory</a></span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="va"><a href="../reference/allCategory.html">allCategory</a></span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt;             statisticcat_desc1             statisticcat_desc2 </span>
 <span class="co">#&gt;                "ACCESSIBILITY"    "ACCESSIBILITY, 5 YEAR AVG" </span>
 <span class="co">#&gt;             statisticcat_desc3             statisticcat_desc4 </span>
@@ -121,7 +121,7 @@
 <span class="co">#&gt;                     "ACTIVITY"         "ACTIVITY, 5 YEAR AVG"</span></code></pre></div>
 <p>So it looks like there are only six possible input values for the <em>category</em> field. Good to know.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="va"><a href="../reference/allGeogLevel.html">allGeogLevel</a></span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="va"><a href="../reference/allGeogLevel.html">allGeogLevel</a></span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt;               agg_level_desc1               agg_level_desc2 </span>
 <span class="co">#&gt;       "AGRICULTURAL DISTRICT" "AMERICAN INDIAN RESERVATION" </span>
 <span class="co">#&gt;               agg_level_desc3               agg_level_desc4 </span>
@@ -131,7 +131,8 @@
 <p>There are many different geography levels. Currently there is only support for providing geometries for <em>county</em> and <em>state</em> values.</p>
 <p>Now that we’re a little more clear on what we can input, let’s use our main function for data pulling.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Get count of operations with sales in 2017</span>
+<code class="sourceCode R">
+<span class="co"># Get count of operations with sales in 2017</span>
 <span class="va">ops.with.sales</span> <span class="op">&lt;-</span> <span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="../reference/getQuickstat.html">getQuickstat</a></span><span class="op">(</span>
   sector<span class="op">=</span><span class="cn">NULL</span>,
   group<span class="op">=</span><span class="cn">NULL</span>,
@@ -152,16 +153,19 @@
 <p>At this point, I have a dataframe with a rather verbose number of data fields. If you set <em>geometry = TRUE</em>, you will have even more columns. The main data point from Quick Stats will be in the ‘Value’ field. Feel free to filter the data frame for the fields you actually need at this point.</p>
 <p>Now let’s see what the data looks like with a basic choropleth map.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Plot this data for each state</span>
+<code class="sourceCode R">
+<span class="co"># Plot this data for each state</span>
 <span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="../reference/plotUSDA.html">plotUSDA</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">ops.with.sales</span><span class="op">)</span></code></pre></div>
 <p><img src="https://github.com/bradlindblad/tidyUSDA/blob/master/images/vignette_1.png?raw=true"></p>
 <p><em>Note: it is a known issue that the RStudio graphics device on macOS can be extremely laggy when plotting. To get around this, feel free to use your own plotting methods such as the <a href="https://github.com/r-tmap/tmap" class="external-link">tmap</a> package or <a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a>.</em></p>
-<p>OK wow so it looks like all the farms in the country are in Texas But wait a second, Texass is huge as far as landmass, and the relative size of the farms are smaller on balance, so maybe we should look at this a different way.</p>
+<p><a href="https://bradlindblad.github.io/tidyUSDA" class="external-link"><img src="images/vig_1.png" align="center" height="300"></a></p>
+<p><em>Note: it is a known issue that the RStudio graphics device on macOS can be extremely laggy when plotting. To get around this, feel free to use your own plotting methods such as the <a href="https://github.com/r-tmap/tmap" class="external-link">tmap</a> package or <a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a>.</em></p>
+<p>OK wow so it looks like all the farms in the country are in Texas But wait a second, Texas is huge as far as landmass, and the relative size of the farms are smaller on balance, so maybe we should look at this a different way.</p>
 <p>When we grabbed our data with getQuickstat above, we set weighted_by_area = TRUE, which creates a new field that,as you guessed, weights our main value by the land area in that county or state.</p>
 <p>This gives us a bunch of really small numbers that don’t make sense, but for our purposes of mapping, they’ll do.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="../reference/plotUSDA.html">plotUSDA</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">ops.with.sales</span>, fill_by <span class="op">=</span> <span class="st">'value_per_sq_mile'</span><span class="op">)</span></code></pre></div>
-<p><img src="https://github.com/bradlindblad/tidyUSDA/blob/master/images/vignette_2.png?raw=true"></p>
+<p><a href="https://bradlindblad.github.io/tidyUSDA" class="external-link"><img src="images/vig_2.png" align="center" height="300"></a></p>
 <p>Ahh, much better. Now we have a true plot showing the number of operations per square mile.</p>
 </div>
 <div class="section level2">
@@ -197,7 +201,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
     </footer>

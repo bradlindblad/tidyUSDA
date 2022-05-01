@@ -106,7 +106,7 @@ with optional sf (simple features) geometry field</p>
 <dt>year</dt>
 <dd><p>year field - string</p></dd>
 <dt>geometry</dt>
-<dd><p>geometry field (TRUE or FALSE), set to TRUE if you would like a simple features (SF) geometry field included. 
+<dd><p>geometry field (TRUE or FALSE), set to TRUE if you would like a simple features (SF) geometry field included.
 Only works when geographic_level is set to 'COUNTY' or 'STATE'</p></dd>
 <dt>lower48</dt>
 <dd><p>limit data to the lower 48 states? - TRUE or FALSE</p></dd>
@@ -115,8 +115,8 @@ Only works when geographic_level is set to 'COUNTY' or 'STATE'</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
-    <p>Go to the webpage https://quickstats.nass.usda.gov/. As a best practice, select the items in these fields and test that that data item 
-   exists in the browser before using those parameters in this function. When you have a dataset that works, enter those values in the 
+    <p>Go to the webpage https://quickstats.nass.usda.gov/. As a best practice, select the items in these fields and test that that data item
+   exists in the browser before using those parameters in this function. When you have a dataset that works, enter those values in the
    function as parameters. Ideally, only enter values for your key obviously, then PROGRAM, DATA_ITEM, GEOGRAPHIC_LEVEL and then if
    necessary, DOMAIN, STATE, COUNTY or YEAR.</p>
     </div>
@@ -125,17 +125,18 @@ Only works when geographic_level is set to 'COUNTY' or 'STATE'</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in"><span class="fu">getQuickstat</span><span class="op">(</span></span>
-<span class="r-in">key <span class="op">=</span> <span class="st">'your_key'</span>,</span>
-<span class="r-in">program <span class="op">=</span> <span class="st">'CENSUS'</span>,</span>
-<span class="r-in">data_item <span class="op">=</span> <span class="st">'CROP TOTALS - OPERATIONS WITH SALES'</span>,</span>
-<span class="r-in">geographic_level <span class="op">=</span> <span class="st">'COUNTY'</span>,</span>
-<span class="r-in">domain <span class="op">=</span> <span class="st">'TOTAL'</span>,</span>
-<span class="r-in">year <span class="op">=</span> <span class="st">'2017'</span>,</span>
-<span class="r-in">state <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span class="r-in">geometry <span class="op">=</span> <span class="cn">T</span>,</span>
-<span class="r-in">lower48 <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
-<span class="r-in"></span>
+<span class="r-in">  key <span class="op">=</span> <span class="st">"your_key"</span>,</span>
+<span class="r-in">  program <span class="op">=</span> <span class="st">"CENSUS"</span>,</span>
+<span class="r-in">  data_item <span class="op">=</span> <span class="st">"CROP TOTALS - OPERATIONS WITH SALES"</span>,</span>
+<span class="r-in">  geographic_level <span class="op">=</span> <span class="st">"COUNTY"</span>,</span>
+<span class="r-in">  domain <span class="op">=</span> <span class="st">"TOTAL"</span>,</span>
+<span class="r-in">  year <span class="op">=</span> <span class="st">"2017"</span>,</span>
+<span class="r-in">  state <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span class="r-in">  geometry <span class="op">=</span> <span class="cn">T</span>,</span>
+<span class="r-in">  lower48 <span class="op">=</span> <span class="cn">T</span></span>
+<span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
+<span class="r-in"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -147,7 +148,7 @@ Only works when geographic_level is set to 'COUNTY' or 'STATE'</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
     </footer></div>

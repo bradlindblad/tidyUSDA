@@ -78,10 +78,8 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="tidyusda-">tidyUSDA <img src="https://raw.githubusercontent.com/bradlindblad/tidyUSDA/master/images/tidyusda.png" align="right" height="200"><a class="anchor" aria-label="anchor" href="#tidyusda-"></a>
-</h1></div>
-
+  <main id="main" class="col-md-9"><p>usethis # tidyUSDA <img src="https://raw.githubusercontent.com/bradlindblad/tidyUSDA/master/images/tidyusda.png" align="right" height="200"></p>
+<p><a href="https://github.com/bradlindblad/tidyUSDA/actions" class="external-link"><img src="https://github.com/bradlindblad/tidyUSDA/workflows/R-CMD-check/badge.svg" alt="R build status"></a> <a href="https://CRAN.R-project.org/package=tidyUSDA" class="external-link"><img src="https://www.r-pkg.org/badges/version/tidyUSDA" alt="CRAN status"></a> <a href="https://cran.r-project.org/package=tidyUSDA" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/tidyUSDA" alt="metacran downloads"></a> <a href="https://cran.r-project.org/" class="external-link"><img src="https://img.shields.io/badge/R%3E%3D-3.6.1-6666ff.svg" alt="minimal R version"></a> <a href="https://app.codecov.io/gh/bradlindblad/tidyusda?branch=master" class="external-link"><img src="https://codecov.io/gh/bradlindblad/tidyusda/branch/master/graph/badge.svg" alt="Codecov test coverage"></a> <a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a> <a href="https://github.com/bradlindblad/tidyUSDA/actions/workflows/pkgdown.yaml" class="external-link"><img src="https://github.com/bradlindblad/tidyUSDA/actions/workflows/pkgdown.yaml/badge.svg?branch=master" alt="pkgdown"></a></p>
 <p><strong>tidyUSDA</strong>, an interface to USDA Quick Stats data with mapping capabilities.</p>
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
@@ -95,43 +93,15 @@
 <pre><code><span class="co"># Install directly from CRAN:</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"tidyUSDA"</span><span class="op">)</span></code></pre>
 <div class="section level3">
-<h3 id="windows">Windows<a class="anchor" aria-label="anchor" href="#windows"></a>
+<h3 id="dependencies">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a>
 </h3>
-<p>Depending on which version of R you have installed, you may need to install <a href="https://cran.r-project.org/bin/windows/Rtools/" class="external-link">Rtools</a>.</p>
+<p>Depending on which operating system you are installing tidyUSDA on, you may need to add external dependencies.</p>
+<p>Please see the ‘Installation’ section on the <a href="https://r-spatial.github.io/sf/" class="external-link">sf package homepage</a> for details.</p>
 </div>
-<div class="section level3">
-<h3 id="mac">Mac<a class="anchor" aria-label="anchor" href="#mac"></a>
-</h3>
-<p>You may need to install gdal before install.packages(“tidyUSDA”). Use these commands:</p>
-<pre><code>brew install pkg-config     
-brew install gdal</code></pre>
 </div>
-<div class="section level3">
-<h3 id="linux">Linux<a class="anchor" aria-label="anchor" href="#linux"></a>
-</h3>
-<p>You will need to install GDAL (&gt;= 2.0.1), GEOS (&gt;= 3.4.0) and Proj.4 (&gt;= 4.8.0) for most Unix-based systems.</p>
-<div class="section level4">
-<h4 id="ubuntu">Ubuntu<a class="anchor" aria-label="anchor" href="#ubuntu"></a>
-</h4>
-<p>To install the dependencies on Ubuntu, either add ubuntugis-unstable to the package repositories:</p>
-<pre><code>sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
-sudo apt-get update
-sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev </code></pre>
-<p>or install dependencies from source; see e.g. an older travis config file for hints.</p>
-</div>
-<div class="section level4">
-<h4 id="fedora">Fedora<a class="anchor" aria-label="anchor" href="#fedora"></a>
-</h4>
-<p>The following command installs all required dependencies:</p>
-<pre><code>sudo dnf install gdal-devel proj-devel proj-epsg proj-nad geos-devel udunits2-devel</code></pre>
-</div>
-<div class="section level4">
-<h4 id="arch">Arch<a class="anchor" aria-label="anchor" href="#arch"></a>
-</h4>
-<p>Get gdal, proj and geos from the main repos and udunits from the AUR:</p>
-<pre><code>pacman -S gdal proj geos
-pacaur/yaourt/whatever -S udunits</code></pre>
-<p><em>Thanks to the <a href="https://github.com/r-spatial/sf" class="external-link">SF package README</a> for these OS helpers.</em> ## Usage</p>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
 <p>Check out the vignette with:</p>
 <pre><code><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"using_tidyusda"</span><span class="op">)</span></code></pre>
 <p>You first need to grab a free API token from the USDA at their Quickstats website.</p>
@@ -170,17 +140,13 @@ pacaur/yaourt/whatever -S udunits</code></pre>
 <span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="reference/plotUSDA.html">plotUSDA</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">ops.with.sales</span><span class="op">)</span></code></pre>
 <p>The last function returns this ggplot choropleth:<br><img src="https://github.com/bradlindblad/tidyUSDA/blob/master/images/choropleth.png?raw=true" align="center"></p>
 </div>
-</div>
-</div>
 <div class="section level2">
 <h2 id="contact">Contact<a class="anchor" aria-label="anchor" href="#contact"></a>
 </h2>
-<ul>
-<li><a href="https://github.com/bradlindblad" class="external-link">Brad Lindblad</a></li>
-</ul>
+<ul><li><a href="https://github.com/bradlindblad" class="external-link">Brad Lindblad</a></li></ul>
 <p><strong><em>This product uses the NASS API but is not endorsed or certified by NASS.</em></strong></p>
 </div>
-</div>
+
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
@@ -214,18 +180,7 @@ pacaur/yaourt/whatever -S udunits</code></pre>
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://github.com/bradlindblad/tidyUSDA/actions" class="external-link"><img src="https://github.com/bradlindblad/tidyUSDA/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://github.com/bradlindblad/tidyUSDA/actions/workflows/pkgdown.yaml" class="external-link"><img src="https://github.com/bradlindblad/tidyUSDA/actions/workflows/pkgdown.yaml/badge.svg?branch=master" alt="pkgdown"></a></li>
-<li><a href="https://app.codecov.io/gh/bradlindblad/tidyusda?branch=master" class="external-link"><img src="https://codecov.io/gh/bradlindblad/tidyusda/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://cran.r-project.org/package=tidyUSDA" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/tidyUSDA" alt="metacran downloads"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></li>
-<li><a href="https://CRAN.R-project.org/package=tidyUSDA" class="external-link"><img src="https://www.r-pkg.org/badges/version/tidyUSDA" alt="CRAN status"></a></li>
-<li><a href="https://cran.r-project.org/" class="external-link"><img src="https://img.shields.io/badge/R%3E%3D-3.6.1-6666ff.svg" alt="minimal R version"></a></li>
-</ul>
-</div>
+
 
   </aside>
 </div>
@@ -238,7 +193,7 @@ pacaur/yaourt/whatever -S udunits</code></pre>
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
     </footer>
