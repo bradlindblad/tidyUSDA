@@ -98,7 +98,10 @@ Now let's see what the data looks like with a basic choropleth map.
 tidyUSDA::plotUSDA(df = ops.with.sales)
 
 ```
-<img src='https://github.com/bradlindblad/tidyUSDA/blob/dev/images/vig_1.png?raw=true' align="center"  />
+
+
+
+<a href='https://bradlindblad.github.io/tidyUSDA'><img src='images/vig_1.png' align="center" height="300" /></a>
 
 *Note: it is a known issue that the RStudio graphics device on macOS can be extremely laggy when plotting. To get around this, feel free to use your own plotting methods such as the [tmap](https://github.com/r-tmap/tmap) package or [leaflet](https://rstudio.github.io/leaflet/).*
 
@@ -111,7 +114,8 @@ This gives us a bunch of really small numbers that don't make sense, but for our
 ```{r, eval=FALSE}
 tidyUSDA::plotUSDA(df = ops.with.sales, fill_by = 'value_per_sq_mile')
 ```
-<img src='https://github.com/bradlindblad/tidyUSDA/blob/dev/images/vig_2.png?raw=true' align="center"  />
+
+<a href='https://bradlindblad.github.io/tidyUSDA'><img src='images/vig_2.png' align="center" height="300" /></a>
 
 Ahh, much better. Now we have a true plot showing the number of operations per square mile.
 
