@@ -31,7 +31,6 @@ Suggests:
     covr,
     knitr,
     nlme,
-    rgdal,
     rgeos,
     rmarkdown,
     spelling,

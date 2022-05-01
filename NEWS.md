@@ -1,4 +1,3 @@
-# tidyUSDA 0.4.0
 
 # tidyUSDA 0.4.0
 * Added more verbose error messages if your parameters are rejected by the API
