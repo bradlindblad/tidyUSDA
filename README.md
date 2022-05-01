@@ -2,12 +2,15 @@
 # tidyUSDA <img src='https://raw.githubusercontent.com/bradlindblad/tidyUSDA/master/images/tidyusda.png' align="right" height="200" />
 
 [![R build status](https://github.com/bradlindblad/tidyUSDA/workflows/R-CMD-check/badge.svg)](https://github.com/bradlindblad/tidyUSDA/actions)
-[![CRAN status](https://www.r-pkg.org/badges/version/tidyUSDA)](https://CRAN.R-project.org/package=tidyUSDA)
-[![metacran downloads](https://cranlogs.r-pkg.org/badges/grand-total/tidyUSDA)](https://cran.r-project.org/package=tidyUSDA)
-[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.1-6666ff.svg)](https://cran.r-project.org/)
-[![Codecov test coverage](https://codecov.io/gh/bradlindblad/tidyusda/branch/master/graph/badge.svg)](https://app.codecov.io/gh/bradlindblad/tidyusda?branch=master)
-[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![pkgdown](https://github.com/bradlindblad/tidyUSDA/actions/workflows/pkgdown.yaml/badge.svg?branch=master)](https://github.com/bradlindblad/tidyUSDA/actions/workflows/pkgdown.yaml)
+[![Codecov test coverage](https://codecov.io/gh/bradlindblad/tidyusda/branch/master/graph/badge.svg)](https://app.codecov.io/gh/bradlindblad/tidyusda?branch=master)
+[![metacran downloads](https://cranlogs.r-pkg.org/badges/grand-total/tidyUSDA)](https://cran.r-project.org/package=tidyUSDA)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+[![CRAN status](https://www.r-pkg.org/badges/version/tidyUSDA)](https://CRAN.R-project.org/package=tidyUSDA)
+[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.1-6666ff.svg)](https://cran.r-project.org/)
+
+
+
 
 
 
