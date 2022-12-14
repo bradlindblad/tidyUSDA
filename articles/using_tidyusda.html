@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Using tidyUSDA">
 <meta property="og:description" content="tidyUSDA">
@@ -75,7 +75,7 @@
 
 
 <script src="using_tidyusda_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
-  <main id="main"><div class="page-header">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Using tidyUSDA</h1>
             
       
@@ -100,69 +100,69 @@
 <p>First, install tidyUSDA with the instructions in the <a href="https://github.com/bradlindblad/tidyUSDA#Installation" class="external-link">README section</a>. Note that you may have to upgrade your R version if you are on an older build.</p>
 <p>Next, call tidyUSDA to make sure everything is installed correctly.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://bradlindblad.github.io/tidyUSDA/" class="external-link">tidyUSDA</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://bradlindblad.github.io/tidyUSDA/" class="external-link">tidyUSDA</a></span><span class="op">)</span></span></code></pre></div>
 <p>The USDA controls access to their data with API keys. You can quickly obtain your free API key by following the brief instructions at the USDA quickstats website.</p>
 <p>Let’s pull some data now.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Use keyring to store your api key</span>
-<span class="co"># key &lt;- keyring::key_get("tidyusda")</span>
-
-<span class="co"># Or hard code that thing</span>
-<span class="va">key</span> <span class="op">&lt;-</span> <span class="st">'7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'</span>  <span class="co"># please get your own key!</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Use keyring to store your api key</span></span>
+<span><span class="co"># key &lt;- keyring::key_get("tidyusda")</span></span>
+<span></span>
+<span><span class="co"># Or hard code that thing</span></span>
+<span><span class="va">key</span> <span class="op">&lt;-</span> <span class="st">'7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71'</span>  <span class="co"># please get your own key!</span></span></code></pre></div>
 <p>At this point, it’s best to use the actual Quick Stats website to pick out the parameters you would like to filter by. This way you know for sure that data will be returned. I want to see a state-level breakdown of counts of operations using the 2017 census data.</p>
 <p>At this point it helps to see which possible values you <strong>can</strong> input into the function parameters. You can view these possible inputs for all of the parameters with the built-in datasets. Let’s check a few out.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="va"><a href="../reference/allCategory.html">allCategory</a></span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt;             statisticcat_desc1             statisticcat_desc2 </span>
-<span class="co">#&gt;                "ACCESSIBILITY"    "ACCESSIBILITY, 5 YEAR AVG" </span>
-<span class="co">#&gt;             statisticcat_desc3             statisticcat_desc4 </span>
-<span class="co">#&gt; "ACCESSIBILITY, PREVIOUS YEAR"                  "ACTIVE GINS" </span>
-<span class="co">#&gt;             statisticcat_desc5             statisticcat_desc6 </span>
-<span class="co">#&gt;                     "ACTIVITY"         "ACTIVITY, 5 YEAR AVG"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="va"><a href="../reference/allCategory.html">allCategory</a></span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;             statisticcat_desc1             statisticcat_desc2 </span></span>
+<span><span class="co">#&gt;                "ACCESSIBILITY"    "ACCESSIBILITY, 5 YEAR AVG" </span></span>
+<span><span class="co">#&gt;             statisticcat_desc3             statisticcat_desc4 </span></span>
+<span><span class="co">#&gt; "ACCESSIBILITY, PREVIOUS YEAR"                  "ACTIVE GINS" </span></span>
+<span><span class="co">#&gt;             statisticcat_desc5             statisticcat_desc6 </span></span>
+<span><span class="co">#&gt;                     "ACTIVITY"         "ACTIVITY, 5 YEAR AVG"</span></span></code></pre></div>
 <p>So it looks like there are only six possible input values for the <em>category</em> field. Good to know.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="va"><a href="../reference/allGeogLevel.html">allGeogLevel</a></span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt;               agg_level_desc1               agg_level_desc2 </span>
-<span class="co">#&gt;       "AGRICULTURAL DISTRICT" "AMERICAN INDIAN RESERVATION" </span>
-<span class="co">#&gt;               agg_level_desc3               agg_level_desc4 </span>
-<span class="co">#&gt;                      "COUNTY"               "INTERNATIONAL" </span>
-<span class="co">#&gt;               agg_level_desc5               agg_level_desc6 </span>
-<span class="co">#&gt;                    "NATIONAL"        "REGION : MULTI-STATE"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="va"><a href="../reference/allGeogLevel.html">allGeogLevel</a></span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;               agg_level_desc1               agg_level_desc2 </span></span>
+<span><span class="co">#&gt;       "AGRICULTURAL DISTRICT" "AMERICAN INDIAN RESERVATION" </span></span>
+<span><span class="co">#&gt;               agg_level_desc3               agg_level_desc4 </span></span>
+<span><span class="co">#&gt;                      "COUNTY"               "INTERNATIONAL" </span></span>
+<span><span class="co">#&gt;               agg_level_desc5               agg_level_desc6 </span></span>
+<span><span class="co">#&gt;                    "NATIONAL"        "REGION : MULTI-STATE"</span></span></code></pre></div>
 <p>There are many different geography levels. Currently there is only support for providing geometries for <em>county</em> and <em>state</em> values.</p>
 <p>Now that we’re a little more clear on what we can input, let’s use our main function for data pulling.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># Get count of operations with sales in 2017</span>
-<span class="va">ops.with.sales</span> <span class="op">&lt;-</span> <span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="../reference/getQuickstat.html">getQuickstat</a></span><span class="op">(</span>
-  sector<span class="op">=</span><span class="cn">NULL</span>,
-  group<span class="op">=</span><span class="cn">NULL</span>,
-  commodity<span class="op">=</span><span class="cn">NULL</span>,
-  category<span class="op">=</span><span class="cn">NULL</span>,
-  domain<span class="op">=</span><span class="st">'TOTAL'</span>,
-  county<span class="op">=</span><span class="cn">NULL</span>,
-  key <span class="op">=</span> <span class="va">key</span>,
-  program <span class="op">=</span> <span class="st">'CENSUS'</span>,
-  data_item <span class="op">=</span> <span class="st">'CROP TOTALS - OPERATIONS WITH SALES'</span>,
-  geographic_level <span class="op">=</span> <span class="st">'STATE'</span>,
-  year <span class="op">=</span> <span class="st">'2017'</span>,
-  state <span class="op">=</span> <span class="cn">NULL</span>,
-  geometry <span class="op">=</span> <span class="cn">TRUE</span>,
-  lower48 <span class="op">=</span> <span class="cn">TRUE</span>, 
-  weighted_by_area <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Get count of operations with sales in 2017</span></span>
+<span><span class="va">ops.with.sales</span> <span class="op">&lt;-</span> <span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="../reference/getQuickstat.html">getQuickstat</a></span><span class="op">(</span></span>
+<span>  sector<span class="op">=</span><span class="cn">NULL</span>,</span>
+<span>  group<span class="op">=</span><span class="cn">NULL</span>,</span>
+<span>  commodity<span class="op">=</span><span class="cn">NULL</span>,</span>
+<span>  category<span class="op">=</span><span class="cn">NULL</span>,</span>
+<span>  domain<span class="op">=</span><span class="st">'TOTAL'</span>,</span>
+<span>  county<span class="op">=</span><span class="cn">NULL</span>,</span>
+<span>  key <span class="op">=</span> <span class="va">key</span>,</span>
+<span>  program <span class="op">=</span> <span class="st">'CENSUS'</span>,</span>
+<span>  data_item <span class="op">=</span> <span class="st">'CROP TOTALS - OPERATIONS WITH SALES'</span>,</span>
+<span>  geographic_level <span class="op">=</span> <span class="st">'STATE'</span>,</span>
+<span>  year <span class="op">=</span> <span class="st">'2017'</span>,</span>
+<span>  state <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  geometry <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  lower48 <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>  weighted_by_area <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <p>Note that I set <em>geometry = TRUE</em> in order to include the geometry feature that we need for plotting, and that I set <em>lower48 = TRUE</em> in order to exclude Hawaii and Alaska.</p>
 <p>At this point, I have a dataframe with a rather verbose number of data fields. If you set <em>geometry = TRUE</em>, you will have even more columns. The main data point from Quick Stats will be in the ‘Value’ field. Feel free to filter the data frame for the fields you actually need at this point.</p>
 <p>Now let’s see what the data looks like with a basic choropleth map.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># Plot this data for each state</span>
-<span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="../reference/plotUSDA.html">plotUSDA</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">ops.with.sales</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Plot this data for each state</span></span>
+<span><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="../reference/plotUSDA.html">plotUSDA</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">ops.with.sales</span><span class="op">)</span></span></code></pre></div>
 <p><a href="https://bradlindblad.github.io/tidyUSDA/" class="external-link"><img src="images/vig_1.png" align="center" height="300"></a></p>
 <p><em>Note: it is a known issue that the RStudio graphics device on macOS can be extremely laggy when plotting. To get around this, feel free to use your own plotting methods such as the <a href="https://github.com/r-tmap/tmap" class="external-link">tmap</a> package or <a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a>.</em></p>
 <p>OK wow so it looks like all the farms in the country are in Texas But wait a second, Texas is huge as far as landmass, and the relative size of the farms are smaller on balance, so maybe we should look at this a different way.</p>
 <p>When we grabbed our data with getQuickstat above, we set weighted_by_area = TRUE, which creates a new field that,as you guessed, weights our main value by the land area in that county or state.</p>
 <p>This gives us a bunch of really small numbers that don’t make sense, but for our purposes of mapping, they’ll do.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="../reference/plotUSDA.html">plotUSDA</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">ops.with.sales</span>, fill_by <span class="op">=</span> <span class="st">'value_per_sq_mile'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">tidyUSDA</span><span class="fu">::</span><span class="fu"><a href="../reference/plotUSDA.html">plotUSDA</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">ops.with.sales</span>, fill_by <span class="op">=</span> <span class="st">'value_per_sq_mile'</span><span class="op">)</span></span></code></pre></div>
 <p><a href="https://bradlindblad.github.io/tidyUSDA/" class="external-link"><img src="images/vig_2.png" align="center" height="300"></a></p>
 <p>Ahh, much better. Now we have a true plot showing the number of operations per square mile.</p>
 </div>
@@ -199,7 +199,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer>
