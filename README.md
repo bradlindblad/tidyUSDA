@@ -1,5 +1,5 @@
 
-# tidyUSDA <img src='https://raw.githubusercontent.com/bradlindblad/tidyUSDA/master/images/tidyusda.png' align="right" height="200" />
+# tidyUSDA <img src='https://raw.githubusercontent.com/bradlindblad/tidyUSDA/dev/images/logo.png' align="right" height="200" />
 
 [![R build status](https://github.com/bradlindblad/tidyUSDA/workflows/R-CMD-check/badge.svg)](https://github.com/bradlindblad/tidyUSDA/actions)
 [![pkgdown](https://github.com/bradlindblad/tidyUSDA/actions/workflows/pkgdown.yaml/badge.svg?branch=master)](https://github.com/bradlindblad/tidyUSDA/actions/workflows/pkgdown.yaml)
