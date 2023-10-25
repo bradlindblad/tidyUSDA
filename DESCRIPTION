@@ -31,7 +31,6 @@ Suggests:
     covr,
     knitr,
     nlme,
-    rgeos,
     rmarkdown,
     spelling,
     stringi,

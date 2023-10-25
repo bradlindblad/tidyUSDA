@@ -22,7 +22,7 @@ plotUSDA <- function(df, fill_by = 'Value'){
   
   
   # Install rgeos if not already installed
-  if (!"rgeos" %in% utils::installed.packages()) {stop(crayon::cyan("Package \"rgeos\" needed for this function to work. Please install it with install.packages(\"rgeos\")"),call. = FALSE)}
+  # if (!"rgeos" %in% utils::installed.packages()) {stop(crayon::cyan("Package \"rgeos\" needed for this function to work. Please install it with install.packages(\"rgeos\")"),call. = FALSE)}
                                                        
     
  

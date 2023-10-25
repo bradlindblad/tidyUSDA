@@ -2,4 +2,4 @@
 
 0 errors | 0 warnings | 0 note
 
-* This is an incremental release.
+* Dropping rgeos as a dep since it is sunsetted.
