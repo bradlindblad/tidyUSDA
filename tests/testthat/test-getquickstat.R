@@ -27,6 +27,8 @@ test_that("getQuickstat1", {
     
 })
 
+Sys.sleep(1)
+
 test_that("getQuickstat2", {
   
 
@@ -41,6 +43,8 @@ raw <-    getQuickstat(key = '7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71',
     
   
 })
+
+Sys.sleep(1)
 
 test_that("getQuickstat3", {
   
@@ -60,6 +64,8 @@ test_that("getQuickstat3", {
   
 })
 
+Sys.sleep(1)
+
 test_that("getQuickstat4", {
   
 
@@ -75,6 +81,8 @@ test_that("getQuickstat4", {
     
   
 })
+
+Sys.sleep(1)
 
 test_that("getQuickstat5", {
   
@@ -93,6 +101,7 @@ test_that("getQuickstat5", {
   
 })
 
+Sys.sleep(1)
 
 test_that("weighted by mile", {
   
