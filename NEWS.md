@@ -1,6 +1,3 @@
-# tidyUSDA (development version)
-
-# tidyUSDA 0.4.1
 
 # tidyUSDA 0.4.1
 * Remove deprecated {rgeos} from suggests
