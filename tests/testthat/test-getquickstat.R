@@ -1,4 +1,4 @@
-
+Sys.sleep(1)
 
 
 test_that("getQuickstat1", {
