@@ -27,7 +27,7 @@ test_that("getMultStates", {
   
 })
 
-
+Sys.sleep(1)
 
 test_that("getMultCounties", {
   
@@ -55,7 +55,7 @@ test_that("getMultCounties", {
 })
 
 
-
+Sys.sleep(1)
 
 test_that("getMultStatesCounties", {
   

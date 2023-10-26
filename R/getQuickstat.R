@@ -518,11 +518,11 @@ getQuickstat <- function(key = NULL, program = NULL, data_item = NULL, sector = 
 
 
   # Install rgeos if not already installed
-  if (!"rgeos" %in% utils::installed.packages()) {
-    stop(crayon::cyan("Package \"rgeos\" needed for this function to work. Please install it with install.packages(\"rgeos\")"),
-      call. = FALSE
-    )
-  }
+  # if (!"rgeos" %in% utils::installed.packages()) {
+  #   stop(crayon::cyan("Package \"rgeos\" needed for this function to work. Please install it with install.packages(\"rgeos\")"),
+  #     call. = FALSE
+  #   )
+  # }
 
   
   # Logic handle improper types

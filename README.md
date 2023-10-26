@@ -1,5 +1,5 @@
 
-# tidyUSDA <img src='https://raw.githubusercontent.com/bradlindblad/tidyUSDA/master/images/tidyusda.png' align="right" height="200" />
+# tidyUSDA <img src='https://raw.githubusercontent.com/bradlindblad/tidyUSDA/dev/images/logo.png' align="right" height="200" />
 
 [![R build status](https://github.com/bradlindblad/tidyUSDA/workflows/R-CMD-check/badge.svg)](https://github.com/bradlindblad/tidyUSDA/actions)
 [![pkgdown](https://github.com/bradlindblad/tidyUSDA/actions/workflows/pkgdown.yaml/badge.svg?branch=master)](https://github.com/bradlindblad/tidyUSDA/actions/workflows/pkgdown.yaml)
@@ -18,10 +18,13 @@
 
 
 ## Overview
-**tidyUSDA** provides the R user with a consistent API to pull USDA census and survey data from Quickstats. You can:    
-* ```getQuickstat()``` lets you pass values to the fields you see on the QuickStats website, as well as include a simple features (SF) geometry field for the county or state level. 
-* ```View({parameter name})``` lets you view QuickStats all available values for a given field (which you would input into getQuickstats(), preferably with copy paste)
-* ```plotUSDA()``` provides a quick way to plot your data if you set geometry = TRUE
+**tidyUSDA** provides the R user with a consistent API to pull USDA census and survey data from Quickstats. 
+
+* `getQuickstat()` lets you pass values to the fields you see on the QuickStats website, as well as include a simple features (SF) geometry field for the county or state level. 
+
+* `View({parameter name})` lets you view QuickStats all available values for a given field (which you would input into getQuickstats(), preferably with copy paste)
+
+* `plotUSDA()` provides a quick way to plot your data if you set geometry = TRUE
 
 ## Installation
 ```
